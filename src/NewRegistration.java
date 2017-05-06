@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
  */
 
 public class NewRegistration extends javax.swing.JFrame {
-
+int abc;
     /**
      * Creates new form NewRegistration
      */
