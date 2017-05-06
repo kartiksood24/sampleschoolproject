@@ -1,11 +1,8 @@
 import com.aspose.words.Document;
 import com.aspose.words.PdfSaveOptions;
-import com.aspose.words.Document;
-import com.aspose.words.PdfSaveOptions;
 import java.awt.print.PrinterJob;
-import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java. sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -15,8 +12,6 @@ import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.standard.PageRanges;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
-import static org.apache.poi.hssf.usermodel.HeaderFooter.file;
-import replaceText.replaceText;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
