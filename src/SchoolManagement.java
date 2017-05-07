@@ -1,6 +1,7 @@
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -110,6 +111,11 @@ public class SchoolManagement extends javax.swing.JFrame {
         jPasswordField1.setBackground(new java.awt.Color(255, 153, 153));
         jPasswordField1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyPressed(evt);
+            }
+        });
 
         jPanel15.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(102, 102, 0)));
 
@@ -128,6 +134,11 @@ public class SchoolManagement extends javax.swing.JFrame {
         jButton37.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton37ActionPerformed(evt);
+            }
+        });
+        jButton37.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton37KeyPressed(evt);
             }
         });
 
@@ -203,7 +214,12 @@ public class SchoolManagement extends javax.swing.JFrame {
 
     private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
         // TODO add your handling code here:
-        try
+      callAnotherClass();
+    }//GEN-LAST:event_jButton37ActionPerformed
+
+    public void callAnotherClass()
+    {
+          try
 		{
                     
                     if(jTextField1.getText().equals("")||jPasswordField1.getText().equals(""))
@@ -240,12 +256,29 @@ public class SchoolManagement extends javax.swing.JFrame {
         {
             System.out.println(e);
         }
-    }//GEN-LAST:event_jButton37ActionPerformed
-
+    }
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton33ActionPerformed
+
+    private void jButton37KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton37KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            
+            callAnotherClass();
+       
+    }
+    }//GEN-LAST:event_jButton37KeyPressed
+
+    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            
+            callAnotherClass();
+       
+    }
+    }//GEN-LAST:event_jPasswordField1KeyPressed
 
     /**
      * @param args the command line arguments
