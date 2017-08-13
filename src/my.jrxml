@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="my" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     register_student.`reg_no` AS register_student_reg_no,
+     register_student.`stu_name` AS register_student_stu_name,
+     register_student.`father_name` AS register_student_father_name,
+     register_student.`mother_name` AS register_student_mother_name,
+     register_student.`age` AS register_student_age,
+     register_student.`gender` AS register_student_gender,
+     register_student.`phone_no` AS register_student_phone_no,
+     register_student.`mobile_no` AS register_student_mobile_no,
+     register_student.`address` AS register_student_address,
+     register_student.`state` AS register_student_state,
+     register_student.`city` AS register_student_city,
+     register_student.`class` AS register_student_class,
+     register_student.`regd_fee` AS register_student_regd_fee,
+     register_student.`year` AS register_student_year,
+     register_student.`status` AS register_student_status
+FROM
+     `register_student` register_student]]>
+	</queryString>
+	<field name="register_student_reg_no" class="java.lang.Integer"/>
+	<field name="register_student_stu_name" class="java.lang.String"/>
+	<field name="register_student_father_name" class="java.lang.String"/>
+	<field name="register_student_mother_name" class="java.lang.String"/>
+	<field name="register_student_age" class="java.lang.Integer"/>
+	<field name="register_student_gender" class="java.lang.String"/>
+	<field name="register_student_phone_no" class="java.lang.String"/>
+	<field name="register_student_mobile_no" class="java.lang.String"/>
+	<field name="register_student_address" class="java.lang.String"/>
+	<field name="register_student_state" class="java.lang.String"/>
+	<field name="register_student_city" class="java.lang.String"/>
+	<field name="register_student_class" class="java.lang.String"/>
+	<field name="register_student_regd_fee" class="java.lang.String"/>
+	<field name="register_student_year" class="java.lang.Integer"/>
+	<field name="register_student_status" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="3734bba3-ab77-4f5e-bb35-cf8247f43d6c"/>
+				<imageExpression><![CDATA["leaf_banner_violet.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="f15b02df-1f69-4059-9275-499c509fa5b4"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Violet Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="63" y="46" width="200" height="22" uuid="f30f30f4-4411-4c5b-b85b-010f1f1f745e"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Leaf Violet SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="db33896d-b151-4159-b45f-970ec3f99f4b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="37" height="15" uuid="404e4d1b-65dd-419b-abfa-ad5917eae9f2"/>
+				<text><![CDATA[register_student_reg_no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="37" y="19" width="37" height="15" uuid="5900dcd0-e0c1-48fc-b9e9-a1aa30c214b1"/>
+				<text><![CDATA[register_student_stu_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="74" y="19" width="37" height="15" uuid="566824c7-b476-4216-8afa-ba7e05ef4df8"/>
+				<text><![CDATA[register_student_father_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="111" y="19" width="37" height="15" uuid="1888ae83-3406-440e-bb7d-9b106b59e452"/>
+				<text><![CDATA[register_student_mother_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="148" y="19" width="37" height="15" uuid="b938b6fc-475c-4dcc-a2f2-3a50ca3c124b"/>
+				<text><![CDATA[register_student_age]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="185" y="19" width="37" height="15" uuid="4c04edc1-6512-4219-8e47-f6bb002f027a"/>
+				<text><![CDATA[register_student_gender]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="222" y="19" width="37" height="15" uuid="dbd25b4c-7796-47e0-994a-4be8143831c2"/>
+				<text><![CDATA[register_student_phone_no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="259" y="19" width="37" height="15" uuid="3d424a8d-eb1c-4e96-ae62-82fcaa8dbf10"/>
+				<text><![CDATA[register_student_mobile_no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="296" y="19" width="37" height="15" uuid="d1a18dc3-85b5-4c40-8955-3e2881b1f631"/>
+				<text><![CDATA[register_student_address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="333" y="19" width="37" height="15" uuid="66d7c310-cf03-404c-b4ae-d35b7fca3613"/>
+				<text><![CDATA[register_student_state]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="370" y="19" width="37" height="15" uuid="56732439-1b1e-4344-9ad7-38ae9dee67fe"/>
+				<text><![CDATA[register_student_city]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="407" y="19" width="37" height="15" uuid="5dc42548-d0aa-4620-8341-903a1a5e188a"/>
+				<text><![CDATA[register_student_class]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="444" y="19" width="37" height="15" uuid="3d55f9f4-2045-4eee-8e4c-a832cb80027d"/>
+				<text><![CDATA[register_student_regd_fee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="481" y="19" width="37" height="15" uuid="b02a760a-f91d-49f8-8cb1-cc91e2c47b63"/>
+				<text><![CDATA[register_student_year]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="518" y="19" width="37" height="15" uuid="e3fb055a-d832-4b97-a617-6cb787915864"/>
+				<text><![CDATA[register_student_status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="872dd8f0-d547-443b-9aee-a377c972ae5b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="37" height="15" uuid="071b7f45-8bcc-4903-a931-973fb730ace1"/>
+				<textFieldExpression><![CDATA[$F{register_student_reg_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="37" y="0" width="37" height="15" uuid="8e06f63b-6d12-4503-aa31-5f976fde5d8d"/>
+				<textFieldExpression><![CDATA[$F{register_student_stu_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="74" y="0" width="37" height="15" uuid="11310981-9d91-4388-b06f-ddffd57df247"/>
+				<textFieldExpression><![CDATA[$F{register_student_father_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="111" y="0" width="37" height="15" uuid="b20ea4f0-13d3-44b3-882d-9fdd27fccded"/>
+				<textFieldExpression><![CDATA[$F{register_student_mother_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="148" y="0" width="37" height="15" uuid="a1127d92-db2d-4d60-a7ca-19aec00a27f8"/>
+				<textFieldExpression><![CDATA[$F{register_student_age}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="185" y="0" width="37" height="15" uuid="0b87270a-176a-4bc1-8390-e2b9c06399b6"/>
+				<textFieldExpression><![CDATA[$F{register_student_gender}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="222" y="0" width="37" height="15" uuid="631612e5-90ee-4e0e-b5ea-69f6bdbf8914"/>
+				<textFieldExpression><![CDATA[$F{register_student_phone_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="259" y="0" width="37" height="15" uuid="bcd7a3cb-709a-4e27-9eaa-3bc4f16c4572"/>
+				<textFieldExpression><![CDATA[$F{register_student_mobile_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="296" y="0" width="37" height="15" uuid="5699fc79-6e44-4d0a-aba9-365c05e8620c"/>
+				<textFieldExpression><![CDATA[$F{register_student_address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="333" y="0" width="37" height="15" uuid="ed0d10b2-e0c6-4dc6-aac7-38cbb4568fcf"/>
+				<textFieldExpression><![CDATA[$F{register_student_state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="370" y="0" width="37" height="15" uuid="e5a49c39-2bbe-4303-92b8-15a32866e871"/>
+				<textFieldExpression><![CDATA[$F{register_student_city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="407" y="0" width="37" height="15" uuid="c0183603-efb8-4077-b853-99d05d7ef04b"/>
+				<textFieldExpression><![CDATA[$F{register_student_class}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="444" y="0" width="37" height="15" uuid="3be59a87-ec1f-46cc-86c4-906bb0335d21"/>
+				<textFieldExpression><![CDATA[$F{register_student_regd_fee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="481" y="0" width="37" height="15" uuid="9b362492-d769-4e56-b20a-59ed7a1d0832"/>
+				<textFieldExpression><![CDATA[$F{register_student_year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="518" y="0" width="37" height="15" uuid="b1b46753-8421-4bd6-afec-8383b716d430"/>
+				<textFieldExpression><![CDATA[$F{register_student_status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="d777c037-33f4-4f42-95de-b0a19d190910"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="575fca71-af88-4d78-8453-4380b682a77a"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="629c29c2-7b53-4105-8500-2ff48d19f390"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="2ff280a9-6b35-47b4-86ca-183c83a6ea1a"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,20 +1,19 @@
-import com.aspose.words.Document;
-import com.aspose.words.PdfSaveOptions;
-import java.awt.print.PrinterJob;
-import java.sql.Connection;
-import java. sql.DriverManager;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.print.attribute.HashPrintRequestAttributeSet;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.attribute.standard.PageRanges;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
+
+
+
+ /* To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -25,13 +24,16 @@ import javax.swing.JOptionPane;
  */
 
 public class NewRegistration extends javax.swing.JFrame {
-int abc;
+
     /**
      * Creates new form NewRegistration
-     */
+     */Connection con;
+     
     ButtonGroup bg;
-    public NewRegistration() {
+    public NewRegistration() throws SQLException {
         initComponents();
+        String url="jdbc:mysql://localhost:3306/school";
+           con=(Connection) DriverManager.getConnection(url,"root","root");   
         int var=0;
         this.setLocationRelativeTo(null);
         try
@@ -40,11 +42,11 @@ int abc;
         String qry="select ifnull(max(reg_no),0) from register_student";
         Class.forName("com.mysql.jdbc.Driver");
 		
-		String url="jdbc:mysql://localhost:3306/school";
+	//	String url="jdbc:mysql://localhost:3306/school";
 		
-		Connection con=DriverManager.getConnection(url,"root","root");
+		con=(Connection) DriverManager.getConnection(url,"root","root");
 		
-		Statement stmt=con.createStatement();
+		Statement stmt=(Statement) con.createStatement();
                 
                
 		 ResultSet rs=stmt.executeQuery(qry);
@@ -55,7 +57,7 @@ int abc;
                  }
                  
         }
-        catch(Exception e)
+        catch(ClassNotFoundException | SQLException e)
         {
             System.out.println(e);
         }
@@ -270,6 +272,11 @@ int abc;
 
         jButton6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton6.setText("VIEW");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel14.setText("Select Year :-");
@@ -487,41 +494,8 @@ int abc;
     }//GEN-LAST:event_stateActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        Document doc = null;
-        try {
-            doc = new Document("documentation.docx");
-        } catch (Exception ex) {
-            Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        PdfSaveOptions pdfsaveOptions=new PdfSaveOptions();
-        pdfsaveOptions.setPageIndex(0);
-        try {
-            doc.save("documentation.pdf",pdfsaveOptions);
-            
-        } catch (Exception ex) {
-            Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-            Document doc1 = null;
-        try {
-            doc1 = new Document("documentation.pdf");
-        } catch (Exception ex) {
-            Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-       PrinterJob pj= PrinterJob.getPrinterJob();
-       PrintRequestAttributeSet attributes=new HashPrintRequestAttributeSet();
-      
-        try {
-            attributes.add(new PageRanges(1,doc1.getPageCount()));
-        } catch (Exception ex) {
-            Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       if(!pj.printDialog(attributes))
-       {
-       return;
-       }
+ 
+       
                
                
        
@@ -558,6 +532,12 @@ int abc;
              ph_no=phone_no.getText();
          }
               long mob_no1=Long.parseLong(mobile_no.getText());
+              if(mobile_no.getText().isEmpty())
+                  {
+                  mob_no1=0;
+                  }
+                          
+                          
               int year1=Integer.parseInt(year.getSelectedItem().toString());
               String address1=address.getText();
               String state1=state.getText();
@@ -565,16 +545,74 @@ int abc;
               String class2=class1.getText();
               String regd_fee1=regd_fee.getText();
               
-              String query="insert into register_student values("+regd_no1+",'"+stu_name1+"','"+father_name1+"','"+mother_name1+"',"+age1+",'"+gender+"','"+ph_no+"',"+mob_no1+",'"+address1+"','"+state1+"','"+city1+"','"+class2+"','"+regd_fee1+"',"+year1+")";
+                if((stu_name1.isEmpty() && father_name1.isEmpty() && mother_name1.isEmpty()  && gender.isEmpty() && address1.isEmpty() && state1.isEmpty() && city1.isEmpty() && class2.isEmpty() && regd_fee1.isEmpty() && age.getText().isEmpty()))
+                {
+                  JOptionPane.showMessageDialog(this,"Fill Form Properly"); 
+                }
+              else if(stu_name1.isEmpty())
+              {
+              JOptionPane.showMessageDialog(this,"Student Name can not be empty");
+              }
+                else if(father_name1.isEmpty())
+                {
+                 JOptionPane.showMessageDialog(this,"Father Name can not be empty");
+                } 
+                else if(mother_name1.isEmpty())
+                {
+                   JOptionPane.showMessageDialog(this,"Mother Name can not be empty");
+                }
+                else if(gender.isEmpty())
+                {
+                   JOptionPane.showMessageDialog(this,"Select gender");
+                }
+                else if(address1.isEmpty())
+                {
+                   JOptionPane.showMessageDialog(this,"Fill Address");
+                } 
+                else if(state1.isEmpty())
+                {
+                   JOptionPane.showMessageDialog(this,"Select State");
+                }
+                else if (city1.isEmpty())
+                {
+                   JOptionPane.showMessageDialog(this,"Select City");
+                }
+                else if(class2.isEmpty())
+                {
+                   JOptionPane.showMessageDialog(this,"Select Class");
+                }
+                else if(regd_fee1.isEmpty())
+                {
+                   JOptionPane.showMessageDialog(this,"Set Registration Fee");
+                }
+                else if(age.getText().isEmpty())
+                {
+                   JOptionPane.showMessageDialog(this,"Fill age");
+                }
+                else if(mob_no1==0)
+                {
+                   JOptionPane.showMessageDialog(this,"Fill Mobile No");
+                }
+                else if(phone_no.getText().isEmpty())
+                {
+                   JOptionPane.showMessageDialog(this,"Fill Phone No");
+                }
+                else if(year.getSelectedItem().equals("Select"))
+                {
+                   JOptionPane.showMessageDialog(this,"Select Year");
+                }
+                else            
+                {
+                String query="insert into register_student values("+regd_no1+",'"+stu_name1+"','"+father_name1+"','"+mother_name1+"',"+age1+",'"+gender+"','"+ph_no+"',"+mob_no1+",'"+address1+"','"+state1+"','"+city1+"','"+class2+"','"+regd_fee1+"','"+year1+"','"+20+"')";
           try
           {
-Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
 		
 		String url="jdbc:mysql://localhost:3306/school";
 		
-		Connection con=DriverManager.getConnection(url,"root","root");
+		con=(Connection) DriverManager.getConnection(url,"root","root");
 		
-		Statement stmt=con.createStatement();
+		Statement stmt=(Statement) con.createStatement();
                 
                
 		 stmt.executeUpdate(query);
@@ -584,51 +622,23 @@ Class.forName("com.mysql.jdbc.Driver");
           {
               System.out.println(e);
           }
-
-
-
-
-
-
-
+              }
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox4ActionPerformed
-
     @SuppressWarnings("null")
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-                   String id_no=regd_no.getText();
-                   String studentname=stu_name.getText();
-                   String fname=father_name.getText();
-                   String adres=address.getText();
-                   String regdclass=class1.getText();
-                   String fees=regd_fee.getText();
-                  String rect="ttttt";
-                  String date3="dddddd";
-                  String td="tdtdtd";
-        
-            Document file2 = null;
-        try {
-            file2 = new Document("firstslip.docx");
-        } catch (Exception ex) {
-            Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            file2.getMailMerge().execute(new String[]{"reciept_no","id_no","date","name","father_name","address","regd_class","test_date","fee"},new Object[]{rect,id_no,date3,studentname,fname,adres,regdclass,td,fees});
-        } catch (Exception ex) {
-            Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            file2.save("newfirstfile.docx");  //change content
-        } catch (Exception ex) {
-            Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+                   
+         
+       
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -660,7 +670,11 @@ Class.forName("com.mysql.jdbc.Driver");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewRegistration().setVisible(true);
+                try {
+                    new NewRegistration().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

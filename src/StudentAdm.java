@@ -2,6 +2,9 @@
 import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.io.File;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -641,7 +644,12 @@ public class StudentAdm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-                NewRegistration rr= new NewRegistration();
+                NewRegistration rr = null;
+        try {
+            rr = new NewRegistration();
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentAdm.class.getName()).log(Level.SEVERE, null, ex);
+        }
                     rr.setVisible(true);
                     new StudentAdm().setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
