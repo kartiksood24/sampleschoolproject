@@ -15,7 +15,7 @@ public class BalanceFee extends javax.swing.JFrame {
      */
     public BalanceFee() {
         initComponents();
-                this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**

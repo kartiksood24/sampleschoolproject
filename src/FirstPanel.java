@@ -7,7 +7,6 @@ import masterUpdateSource.studentMaster;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Jai shree ram
@@ -19,13 +18,10 @@ public class FirstPanel extends javax.swing.JFrame {
      */
     public FirstPanel() {
         initComponents();
-        
-         
-                
-                Toolkit tk=Toolkit.getDefaultToolkit();
-                   int width=(int) tk.getScreenSize().getWidth();
-                   int height=(int) tk.getScreenSize().getHeight();
-                   this.setSize(width,height);
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        int width = (int) tk.getScreenSize().getWidth();
+        int height = (int) tk.getScreenSize().getHeight();
+        this.setSize(width, height);
     }
 
     /**
@@ -212,9 +208,9 @@ public class FirstPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                StudentAdm s1=new StudentAdm();
-                s1.setVisible(true);
-                //dispose();
+        StudentAdm s1 = new StudentAdm();
+        s1.setVisible(true);
+        //dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -224,17 +220,17 @@ public class FirstPanel extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        TeacherPanel tt=new TeacherPanel();
+        TeacherPanel tt = new TeacherPanel();
         tt.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        OperatorPanel op=new OperatorPanel();
-            op.setVisible(true);
-       
+        OperatorPanel op = new OperatorPanel();
+        op.setVisible(true);
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton1FocusGained
@@ -243,7 +239,7 @@ public class FirstPanel extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        CreateUser cu=new CreateUser();
+        CreateUser cu = new CreateUser();
         cu.setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -253,17 +249,17 @@ public class FirstPanel extends javax.swing.JFrame {
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
-        CheckCollection cc=new CheckCollection();
+        CheckCollection cc = new CheckCollection();
         cc.setVisible(true);
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        studentMaster sm=new studentMaster();
+        studentMaster sm = new studentMaster();
         sm.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -298,7 +294,7 @@ public class FirstPanel extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-               // new FirstPanel().setVisible(true);
+                // new FirstPanel().setVisible(true);
             }
         });
     }
