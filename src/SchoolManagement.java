@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Jai shree ram
@@ -23,16 +22,12 @@ public class SchoolManagement extends javax.swing.JFrame {
     public SchoolManagement() {
         initComponents();
         this.setVisible(true);
-     
-            //   this.setLocationRelativeTo(null);
-        
-        
-                   Toolkit tk=Toolkit.getDefaultToolkit();
-        
-                   int width=(int) tk.getScreenSize().getWidth();
-                  int height=(int) tk.getScreenSize().getHeight();
-           //       this.setSize(width/2-120,height/2-120);
-             this.setBounds(width/2-267,height/2-153,533,306);
+        //   this.setLocationRelativeTo(null);
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        int width = (int) tk.getScreenSize().getWidth();
+        int height = (int) tk.getScreenSize().getHeight();
+        //       this.setSize(width/2-120,height/2-120);
+        this.setBounds(width / 2 - 267, height / 2 - 153, 533, 306);
     }
 
     /**
@@ -210,39 +205,30 @@ public class SchoolManagement extends javax.swing.JFrame {
 
     private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
         // TODO add your handling code here:
-      callAnotherClass();
+        callAnotherClass();
     }//GEN-LAST:event_jButton37ActionPerformed
 
-    public void callAnotherClass()
-    {
-          try
-		{
-                    
-                    if(jTextField1.getText().equals("")||jPasswordField1.getText().equals(""))
-                    {
-                        JOptionPane.showMessageDialog(this,"UserID or Password Can't be Empty");   
-                    }
-                    else
-                    {
-		
-                
-                Database db=new Database(); 
-                String url2="select * from user_login where username='"+jTextField1.getText()+"'and password='"+jPasswordField1.getText()+"'";
-		 ResultSet rs=db.Excecute(url2);
-                 if(rs.next())
-                 {
-                     new FirstPanel().setVisible(true);dispose(); 
-                 }
-                 else
-                 {
-                     JOptionPane.showMessageDialog(this,"Wrong UserId or Password");
-                     jTextField1.setText("");
-                     jPasswordField1.setText("");
-                 }
-                    }
+    public void callAnotherClass() {
+        try {
+
+            if (jTextField1.getText().equals("") || jPasswordField1.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "UserID or Password Can't be Empty");
+            } else {
+
+                Database db = new Database();
+                String url2 = "select * from user_login where username='" + jTextField1.getText()
+                        + "'and password='" + jPasswordField1.getText() + "'";
+                ResultSet rs = db.Excecute(url2);
+                if (rs.next()) {
+                    new FirstPanel().setVisible(true);
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Wrong UserId or Password");
+                    jTextField1.setText("");
+                    jPasswordField1.setText("");
                 }
-        catch(Exception e)
-        {
+            }
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -253,20 +239,16 @@ public class SchoolManagement extends javax.swing.JFrame {
 
     private void jButton37KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton37KeyPressed
         // TODO add your handling code here:
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-            
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             callAnotherClass();
-       
-    }
+        }
     }//GEN-LAST:event_jButton37KeyPressed
 
     private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
         // TODO add your handling code here:
-         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-            
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             callAnotherClass();
-       
-    }
+        }
     }//GEN-LAST:event_jPasswordField1KeyPressed
 
     /**
@@ -300,11 +282,9 @@ public class SchoolManagement extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-               SchoolManagement s1=new SchoolManagement();
-               s1.setVisible(true);
-                
-                              
-               
+                SchoolManagement s1 = new SchoolManagement();
+                s1.setVisible(true);
+
             }
         });
     }

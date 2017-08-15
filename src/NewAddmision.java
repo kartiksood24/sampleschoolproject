@@ -22,13 +22,8 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-/**
- *
- * @author Jai shree ram
- */
-
 class ImageFilter1 extends javax.swing.filechooser.FileFilter {
+
     public boolean accept(File f) {
         return f.getName().toLowerCase().endsWith(".png")
                 || f.getName().toLowerCase().endsWith(".jpg")
@@ -41,6 +36,7 @@ class ImageFilter1 extends javax.swing.filechooser.FileFilter {
     }
 
 }
+
 public class NewAddmision extends javax.swing.JFrame {
 
     /**
@@ -48,15 +44,16 @@ public class NewAddmision extends javax.swing.JFrame {
      */
     public NewAddmision() {
         initComponents();
-        
-                this.setLocationRelativeTo(null);
-                this.setVisible(false);
-               // other.setVisible(false);
-                
+
+        this.setLocationRelativeTo(null);
+        this.setVisible(false);
+        // other.setVisible(false);
+
     }
-        ImageFilter1 fJavaFilter=new ImageFilter1();
-        static File fFile;
-         static BufferedImage icon;
+    ImageFilter1 fJavaFilter = new ImageFilter1();
+    static File fFile;
+    static BufferedImage icon;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1664,185 +1661,149 @@ public class NewAddmision extends javax.swing.JFrame {
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
 
-            JFileChooser fc=new JFileChooser();
-            fc.setDialogTitle("Select Image");
-            fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-          fc.setCurrentDirectory(new File("."));
+        JFileChooser fc = new JFileChooser();
+        fc.setDialogTitle("Select Image");
+        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        fc.setCurrentDirectory(new File("."));
         fc.setFileFilter(fJavaFilter);
         int result = fc.showOpenDialog(this);
-        
-           if (result == JFileChooser.CANCEL_OPTION)
-           {
+
+        if (result == JFileChooser.CANCEL_OPTION) {
             return;
-        } 
-           else if (result == JFileChooser.APPROVE_OPTION) {
-try
-{
-            fFile = fc.getSelectedFile();
-            String filename=fFile.getAbsolutePath();
-            FileInputStream fis=new FileInputStream(fFile);
-             icon = ImageIO.read(fis);
-             
-             ImageIcon ic=new ImageIcon(icon.getScaledInstance(206,207,java.awt.Image.SCALE_SMOOTH));
-             photo.setIcon(ic);
+        } else if (result == JFileChooser.APPROVE_OPTION) {
+            try {
+                fFile = fc.getSelectedFile();
+                String filename = fFile.getAbsolutePath();
+                FileInputStream fis = new FileInputStream(fFile);
+                icon = ImageIO.read(fis);
 
-}
-catch(Exception e)
-{
-    System.out.println(e);
-}
+                ImageIcon ic = new ImageIcon(icon.getScaledInstance(206, 207, java.awt.Image.SCALE_SMOOTH));
+                photo.setIcon(ic);
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
-
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
 
-JFileChooser fc=new JFileChooser();
-            fc.setDialogTitle("Select Image");
-            fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-          fc.setCurrentDirectory(new File("."));
+        JFileChooser fc = new JFileChooser();
+        fc.setDialogTitle("Select Image");
+        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        fc.setCurrentDirectory(new File("."));
         fc.setFileFilter(fJavaFilter);
         int result = fc.showOpenDialog(this);
-        
-           if (result == JFileChooser.CANCEL_OPTION)
-           {
+
+        if (result == JFileChooser.CANCEL_OPTION) {
             return;
-        } 
-           else if (result == JFileChooser.APPROVE_OPTION) {
-try
-{
-            fFile = fc.getSelectedFile();
-            String filename=fFile.getAbsolutePath();
-            FileInputStream fis=new FileInputStream(fFile);
-             icon = ImageIO.read(fis);
-             
-             ImageIcon ic=new ImageIcon(icon.getScaledInstance(206,207,java.awt.Image.SCALE_SMOOTH));
-             adhaar.setIcon(ic);
+        } else if (result == JFileChooser.APPROVE_OPTION) {
+            try {
+                fFile = fc.getSelectedFile();
+                String filename = fFile.getAbsolutePath();
+                FileInputStream fis = new FileInputStream(fFile);
+                icon = ImageIO.read(fis);
 
-}
-catch(Exception e)
-{
-    System.out.println(e);
-}        
+                ImageIcon ic = new ImageIcon(icon.getScaledInstance(206, 207, java.awt.Image.SCALE_SMOOTH));
+                adhaar.setIcon(ic);
 
+            } catch (Exception e) {
+                System.out.println(e);
+            }
 
-           }
+        }
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
 
-        JFileChooser fc=new JFileChooser();
-            fc.setDialogTitle("Select Image");
-            fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-          fc.setCurrentDirectory(new File("."));
+        JFileChooser fc = new JFileChooser();
+        fc.setDialogTitle("Select Image");
+        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        fc.setCurrentDirectory(new File("."));
         fc.setFileFilter(fJavaFilter);
         int result = fc.showOpenDialog(this);
-        
-           if (result == JFileChooser.CANCEL_OPTION)
-           {
-            return;
-        } 
-           else if (result == JFileChooser.APPROVE_OPTION) {
-try
-{
-            fFile = fc.getSelectedFile();
-            String filename=fFile.getAbsolutePath();
-            FileInputStream fis=new FileInputStream(fFile);
-             icon = ImageIO.read(fis);
-             
-             ImageIcon ic=new ImageIcon(icon.getScaledInstance(206,207,java.awt.Image.SCALE_SMOOTH));
-             certificate.setIcon(ic);
 
-}
-catch(Exception e)
-{
-    System.out.println(e);
-}
-           }
+        if (result == JFileChooser.CANCEL_OPTION) {
+            return;
+        } else if (result == JFileChooser.APPROVE_OPTION) {
+            try {
+                fFile = fc.getSelectedFile();
+                String filename = fFile.getAbsolutePath();
+                FileInputStream fis = new FileInputStream(fFile);
+                icon = ImageIO.read(fis);
+
+                ImageIcon ic = new ImageIcon(icon.getScaledInstance(206, 207, java.awt.Image.SCALE_SMOOTH));
+                certificate.setIcon(ic);
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
 
-       
-                
-               
-                
-          
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void regd_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_regd_idKeyReleased
-       if(!regd_id.getText().equals(""))
-       {
-        int id=Integer.parseInt(regd_id.getText());
-        try
-        {
-        Class.forName("com.mysql.jdbc.Driver");
-		
-		String url="jdbc:mysql://localhost:3306/school";
-		
-		Connection con=DriverManager.getConnection(url,"root","root");
-		
-		Statement stmt=con.createStatement();
-                
-                String url2="select * from register_student where reg_no="+id+"";
-		 ResultSet rs=stmt.executeQuery(url2);
-                 if(rs.next())
-                 {
-                      stu_name.setText(rs.getString(2));
-                 }
-                 
-                 String url3="select * from student_personal_detail where student_id="+id+"";
-		
-                 ResultSet rs2=stmt.executeQuery(url3);
-                 
-                 if(rs2.next())
-                 {
-                  stufname.setText(rs2.getString(2));
-                  stumname.setText(rs2.getString(3));
-                  stulname.setText(rs2.getString(4));
-                  stuadhar.setText(rs2.getString(5));
-                  fatherfname.setText(rs2.getString(6));
-                  fathermname.setText(rs2.getString(7));
-                  fatherlname.setText(rs2.getString(8));
-                  fatheradhar.setText(rs2.getString(9));
-                  motherfname.setText(rs2.getString(10));
-                  mothermname.setText(rs2.getString(11));
-                  motherlname.setText(rs2.getString(12));
-                  motheradhar.setText(rs2.getString(13));
-                  age.setText(rs2.getString(16));
-                  birthplace.setText(rs2.getString(17));
-                  identity1.setText(rs2.getString(21));
-                  identity2.setText(rs2.getString(22));
-                  fatherinc.setText(rs2.getString(23));
-                  pnumber.setText(rs2.getString(24));
-                  alternumber.setText(rs2.getString(25));
-                  llnumber.setText(rs2.getString(26));
-                  fnumber.setText(rs2.getString(27));
-                  mnumber.setText(rs2.getString(28));                 }
-                 mailid.setText(rs2.getString(29));
-                 altermailid.setText(rs2.getString(30));
-                  datepick.setDate(rs2.getDate(15));
-                 
-                  boolean tf = false;
-                  if("male".equals(rs2.getString(14)))
-                          male.doClick();
-                  if("female".equals(rs2.getString(14)))
-                         female.doClick();
-        }
-                 
-                 
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
+        if (!regd_id.getText().equals("")) {
+            int id = Integer.parseInt(regd_id.getText());
+            try {
+                String url2 = "select * from register_student where reg_no=" + id + "";
+                Database db = new Database();
+                ResultSet rs = db.Excecute(url2);
+                if (rs.next()) {
+                    stu_name.setText(rs.getString(2));
+                }
+                String url3 = "select * from student_personal_detail where student_id=" + id + "";
+                ResultSet rs2 = db.Excecute(url3);
 
-       }
+                if (rs2.next()) {
+                    stufname.setText(rs2.getString(2));
+                    stumname.setText(rs2.getString(3));
+                    stulname.setText(rs2.getString(4));
+                    stuadhar.setText(rs2.getString(5));
+                    fatherfname.setText(rs2.getString(6));
+                    fathermname.setText(rs2.getString(7));
+                    fatherlname.setText(rs2.getString(8));
+                    fatheradhar.setText(rs2.getString(9));
+                    motherfname.setText(rs2.getString(10));
+                    mothermname.setText(rs2.getString(11));
+                    motherlname.setText(rs2.getString(12));
+                    motheradhar.setText(rs2.getString(13));
+                    age.setText(rs2.getString(16));
+                    birthplace.setText(rs2.getString(17));
+                    identity1.setText(rs2.getString(21));
+                    identity2.setText(rs2.getString(22));
+                    fatherinc.setText(rs2.getString(23));
+                    pnumber.setText(rs2.getString(24));
+                    alternumber.setText(rs2.getString(25));
+                    llnumber.setText(rs2.getString(26));
+                    fnumber.setText(rs2.getString(27));
+                    mnumber.setText(rs2.getString(28));
+                }
+                mailid.setText(rs2.getString(29));
+                altermailid.setText(rs2.getString(30));
+                datepick.setDate(rs2.getDate(15));
+
+                boolean tf = false;
+                if ("male".equals(rs2.getString(14))) {
+                    male.doClick();
+                }
+                if ("female".equals(rs2.getString(14))) {
+                    female.doClick();
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
 // TODO add your handling code here:
     }//GEN-LAST:event_regd_idKeyReleased
 
@@ -1867,92 +1828,73 @@ catch(Exception e)
     }//GEN-LAST:event_fatherincActionPerformed
 
     private void jButton47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton47ActionPerformed
-        
-            int stuid=Integer.parseInt(regd_id.getText());
-            
-            String stufirst=stufname.getText();
-            String stumidle=stumname.getText();
-            String stulast=stulname.getText();
-            int stuAdhar=Integer.parseInt(stuadhar.getText());
-            
-            String fatherfirst=fatherfname.getText();
-            String fathermidle=fathermname.getText();
-            String fatherlast=fatherlname.getText();
-            int fatherAdhar=Integer.parseInt(fatheradhar.getText());
-            
-            String motherfirst=motherfname.getText();
-            String mothermidle=mothermname.getText();
-            String motherlast=motherlname.getText();
-            int motherAdhar=Integer.parseInt(motheradhar.getText());
-        
-            String gender;
-         if(male.isSelected())
-         {
-             gender="male";
-         }
-         else
-         {
-             gender="female";
-         }
-         
-        java.util.Date dDate = datepick.getDate();        
+
+        int stuid = Integer.parseInt(regd_id.getText());
+
+        String stufirst = stufname.getText();
+        String stumidle = stumname.getText();
+        String stulast = stulname.getText();
+        int stuAdhar = Integer.parseInt(stuadhar.getText());
+
+        String fatherfirst = fatherfname.getText();
+        String fathermidle = fathermname.getText();
+        String fatherlast = fatherlname.getText();
+        int fatherAdhar = Integer.parseInt(fatheradhar.getText());
+
+        String motherfirst = motherfname.getText();
+        String mothermidle = mothermname.getText();
+        String motherlast = motherlname.getText();
+        int motherAdhar = Integer.parseInt(motheradhar.getText());
+
+        String gender;
+        if (male.isSelected()) {
+            gender = "male";
+        } else {
+            gender = "female";
+        }
+
+        java.util.Date dDate = datepick.getDate();
         DateFormat oDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dob = oDateFormat.format(dDate);
-         
-       int stuage=Integer.parseInt(age.getText());
-         
-        String stubplace=birthplace.getText();
-        
-        String catgry=cat.getSelectedItem().toString();
-        String relign=religion.getSelectedItem().toString();
-        String nation=nationality.getSelectedItem().toString();
-        
-        String identy1=identity1.getText();
-        String identy2=identity2.getText();
-        
-        int fthrinc=Integer.parseInt(fatherinc.getText());
-        
-        int persno=Integer.parseInt(pnumber.getText());
-        int altno=Integer.parseInt(alternumber.getText());
-        int landno=Integer.parseInt(llnumber.getText());
-        int fthrno=Integer.parseInt(fnumber.getText());
-        int mothrno=Integer.parseInt(mnumber.getText());
-        
-        String mid=mailid.getText();
-        String altermid=altermailid.getText();
-        
-        
-        String query="insert into student_personal_detail values('"+stuid+"','"+stufirst+"','"+stumidle+"',"
-                + "'"+stulast+"',"+stuAdhar+",'"+fatherfirst+"','"+fathermidle+"','"+fatherlast+"',"
-                + "'"+fatherAdhar+"','"+motherfirst+"','"+mothermidle+"','"+motherlast+"','"+motherAdhar+"',"
-                + "'"+gender+"','"+dob+"','"+stuage+"','"+stubplace+"','"+catgry+"','"+relign+"','"+nation+"',"
-                + "'"+identy1+"','"+identy2+"','"+fthrinc+"','"+persno+"','"+altno+"','"+landno+"','"+fthrno+"',"
-                + "'"+mothrno+"','"+mid+"','"+altermid+"')";
-        
-          try
-          {
-                Database db=new Database();
-                db.Update(query);
-                 JOptionPane.showMessageDialog(this,"Data has been inserted successfully");
-          }
-          catch(Exception e)
-          {
-              System.out.println(e);
-          }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+        int stuage = Integer.parseInt(age.getText());
+
+        String stubplace = birthplace.getText();
+
+        String catgry = cat.getSelectedItem().toString();
+        String relign = religion.getSelectedItem().toString();
+        String nation = nationality.getSelectedItem().toString();
+
+        String identy1 = identity1.getText();
+        String identy2 = identity2.getText();
+
+        int fthrinc = Integer.parseInt(fatherinc.getText());
+
+        int persno = Integer.parseInt(pnumber.getText());
+        int altno = Integer.parseInt(alternumber.getText());
+        int landno = Integer.parseInt(llnumber.getText());
+        int fthrno = Integer.parseInt(fnumber.getText());
+        int mothrno = Integer.parseInt(mnumber.getText());
+
+        String mid = mailid.getText();
+        String altermid = altermailid.getText();
+
+        String query = "insert into student_personal_detail values('" + stuid + "','" + stufirst + "','" + stumidle + "',"
+                + "'" + stulast + "'," + stuAdhar + ",'" + fatherfirst + "','" + fathermidle + "','" + fatherlast + "',"
+                + "'" + fatherAdhar + "','" + motherfirst + "','" + mothermidle + "','" + motherlast + "','" + motherAdhar + "',"
+                + "'" + gender + "','" + dob + "','" + stuage + "','" + stubplace + "','" + catgry + "','" + relign + "','" + nation + "',"
+                + "'" + identy1 + "','" + identy2 + "','" + fthrinc + "','" + persno + "','" + altno + "','" + landno + "','" + fthrno + "',"
+                + "'" + mothrno + "','" + mid + "','" + altermid + "')";
+
+        try {
+            Database db = new Database();
+            db.Update(query);
+            JOptionPane.showMessageDialog(this, "Data has been inserted successfully");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+
     }//GEN-LAST:event_jButton47ActionPerformed
 
     private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed

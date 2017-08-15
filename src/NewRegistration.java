@@ -1,3 +1,4 @@
+
 import Utility.Database;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -10,34 +11,30 @@ public class NewRegistration extends javax.swing.JFrame {
     /**
      * Creates new form NewRegistration
      */
-     
     ButtonGroup bg;
+
     public NewRegistration() throws SQLException {
         initComponents();
-           
-        int var=0;
+
+        int var = 0;
         this.setLocationRelativeTo(null);
-        try
-        {
-        
-        String qry="select ifnull(max(reg_no),0) from register_student";
-        Database db=new Database();
-               if(db.Excecute(qry).next())
-                 {
-                     var=db.Excecute(qry).getInt(1);
-                     regd_no.setText((++var)+"");
-                 }
-                 
-        }
-        catch(ClassNotFoundException | SQLException e)
-        {
+        try {
+
+            String qry = "select ifnull(max(reg_no),0) from register_student";
+            Database db = new Database();
+            if (db.Excecute(qry).next()) {
+                var = db.Excecute(qry).getInt(1);
+                regd_no.setText((++var) + "");
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
-            regd_no.setEditable(false);
-         bg=new ButtonGroup();
-         
-         bg.add(male);
-         bg.add(female);
+        regd_no.setEditable(false);
+        bg = new ButtonGroup();
+
+        bg.add(male);
+        bg.add(female);
     }
 
     /**
@@ -466,11 +463,8 @@ public class NewRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_stateActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- 
-       
-               
-               
-       
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleActionPerformed
@@ -479,116 +473,79 @@ public class NewRegistration extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-         int regd_no1=Integer.parseInt(regd_no.getText());
-         String stu_name1=stu_name.getText();
-         String father_name1=father_name.getText();
-         String mother_name1=mother_name.getText();
-         int age1=Integer.parseInt(age.getText());
-         String gender;
-         if(male.isSelected())
-         {
-             gender="male";
-         }
-         else
-         {
-             gender="female";
-         }
-         
-         String ph_no;
-         if(phone_no.equals(""))
-         {
-             ph_no="";
-         }
-         else
-         {
-             ph_no=phone_no.getText();
-         }
-              long mob_no1=Long.parseLong(mobile_no.getText());
-              if(mobile_no.getText().isEmpty())
-                  {
-                  mob_no1=0;
-                  }
-                          
-                          
-              int year1=Integer.parseInt(year.getSelectedItem().toString());
-              String address1=address.getText();
-              String state1=state.getText();
-              String city1=city.getText();
-              String class2=class1.getText();
-              String regd_fee1=regd_fee.getText();
-              
-                if((stu_name1.isEmpty() && father_name1.isEmpty() && mother_name1.isEmpty()  
-                        && gender.isEmpty() && address1.isEmpty() && state1.isEmpty() && city1.isEmpty() 
-                        && class2.isEmpty() && regd_fee1.isEmpty() && age.getText().isEmpty()))
-                {
-                  JOptionPane.showMessageDialog(this,"Fill Form Properly"); 
-                }
-              else if(stu_name1.isEmpty())
-              {
-              JOptionPane.showMessageDialog(this,"Student Name can not be empty");
-              }
-                else if(father_name1.isEmpty())
-                {
-                 JOptionPane.showMessageDialog(this,"Father Name can not be empty");
-                } 
-                else if(mother_name1.isEmpty())
-                {
-                   JOptionPane.showMessageDialog(this,"Mother Name can not be empty");
-                }
-                else if(gender.isEmpty())
-                {
-                   JOptionPane.showMessageDialog(this,"Select gender");
-                }
-                else if(address1.isEmpty())
-                {
-                   JOptionPane.showMessageDialog(this,"Fill Address");
-                } 
-                else if(state1.isEmpty())
-                {
-                   JOptionPane.showMessageDialog(this,"Select State");
-                }
-                else if (city1.isEmpty())
-                {
-                   JOptionPane.showMessageDialog(this,"Select City");
-                }
-                else if(class2.isEmpty())
-                {
-                   JOptionPane.showMessageDialog(this,"Select Class");
-                }
-                else if(regd_fee1.isEmpty())
-                {
-                   JOptionPane.showMessageDialog(this,"Set Registration Fee");
-                }
-                else if(age.getText().isEmpty())
-                {
-                   JOptionPane.showMessageDialog(this,"Fill age");
-                }
-                else if(mob_no1==0)
-                {
-                   JOptionPane.showMessageDialog(this,"Fill Mobile No");
-                }
-                else if(phone_no.getText().isEmpty())
-                {
-                   JOptionPane.showMessageDialog(this,"Fill Phone No");
-                }
-                else if(year.getSelectedItem().equals("Select"))
-                {
-                   JOptionPane.showMessageDialog(this,"Select Year");
-                }
-                else            
-                {
-                String query="insert into register_student values("+regd_no1+",'"+stu_name1+"','"+father_name1+"','"+mother_name1+"',"+age1+",'"+gender+"','"+ph_no+"',"+mob_no1+",'"+address1+"','"+state1+"','"+city1+"','"+class2+"','"+regd_fee1+"','"+year1+"','"+20+"')";
-          try
-          {
-            Database db=new Database();
-            db.Update(query);
-             JOptionPane.showMessageDialog(this,"Data has been inserted successfully");
-          }
-          catch(Exception e)
-          {
-              System.out.println(e);
-          }
-              }
+        int regd_no1 = Integer.parseInt(regd_no.getText());
+        String stu_name1 = stu_name.getText();
+        String father_name1 = father_name.getText();
+        String mother_name1 = mother_name.getText();
+        int age1 = Integer.parseInt(age.getText());
+        String gender;
+        if (male.isSelected()) {
+            gender = "male";
+        } else {
+            gender = "female";
+        }
+
+        String ph_no;
+        if (phone_no.equals("")) {
+            ph_no = "";
+        } else {
+            ph_no = phone_no.getText();
+        }
+        long mob_no1 = Long.parseLong(mobile_no.getText());
+        if (mobile_no.getText().isEmpty()) {
+            mob_no1 = 0;
+        }
+
+        int year1 = Integer.parseInt(year.getSelectedItem().toString());
+        String address1 = address.getText();
+        String state1 = state.getText();
+        String city1 = city.getText();
+        String class2 = class1.getText();
+        String regd_fee1 = regd_fee.getText();
+
+        if ((stu_name1.isEmpty() && father_name1.isEmpty() && mother_name1.isEmpty()
+                && gender.isEmpty() && address1.isEmpty() && state1.isEmpty() && city1.isEmpty()
+                && class2.isEmpty() && regd_fee1.isEmpty() && age.getText().isEmpty())) {
+            JOptionPane.showMessageDialog(this, "Fill Form Properly");
+        } else if (stu_name1.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student Name can not be empty");
+        } else if (father_name1.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Father Name can not be empty");
+        } else if (mother_name1.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Mother Name can not be empty");
+        } else if (gender.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Select gender");
+        } else if (address1.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Fill Address");
+        } else if (state1.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Select State");
+        } else if (city1.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Select City");
+        } else if (class2.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Select Class");
+        } else if (regd_fee1.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Set Registration Fee");
+        } else if (age.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Fill age");
+        } else if (mob_no1 == 0) {
+            JOptionPane.showMessageDialog(this, "Fill Mobile No");
+        } else if (phone_no.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Fill Phone No");
+        } else if (year.getSelectedItem().equals("Select")) {
+            JOptionPane.showMessageDialog(this, "Select Year");
+        } else {
+            String query = "insert into register_student values(" + regd_no1 + ",'" + stu_name1 + "','"
+                    + father_name1 + "','" + mother_name1 + "'," + age1 + ",'" + gender + "','" + ph_no + "',"
+                    + mob_no1 + ",'" + address1 + "','" + state1 + "','" + city1 + "','" + class2 + "','" + regd_fee1
+                    + "','" + year1 + "','" + 20 + "')";
+            try {
+                Database db = new Database();
+                db.Update(query);
+                JOptionPane.showMessageDialog(this, "Data has been inserted successfully");
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -597,9 +554,8 @@ public class NewRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox4ActionPerformed
     @SuppressWarnings("null")
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-                   
-         
-       
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
