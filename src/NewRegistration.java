@@ -1,58 +1,30 @@
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+import Utility.Database;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
-import javax.swing.table.TableModel;
-
-
-
-
- /* To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Jai shree ram
- */
 
 public class NewRegistration extends javax.swing.JFrame {
 
     /**
      * Creates new form NewRegistration
-     */Connection con;
+     */
      
     ButtonGroup bg;
     public NewRegistration() throws SQLException {
         initComponents();
-        String url="jdbc:mysql://localhost:3306/school";
-           con=(Connection) DriverManager.getConnection(url,"root","root");   
+           
         int var=0;
         this.setLocationRelativeTo(null);
         try
         {
         
         String qry="select ifnull(max(reg_no),0) from register_student";
-        Class.forName("com.mysql.jdbc.Driver");
-		
-	//	String url="jdbc:mysql://localhost:3306/school";
-		
-		con=(Connection) DriverManager.getConnection(url,"root","root");
-		
-		Statement stmt=(Statement) con.createStatement();
-                
-               
-		 ResultSet rs=stmt.executeQuery(qry);
-                 if(rs.next())
+        Database db=new Database();
+               if(db.Excecute(qry).next())
                  {
-                     var=rs.getInt(1);
+                     var=db.Excecute(qry).getInt(1);
                      regd_no.setText((++var)+"");
                  }
                  
@@ -545,7 +517,9 @@ public class NewRegistration extends javax.swing.JFrame {
               String class2=class1.getText();
               String regd_fee1=regd_fee.getText();
               
-                if((stu_name1.isEmpty() && father_name1.isEmpty() && mother_name1.isEmpty()  && gender.isEmpty() && address1.isEmpty() && state1.isEmpty() && city1.isEmpty() && class2.isEmpty() && regd_fee1.isEmpty() && age.getText().isEmpty()))
+                if((stu_name1.isEmpty() && father_name1.isEmpty() && mother_name1.isEmpty()  
+                        && gender.isEmpty() && address1.isEmpty() && state1.isEmpty() && city1.isEmpty() 
+                        && class2.isEmpty() && regd_fee1.isEmpty() && age.getText().isEmpty()))
                 {
                   JOptionPane.showMessageDialog(this,"Fill Form Properly"); 
                 }
@@ -606,17 +580,9 @@ public class NewRegistration extends javax.swing.JFrame {
                 String query="insert into register_student values("+regd_no1+",'"+stu_name1+"','"+father_name1+"','"+mother_name1+"',"+age1+",'"+gender+"','"+ph_no+"',"+mob_no1+",'"+address1+"','"+state1+"','"+city1+"','"+class2+"','"+regd_fee1+"','"+year1+"','"+20+"')";
           try
           {
-            Class.forName("com.mysql.jdbc.Driver");
-		
-		String url="jdbc:mysql://localhost:3306/school";
-		
-		con=(Connection) DriverManager.getConnection(url,"root","root");
-		
-		Statement stmt=(Statement) con.createStatement();
-                
-               
-		 stmt.executeUpdate(query);
-                 JOptionPane.showMessageDialog(this,"Data has been inserted successfully");
+            Database db=new Database();
+            db.Update(query);
+             JOptionPane.showMessageDialog(this,"Data has been inserted successfully");
           }
           catch(Exception e)
           {

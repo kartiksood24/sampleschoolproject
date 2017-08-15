@@ -1,12 +1,8 @@
 
-import java.awt.Dimension;
+import Utility.Database;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import static javax.swing.GroupLayout.Alignment.CENTER;
 import javax.swing.JOptionPane;
 
 /*
@@ -224,22 +220,15 @@ public class SchoolManagement extends javax.swing.JFrame {
                     
                     if(jTextField1.getText().equals("")||jPasswordField1.getText().equals(""))
                     {
-                        JOptionPane.showMessageDialog(this,"UserID or Password Can't be Empty");
-                        
+                        JOptionPane.showMessageDialog(this,"UserID or Password Can't be Empty");   
                     }
                     else
                     {
 		
-		Class.forName("com.mysql.jdbc.Driver");
-		
-		String url="jdbc:mysql://localhost:3306/school";
-		
-		Connection con=DriverManager.getConnection(url,"root","root");
-		
-		Statement stmt=con.createStatement();
                 
+                Database db=new Database(); 
                 String url2="select * from user_login where username='"+jTextField1.getText()+"'and password='"+jPasswordField1.getText()+"'";
-		 ResultSet rs=stmt.executeQuery(url2);
+		 ResultSet rs=db.Excecute(url2);
                  if(rs.next())
                  {
                      new FirstPanel().setVisible(true);dispose(); 

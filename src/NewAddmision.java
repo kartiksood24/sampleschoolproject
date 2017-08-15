@@ -1,4 +1,5 @@
 
+import Utility.Database;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -1921,21 +1922,17 @@ catch(Exception e)
         String altermid=altermailid.getText();
         
         
-        String query="insert into student_personal_detail values('"+stuid+"','"+stufirst+"','"+stumidle+"','"+stulast+"',"+stuAdhar+",'"+fatherfirst+"','"+fathermidle+"','"+fatherlast+"','"+fatherAdhar+"','"+motherfirst+"','"+mothermidle+"','"+motherlast+"','"+motherAdhar+"','"+gender+"','"+dob+"','"+stuage+"','"+stubplace+"','"+catgry+"','"+relign+"','"+nation+"','"+identy1+"','"+identy2+"','"+fthrinc+"','"+persno+"','"+altno+"','"+landno+"','"+fthrno+"','"+mothrno+"','"+mid+"','"+altermid+"')";
+        String query="insert into student_personal_detail values('"+stuid+"','"+stufirst+"','"+stumidle+"',"
+                + "'"+stulast+"',"+stuAdhar+",'"+fatherfirst+"','"+fathermidle+"','"+fatherlast+"',"
+                + "'"+fatherAdhar+"','"+motherfirst+"','"+mothermidle+"','"+motherlast+"','"+motherAdhar+"',"
+                + "'"+gender+"','"+dob+"','"+stuage+"','"+stubplace+"','"+catgry+"','"+relign+"','"+nation+"',"
+                + "'"+identy1+"','"+identy2+"','"+fthrinc+"','"+persno+"','"+altno+"','"+landno+"','"+fthrno+"',"
+                + "'"+mothrno+"','"+mid+"','"+altermid+"')";
         
           try
           {
-            Class.forName("com.mysql.jdbc.Driver");
-		
-		String url="jdbc:mysql://localhost:3306/school";
-		
-                com.mysql.jdbc.Connection con;
-		con=(com.mysql.jdbc.Connection) DriverManager.getConnection(url,"root","root");
-		
-		com.mysql.jdbc.Statement stmt=(com.mysql.jdbc.Statement) con.createStatement();
-                
-               
-		 stmt.executeUpdate(query);
+                Database db=new Database();
+                db.Update(query);
                  JOptionPane.showMessageDialog(this,"Data has been inserted successfully");
           }
           catch(Exception e)
