@@ -42,9 +42,10 @@ public class NewAddmision extends javax.swing.JFrame {
     /**
      * Creates new form NewAddmision
      */
+    
     public NewAddmision() {
         initComponents();
-
+    
         this.setLocationRelativeTo(null);
         this.setVisible(false);
         // other.setVisible(false);
@@ -157,59 +158,59 @@ public class NewAddmision extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jLabel62 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        paddress = new javax.swing.JTextArea();
         jLabel63 = new javax.swing.JLabel();
-        jTextField56 = new javax.swing.JTextField();
+        pstate = new javax.swing.JTextField();
         jLabel64 = new javax.swing.JLabel();
-        jTextField55 = new javax.swing.JTextField();
+        pcity = new javax.swing.JTextField();
         jLabel66 = new javax.swing.JLabel();
-        jTextField54 = new javax.swing.JTextField();
+        parea = new javax.swing.JTextField();
         jLabel67 = new javax.swing.JLabel();
-        jTextField57 = new javax.swing.JTextField();
+        ppincode = new javax.swing.JTextField();
         jLabel65 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
-        jTextField58 = new javax.swing.JTextField();
+        caddress = new javax.swing.JTextArea();
+        cstate = new javax.swing.JTextField();
         jLabel68 = new javax.swing.JLabel();
         jLabel69 = new javax.swing.JLabel();
-        jTextField59 = new javax.swing.JTextField();
+        ccity = new javax.swing.JTextField();
         jLabel70 = new javax.swing.JLabel();
-        jTextField60 = new javax.swing.JTextField();
-        jTextField61 = new javax.swing.JTextField();
+        carea = new javax.swing.JTextField();
+        cpincode = new javax.swing.JTextField();
         jLabel71 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        checkbox = new javax.swing.JCheckBox();
         jPanel12 = new javax.swing.JPanel();
         jLabel72 = new javax.swing.JLabel();
-        jTextField71 = new javax.swing.JTextField();
+        course1 = new javax.swing.JTextField();
         jLabel78 = new javax.swing.JLabel();
         jLabel79 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
-        jTextField79 = new javax.swing.JTextField();
-        jTextField80 = new javax.swing.JTextField();
-        jTextField81 = new javax.swing.JTextField();
+        year1 = new javax.swing.JTextField();
+        percentage1 = new javax.swing.JTextField();
+        school1 = new javax.swing.JTextField();
         jLabel84 = new javax.swing.JLabel();
-        jTextField82 = new javax.swing.JTextField();
-        jTextField72 = new javax.swing.JTextField();
-        jTextField83 = new javax.swing.JTextField();
-        jTextField84 = new javax.swing.JTextField();
-        jTextField85 = new javax.swing.JTextField();
-        jTextField86 = new javax.swing.JTextField();
-        jTextField87 = new javax.swing.JTextField();
-        jTextField73 = new javax.swing.JTextField();
-        jTextField88 = new javax.swing.JTextField();
-        jTextField89 = new javax.swing.JTextField();
-        jTextField90 = new javax.swing.JTextField();
-        jTextField91 = new javax.swing.JTextField();
-        jTextField74 = new javax.swing.JTextField();
-        jTextField92 = new javax.swing.JTextField();
-        jTextField93 = new javax.swing.JTextField();
-        jTextField94 = new javax.swing.JTextField();
+        uni1 = new javax.swing.JTextField();
+        course2 = new javax.swing.JTextField();
+        school2 = new javax.swing.JTextField();
+        year2 = new javax.swing.JTextField();
+        percentage2 = new javax.swing.JTextField();
+        uni2 = new javax.swing.JTextField();
+        year3 = new javax.swing.JTextField();
+        course3 = new javax.swing.JTextField();
+        school3 = new javax.swing.JTextField();
+        percentage3 = new javax.swing.JTextField();
+        uni3 = new javax.swing.JTextField();
+        year4 = new javax.swing.JTextField();
+        course4 = new javax.swing.JTextField();
+        school4 = new javax.swing.JTextField();
+        percentage4 = new javax.swing.JTextField();
+        uni4 = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        achievment = new javax.swing.JTextArea();
         jLabel47 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        document = new javax.swing.JTextArea();
         jPanel19 = new javax.swing.JPanel();
         jButton51 = new javax.swing.JButton();
         jButton52 = new javax.swing.JButton();
@@ -942,10 +943,10 @@ public class NewAddmision extends javax.swing.JFrame {
 
         jLabel62.setText("Permanent Address:");
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        paddress.setColumns(20);
+        paddress.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        paddress.setRows(5);
+        jScrollPane4.setViewportView(paddress);
 
         jLabel63.setText("State:-");
 
@@ -957,10 +958,10 @@ public class NewAddmision extends javax.swing.JFrame {
 
         jLabel65.setText("Correspondesce Address:-");
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTextArea5.setRows(5);
-        jScrollPane5.setViewportView(jTextArea5);
+        caddress.setColumns(20);
+        caddress.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        caddress.setRows(5);
+        jScrollPane5.setViewportView(caddress);
 
         jLabel68.setText("State:-");
 
@@ -970,7 +971,22 @@ public class NewAddmision extends javax.swing.JFrame {
 
         jLabel71.setText("Pincode:-");
 
-        jCheckBox1.setText("Same as Permanent");
+        checkbox.setText("Same as Permanent");
+        checkbox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                checkboxStateChanged(evt);
+            }
+        });
+        checkbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkboxActionPerformed(evt);
+            }
+        });
+        checkbox.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                checkboxPropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -989,10 +1005,10 @@ public class NewAddmision extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                            .addComponent(jTextField56)
-                            .addComponent(jTextField55)
-                            .addComponent(jTextField54)
-                            .addComponent(jTextField57))
+                            .addComponent(pstate)
+                            .addComponent(pcity)
+                            .addComponent(parea)
+                            .addComponent(ppincode))
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
@@ -1008,19 +1024,19 @@ public class NewAddmision extends javax.swing.JFrame {
                                     .addComponent(jLabel68))
                                 .addGap(90, 90, 90)
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField59, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField60, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField61, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField58, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(ccity, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(carea, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cpincode, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cstate, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(331, 331, 331)
-                        .addComponent(jCheckBox1)))
+                        .addComponent(checkbox)))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addComponent(jCheckBox1)
+                .addComponent(checkbox)
                 .addGap(5, 5, 5)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1032,28 +1048,28 @@ public class NewAddmision extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel68)
-                                .addComponent(jTextField58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel63))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel64)
                             .addComponent(jLabel69)
-                            .addComponent(jTextField59, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ccity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel66)
-                            .addComponent(jTextField54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(parea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel70)
-                            .addComponent(jTextField60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(carea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel67)
-                            .addComponent(jTextField57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ppincode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel71)
-                            .addComponent(jTextField61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cpincode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1072,43 +1088,43 @@ public class NewAddmision extends javax.swing.JFrame {
 
         jLabel84.setText("Board/University:-");
 
-        jTextField82.addActionListener(new java.awt.event.ActionListener() {
+        uni1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField82ActionPerformed(evt);
+                uni1ActionPerformed(evt);
             }
         });
 
-        jTextField86.addActionListener(new java.awt.event.ActionListener() {
+        uni2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField86ActionPerformed(evt);
+                uni2ActionPerformed(evt);
             }
         });
 
-        jTextField90.addActionListener(new java.awt.event.ActionListener() {
+        uni3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField90ActionPerformed(evt);
+                uni3ActionPerformed(evt);
             }
         });
 
-        jTextField94.addActionListener(new java.awt.event.ActionListener() {
+        uni4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField94ActionPerformed(evt);
+                uni4ActionPerformed(evt);
             }
         });
 
         jLabel38.setText("Achievments:-");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        achievment.setColumns(20);
+        achievment.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        achievment.setRows(5);
+        jScrollPane1.setViewportView(achievment);
 
         jLabel47.setText("Doccument Attached:-");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        document.setColumns(20);
+        document.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        document.setRows(5);
+        jScrollPane2.setViewportView(document);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1118,13 +1134,13 @@ public class NewAddmision extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(jTextField73, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(course3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
-                        .addComponent(jTextField88, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(school3, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField91, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField87, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(year4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(year3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1135,9 +1151,9 @@ public class NewAddmision extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jScrollPane1))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel12Layout.createSequentialGroup()
-                                        .addComponent(jTextField74, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(course4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(22, 22, 22)
-                                        .addComponent(jTextField92, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(school4, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel47)
                                 .addGap(18, 18, 18)
@@ -1147,7 +1163,7 @@ public class NewAddmision extends javax.swing.JFrame {
                                     .addGroup(jPanel12Layout.createSequentialGroup()
                                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel72)
-                                            .addComponent(jTextField71, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(course1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(22, 22, 22)
                                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel12Layout.createSequentialGroup()
@@ -1155,31 +1171,31 @@ public class NewAddmision extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabel79))
                                             .addGroup(jPanel12Layout.createSequentialGroup()
-                                                .addComponent(jTextField81, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(school1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jTextField79, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(year1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE))))
                                     .addGroup(jPanel12Layout.createSequentialGroup()
-                                        .addComponent(jTextField72, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(course2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(22, 22, 22)
-                                        .addComponent(jTextField83, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(school2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField84, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(year2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel80)
-                                    .addComponent(jTextField80, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField85, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField89, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField93, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(percentage1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(percentage2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(percentage3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(percentage4, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(34, 34, 34)
                                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField94, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField90, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField86, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(uni4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(uni3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(uni2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel84)
-                                    .addComponent(jTextField82, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(uni1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(64, 64, 64))))
         );
         jPanel12Layout.setVerticalGroup(
@@ -1194,32 +1210,32 @@ public class NewAddmision extends javax.swing.JFrame {
                     .addComponent(jLabel78))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField79, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField80, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(course1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(year1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(percentage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(uni1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(school1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField86, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(course2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(year2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(percentage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(uni2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(school2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField87, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField89, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField90, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField88, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(course3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(year3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(percentage3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(uni3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(school3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField91, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField93, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField94, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField92, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(course4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(year4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(percentage4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(uni4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(school4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel38)
@@ -1639,21 +1655,21 @@ public class NewAddmision extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_birthplaceActionPerformed
 
-    private void jTextField82ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField82ActionPerformed
+    private void uni1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uni1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField82ActionPerformed
+    }//GEN-LAST:event_uni1ActionPerformed
 
-    private void jTextField86ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField86ActionPerformed
+    private void uni2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uni2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField86ActionPerformed
+    }//GEN-LAST:event_uni2ActionPerformed
 
-    private void jTextField90ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField90ActionPerformed
+    private void uni3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uni3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField90ActionPerformed
+    }//GEN-LAST:event_uni3ActionPerformed
 
-    private void jTextField94ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField94ActionPerformed
+    private void uni4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uni4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField94ActionPerformed
+    }//GEN-LAST:event_uni4ActionPerformed
 
     private void nationalityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nationalityActionPerformed
         // TODO add your handling code here:
@@ -1898,8 +1914,108 @@ public class NewAddmision extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton47ActionPerformed
 
     private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
-        // TODO add your handling code here:
+        
+        int stuid = Integer.parseInt(regd_id.getText());
+            String address = paddress.getText();
+            String state = pstate.getText();
+            String city = pcity.getText();
+            String area = parea.getText();
+            int pincode = Integer.parseInt(ppincode.getText());
+         
+            String address2 = caddress.getText();
+            String state2 = cstate.getText();
+            String city2 = ccity.getText();
+            String area2 = carea.getText();
+            int pincode2 = Integer.parseInt(cpincode.getText());
+          
+            String query = "insert into address_information values('" + stuid + "','" + address + "','" + state + "',"
+                + "'" + city + "'," + area + ",'" + pincode + "','" + address2 + "','" + state2 + "',"
+                + "'" + city2 + "','" + area2 + "','" + pincode2 + "')";
+            
+            
+            
+            String c1 = course1.getText();
+            String ps1 = school1.getText();
+            int yr1 = Integer.parseInt(year1.getText());
+            int pt1 = Integer.parseInt(percentage1.getText());
+            String bod1 = uni1.getText();
+            
+            String c2 = course2.getText();
+            String ps2 = school2.getText();
+            int yr2 = Integer.parseInt(year2.getText());
+            int pt2 = Integer.parseInt(percentage2.getText());
+            String bod2 = uni2.getText();
+
+            String c3 = course3.getText();
+            String ps3 = school3.getText();
+            int yr3 = Integer.parseInt(year3.getText());
+            int pt3 = Integer.parseInt(percentage3.getText());
+            String bod3 = uni3.getText();
+
+            String c4 = course4.getText();
+            String ps4 = school4.getText();
+            int yr4 = Integer.parseInt(year4.getText());
+            int pt4 = Integer.parseInt(percentage4.getText());
+            String bod4 = uni4.getText();
+
+            String achiv = achievment.getText();
+            String doc = document.getText();
+            
+            String query2 = "insert into academic_information values('" + stuid + "','" + c1 + "','" + ps1 + "',"
+                + "'" + yr1 + "'," + pt1 + ",'" + bod1 + "','" + c2 + "','" + ps2 + "',"
+                + "'" + yr2 + "','" + pt2 + "','" + bod2 + "','" + c3 + "','" + ps3 + "',"
+                + "'" + yr3 + "','" + pt3 + "','" + bod3 + "','" + c4 + "','" + ps4 + "','" + yr4 + "','" + pt4 + "',"
+                + "'" + bod4 + "','" + achiv + "','" + doc + "')";
+            
+            
+            
+            
+             try {
+            Database db = new Database();
+            db.Update(query);
+            db.Update(query2);
+            JOptionPane.showMessageDialog(this, "Data has been inserted successfully");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+            
+            
+            
     }//GEN-LAST:event_jButton52ActionPerformed
+
+    private void checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxActionPerformed
+          
+                        if(checkbox.isSelected())
+                        {
+                        caddress.setText(paddress.getText());
+                        cstate.setText(pstate.getText());
+                        ccity.setText(pcity.getText());
+                        carea.setText(parea.getText());
+                        cpincode.setText(ppincode.getText());
+                        }
+                        else
+                        {
+                        caddress.setText(" ");
+                        cstate.setText(" ");
+                        ccity.setText(" ");
+                        carea.setText(" ");
+                        cpincode.setText(" ");
+                         }
+               
+    }//GEN-LAST:event_checkboxActionPerformed
+
+    private void checkboxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxStateChanged
+        
+        
+         
+        
+    }//GEN-LAST:event_checkboxStateChanged
+
+    private void checkboxPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_checkboxPropertyChange
+                            
+                      
+
+    }//GEN-LAST:event_checkboxPropertyChange
 
     /**
      * @param args the command line arguments
@@ -1937,15 +2053,27 @@ public class NewAddmision extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea achievment;
     private javax.swing.JLabel adhaar;
     private javax.swing.JLabel adhaar1;
     private javax.swing.JTextField age;
     private javax.swing.JTextField altermailid;
     private javax.swing.JTextField alternumber;
     private javax.swing.JTextField birthplace;
+    private javax.swing.JTextArea caddress;
+    private javax.swing.JTextField carea;
     private javax.swing.JComboBox cat;
+    private javax.swing.JTextField ccity;
     private javax.swing.JLabel certificate;
+    private javax.swing.JCheckBox checkbox;
+    private javax.swing.JTextField course1;
+    private javax.swing.JTextField course2;
+    private javax.swing.JTextField course3;
+    private javax.swing.JTextField course4;
+    private javax.swing.JTextField cpincode;
+    private javax.swing.JTextField cstate;
     private org.jdesktop.swingx.JXDatePicker datepick;
+    private javax.swing.JTextArea document;
     private javax.swing.JTextField fatheradhar;
     private javax.swing.JTextField fatherfname;
     private javax.swing.JTextField fatherinc;
@@ -1979,7 +2107,6 @@ public class NewAddmision extends javax.swing.JFrame {
     private javax.swing.JButton jButton53;
     private javax.swing.JButton jButton54;
     private javax.swing.JButton jButton55;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox4;
     private javax.swing.JComboBox jComboBox6;
@@ -2055,41 +2182,9 @@ public class NewAddmision extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField54;
-    private javax.swing.JTextField jTextField55;
-    private javax.swing.JTextField jTextField56;
-    private javax.swing.JTextField jTextField57;
-    private javax.swing.JTextField jTextField58;
-    private javax.swing.JTextField jTextField59;
-    private javax.swing.JTextField jTextField60;
-    private javax.swing.JTextField jTextField61;
     private javax.swing.JTextField jTextField62;
-    private javax.swing.JTextField jTextField71;
-    private javax.swing.JTextField jTextField72;
-    private javax.swing.JTextField jTextField73;
-    private javax.swing.JTextField jTextField74;
-    private javax.swing.JTextField jTextField79;
-    private javax.swing.JTextField jTextField80;
-    private javax.swing.JTextField jTextField81;
-    private javax.swing.JTextField jTextField82;
-    private javax.swing.JTextField jTextField83;
-    private javax.swing.JTextField jTextField84;
-    private javax.swing.JTextField jTextField85;
-    private javax.swing.JTextField jTextField86;
-    private javax.swing.JTextField jTextField87;
-    private javax.swing.JTextField jTextField88;
-    private javax.swing.JTextField jTextField89;
-    private javax.swing.JTextField jTextField90;
-    private javax.swing.JTextField jTextField91;
-    private javax.swing.JTextField jTextField92;
-    private javax.swing.JTextField jTextField93;
-    private javax.swing.JTextField jTextField94;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
     private javax.swing.JTextField llnumber;
     private javax.swing.JTextField mailid;
@@ -2100,15 +2195,36 @@ public class NewAddmision extends javax.swing.JFrame {
     private javax.swing.JTextField motherlname;
     private javax.swing.JTextField mothermname;
     private javax.swing.JComboBox nationality;
+    private javax.swing.JTextArea paddress;
+    private javax.swing.JTextField parea;
+    private javax.swing.JTextField pcity;
+    private javax.swing.JTextField percentage1;
+    private javax.swing.JTextField percentage2;
+    private javax.swing.JTextField percentage3;
+    private javax.swing.JTextField percentage4;
     private javax.swing.JLabel photo;
     private javax.swing.JLabel photo1;
     private javax.swing.JTextField pnumber;
+    private javax.swing.JTextField ppincode;
+    private javax.swing.JTextField pstate;
     private javax.swing.JTextField regd_id;
     private javax.swing.JComboBox religion;
+    private javax.swing.JTextField school1;
+    private javax.swing.JTextField school2;
+    private javax.swing.JTextField school3;
+    private javax.swing.JTextField school4;
     private javax.swing.JTextField stu_name;
     private javax.swing.JTextField stuadhar;
     private javax.swing.JTextField stufname;
     private javax.swing.JTextField stulname;
     private javax.swing.JTextField stumname;
+    private javax.swing.JTextField uni1;
+    private javax.swing.JTextField uni2;
+    private javax.swing.JTextField uni3;
+    private javax.swing.JTextField uni4;
+    private javax.swing.JTextField year1;
+    private javax.swing.JTextField year2;
+    private javax.swing.JTextField year3;
+    private javax.swing.JTextField year4;
     // End of variables declaration//GEN-END:variables
 }

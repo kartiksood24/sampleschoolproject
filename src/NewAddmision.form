@@ -1371,10 +1371,10 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jScrollPane4" pref="225" max="32767" attributes="0"/>
-                                          <Component id="jTextField56" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jTextField55" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jTextField54" max="32767" attributes="0"/>
-                                          <Component id="jTextField57" max="32767" attributes="0"/>
+                                          <Component id="pstate" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="pcity" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="parea" max="32767" attributes="0"/>
+                                          <Component id="ppincode" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
@@ -1393,17 +1393,17 @@
                                               </Group>
                                               <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jTextField59" min="-2" pref="225" max="-2" attributes="0"/>
-                                                  <Component id="jTextField60" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
-                                                  <Component id="jTextField61" min="-2" pref="225" max="-2" attributes="0"/>
-                                                  <Component id="jTextField58" min="-2" pref="225" max="-2" attributes="0"/>
+                                                  <Component id="ccity" min="-2" pref="225" max="-2" attributes="0"/>
+                                                  <Component id="carea" alignment="0" min="-2" pref="225" max="-2" attributes="0"/>
+                                                  <Component id="cpincode" min="-2" pref="225" max="-2" attributes="0"/>
+                                                  <Component id="cstate" min="-2" pref="225" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="331" max="-2" attributes="0"/>
-                                      <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="checkbox" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace pref="85" max="32767" attributes="0"/>
@@ -1413,7 +1413,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                              <Component id="checkbox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
@@ -1426,32 +1426,32 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                              <Component id="jTextField56" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="pstate" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel68" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jTextField58" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cstate" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jTextField55" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pcity" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField59" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ccity" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel66" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField54" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="parea" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel70" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField60" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="carea" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel67" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField57" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ppincode" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel71" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField61" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cpincode" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1473,7 +1473,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="jTextArea4">
+                        <Component class="javax.swing.JTextArea" name="paddress">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1489,28 +1489,28 @@
                         <Property name="text" type="java.lang.String" value="State:-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField56">
+                    <Component class="javax.swing.JTextField" name="pstate">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel64">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="City:-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField55">
+                    <Component class="javax.swing.JTextField" name="pcity">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel66">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Area:-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField54">
+                    <Component class="javax.swing.JTextField" name="parea">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel67">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Pincode:-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField57">
+                    <Component class="javax.swing.JTextField" name="ppincode">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel65">
                       <Properties>
@@ -1524,7 +1524,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="jTextArea5">
+                        <Component class="javax.swing.JTextArea" name="caddress">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1535,7 +1535,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JTextField" name="jTextField58">
+                    <Component class="javax.swing.JTextField" name="cstate">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel68">
                       <Properties>
@@ -1547,26 +1547,31 @@
                         <Property name="text" type="java.lang.String" value="City:-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField59">
+                    <Component class="javax.swing.JTextField" name="ccity">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel70">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Area:-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField60">
+                    <Component class="javax.swing.JTextField" name="carea">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField61">
+                    <Component class="javax.swing.JTextField" name="cpincode">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel71">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Pincode:-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                    <Component class="javax.swing.JCheckBox" name="checkbox">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Same as Permanent"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="checkboxStateChanged"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkboxActionPerformed"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="checkboxPropertyChange"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1602,13 +1607,13 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jTextField73" min="-2" pref="167" max="-2" attributes="0"/>
+                                      <Component id="course3" min="-2" pref="167" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                      <Component id="jTextField88" min="-2" pref="196" max="-2" attributes="0"/>
+                                      <Component id="school3" min="-2" pref="196" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jTextField91" min="-2" pref="64" max="-2" attributes="0"/>
-                                          <Component id="jTextField87" min="-2" pref="64" max="-2" attributes="0"/>
+                                          <Component id="year4" min="-2" pref="64" max="-2" attributes="0"/>
+                                          <Component id="year3" min="-2" pref="64" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -1622,9 +1627,9 @@
                                                       <Component id="jScrollPane1" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jTextField74" min="-2" pref="167" max="-2" attributes="0"/>
+                                                      <Component id="course4" min="-2" pref="167" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                                      <Component id="jTextField92" min="-2" pref="196" max="-2" attributes="0"/>
+                                                      <Component id="school4" min="-2" pref="196" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1637,7 +1642,7 @@
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="jLabel72" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jTextField71" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
+                                                          <Component id="course1" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1647,37 +1652,37 @@
                                                               <Component id="jLabel79" min="-2" max="-2" attributes="0"/>
                                                           </Group>
                                                           <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="jTextField81" min="-2" pref="196" max="-2" attributes="0"/>
+                                                              <Component id="school1" min="-2" pref="196" max="-2" attributes="0"/>
                                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                              <Component id="jTextField79" min="-2" pref="64" max="-2" attributes="0"/>
+                                                              <Component id="year1" min="-2" pref="64" max="-2" attributes="0"/>
                                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                           </Group>
                                                       </Group>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jTextField72" min="-2" pref="167" max="-2" attributes="0"/>
+                                                      <Component id="course2" min="-2" pref="167" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                                      <Component id="jTextField83" min="-2" pref="196" max="-2" attributes="0"/>
+                                                      <Component id="school2" min="-2" pref="196" max="-2" attributes="0"/>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="jTextField84" min="-2" pref="64" max="-2" attributes="0"/>
+                                                      <Component id="year2" min="-2" pref="64" max="-2" attributes="0"/>
                                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel80" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jTextField80" min="-2" pref="64" max="-2" attributes="0"/>
-                                                  <Component id="jTextField85" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
-                                                  <Component id="jTextField89" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
-                                                  <Component id="jTextField93" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
+                                                  <Component id="percentage1" min="-2" pref="64" max="-2" attributes="0"/>
+                                                  <Component id="percentage2" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
+                                                  <Component id="percentage3" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
+                                                  <Component id="percentage4" alignment="0" min="-2" pref="64" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jTextField94" min="-2" pref="173" max="-2" attributes="0"/>
-                                                  <Component id="jTextField90" min="-2" pref="173" max="-2" attributes="0"/>
-                                                  <Component id="jTextField86" min="-2" pref="173" max="-2" attributes="0"/>
+                                                  <Component id="uni4" min="-2" pref="173" max="-2" attributes="0"/>
+                                                  <Component id="uni3" min="-2" pref="173" max="-2" attributes="0"/>
+                                                  <Component id="uni2" min="-2" pref="173" max="-2" attributes="0"/>
                                                   <Component id="jLabel84" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jTextField82" min="-2" pref="173" max="-2" attributes="0"/>
+                                                  <Component id="uni1" min="-2" pref="173" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1700,35 +1705,35 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField71" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField79" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField80" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField82" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField81" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="course1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="year1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="percentage1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="uni1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="school1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField72" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField84" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField85" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField86" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField83" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="course2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="year2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="percentage2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="uni2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="school2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField73" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField87" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField89" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField90" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField88" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="course3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="year3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="percentage3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="uni3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="school3" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField74" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField91" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField93" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField94" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField92" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="course4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="year4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="percentage4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="uni4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="school4" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1748,7 +1753,7 @@
                         <Property name="text" type="java.lang.String" value="Course Name:-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField71">
+                    <Component class="javax.swing.JTextField" name="course1">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel78">
                       <Properties>
@@ -1765,59 +1770,59 @@
                         <Property name="text" type="java.lang.String" value="Percentage:-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField79">
+                    <Component class="javax.swing.JTextField" name="year1">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField80">
+                    <Component class="javax.swing.JTextField" name="percentage1">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField81">
+                    <Component class="javax.swing.JTextField" name="school1">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel84">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Board/University:-"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField82">
+                    <Component class="javax.swing.JTextField" name="uni1">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField82ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="uni1ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField72">
+                    <Component class="javax.swing.JTextField" name="course2">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField83">
+                    <Component class="javax.swing.JTextField" name="school2">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField84">
+                    <Component class="javax.swing.JTextField" name="year2">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField85">
+                    <Component class="javax.swing.JTextField" name="percentage2">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField86">
+                    <Component class="javax.swing.JTextField" name="uni2">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField86ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="uni2ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField87">
+                    <Component class="javax.swing.JTextField" name="year3">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField73">
+                    <Component class="javax.swing.JTextField" name="course3">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField88">
+                    <Component class="javax.swing.JTextField" name="school3">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField89">
+                    <Component class="javax.swing.JTextField" name="percentage3">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField90">
+                    <Component class="javax.swing.JTextField" name="uni3">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField90ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="uni3ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField91">
+                    <Component class="javax.swing.JTextField" name="year4">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField74">
+                    <Component class="javax.swing.JTextField" name="course4">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField92">
+                    <Component class="javax.swing.JTextField" name="school4">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField93">
+                    <Component class="javax.swing.JTextField" name="percentage4">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField94">
+                    <Component class="javax.swing.JTextField" name="uni4">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField94ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="uni4ActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel38">
@@ -1832,7 +1837,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="jTextArea1">
+                        <Component class="javax.swing.JTextArea" name="achievment">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1855,7 +1860,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="jTextArea2">
+                        <Component class="javax.swing.JTextArea" name="document">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
