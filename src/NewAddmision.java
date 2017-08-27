@@ -1933,7 +1933,7 @@ public class NewAddmision extends javax.swing.JFrame {
                +"'" + city2 + "','" + area2 + "','" + pincode2 + "')";
             
             
-            
+         
             String c1 = course1.getText();
             String ps1 = school1.getText();
             int yr1 = Integer.parseInt(year1.getText());
@@ -1966,8 +1966,6 @@ public class NewAddmision extends javax.swing.JFrame {
                 + "'" + yr2 + "','" + pt2 + "','" + bod2 + "','" + c3 + "','" + ps3 + "',"
                 + "'" + yr3 + "','" + pt3 + "','" + bod3 + "','" + c4 + "','" + ps4 + "','" + yr4 + "','" + pt4 + "',"
                 + "'" + bod4 + "','" + achiv + "','" + doc + "')";
-            
-            
             
             
              try {

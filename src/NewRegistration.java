@@ -1,3 +1,4 @@
+
 import Utility.Database;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -18,7 +19,6 @@ public class NewRegistration extends javax.swing.JFrame {
         int var = 0;
         this.setLocationRelativeTo(null);
         try {
-
             String qry = "select ifnull(max(reg_no),0) from register_student";
             Database db = new Database();
             if (db.Excecute(qry).next()) {
