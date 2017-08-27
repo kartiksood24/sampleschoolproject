@@ -1766,7 +1766,7 @@ public class NewAddmision extends javax.swing.JFrame {
                 }
                 String url3 = "select * from student_personal_detail where student_id=" + id + "";
                 ResultSet rs2 = db.Excecute(url3);
-
+                
                 if (rs2.next()) {
                     stufname.setText(rs2.getString(2));
                     stumname.setText(rs2.getString(3));
@@ -1802,6 +1802,58 @@ public class NewAddmision extends javax.swing.JFrame {
                 if ("female".equals(rs2.getString(14))) {
                     female.doClick();
                 }
+                
+                String url4=  "select * from address_information where student_id=" + id + "";
+                ResultSet rs4= db.Excecute(url4);
+                if(rs4.next()) {
+                paddress.setText(rs4.getString(2));
+                pstate.setText(rs4.getString(3));
+                pcity.setText(rs4.getString(4));
+                parea.setText(rs4.getString(5));
+                ppincode.setText(rs4.getString(6));
+                caddress.setText(rs4.getString(7));
+                cstate.setText(rs4.getString(8));
+                ccity.setText(rs4.getString(9));
+                carea.setText(rs4.getString(10));
+                cpincode.setText(rs4.getString(11));
+                }
+                
+                String url5=  "select * from academic_information where student_id=" + id + "";
+                ResultSet rs5= db.Excecute(url4);
+                    if(rs5.next())
+                    {
+                    course1.setText(rs5.getString(2));
+                    school1.setText(rs5.getString(3));
+                    year1.setText(rs5.getString(4));
+                    percentage1.setText(rs5.getString(5));
+                    uni1.setText(rs5.getString(6));
+                    
+                    course2.setText(rs5.getString(7));
+                    school2.setText(rs5.getString(8));
+                    year2.setText(rs5.getString(9));
+                    percentage2.setText(rs5.getString(10));
+                    uni2.setText(rs5.getString(11));
+                    
+                    course3.setText(rs5.getString(12));
+                    school3.setText(rs5.getString(13));
+                    year3.setText(rs5.getString(14));
+                    percentage3.setText(rs5.getString(15));
+                    uni3.setText(rs5.getString(16));
+                    
+                    course4.setText(rs5.getString(17));
+                    school4.setText(rs5.getString(18));
+                    year4.setText(rs5.getString(19));
+                    percentage4.setText(rs5.getString(20));
+                    uni4.setText(rs5.getString(21));
+                    
+                    achievment.setText(rs5.getString(22));
+                    document.setText(rs5.getString(23));
+                    }
+                
+                
+                
+                
+                
             } catch (Exception e) {
                 System.out.println(e);
             }
