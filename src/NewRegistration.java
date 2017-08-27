@@ -1,5 +1,6 @@
 
 import Utility.Database;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,8 +21,9 @@ public class NewRegistration extends javax.swing.JFrame {
         try {
             String qry = "select ifnull(max(reg_no),0) from register_student";
             Database db = new Database();
-            if (db.Excecute(qry).next()) {
-                var = db.Excecute(qry).getInt(1);
+            ResultSet rs=db.Excecute(qry);
+            if (rs.next()) {
+                var = rs.getInt(1);
                 regd_no.setText((++var) + "");
             }
 

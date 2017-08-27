@@ -42,10 +42,9 @@ public class NewAddmision extends javax.swing.JFrame {
     /**
      * Creates new form NewAddmision
      */
-    
     public NewAddmision() {
         initComponents();
-    
+
         this.setLocationRelativeTo(null);
         this.setVisible(false);
         // other.setVisible(false);
@@ -54,6 +53,15 @@ public class NewAddmision extends javax.swing.JFrame {
     ImageFilter1 fJavaFilter = new ImageFilter1();
     static File fFile;
     static BufferedImage icon;
+
+    public JFileChooser openFileChooser() {
+        JFileChooser fc = new JFileChooser();
+        fc.setDialogTitle("Select Image");
+        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        fc.setCurrentDirectory(new File("."));
+        fc.setFileFilter(fJavaFilter);
+        return fc;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1677,13 +1685,8 @@ public class NewAddmision extends javax.swing.JFrame {
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
 
-        JFileChooser fc = new JFileChooser();
-        fc.setDialogTitle("Select Image");
-        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        fc.setCurrentDirectory(new File("."));
-        fc.setFileFilter(fJavaFilter);
+        JFileChooser fc = openFileChooser();
         int result = fc.showOpenDialog(this);
-
         if (result == JFileChooser.CANCEL_OPTION) {
             return;
         } else if (result == JFileChooser.APPROVE_OPTION) {
@@ -1706,13 +1709,8 @@ public class NewAddmision extends javax.swing.JFrame {
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
 
-        JFileChooser fc = new JFileChooser();
-        fc.setDialogTitle("Select Image");
-        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        fc.setCurrentDirectory(new File("."));
-        fc.setFileFilter(fJavaFilter);
+        JFileChooser fc = openFileChooser();
         int result = fc.showOpenDialog(this);
-
         if (result == JFileChooser.CANCEL_OPTION) {
             return;
         } else if (result == JFileChooser.APPROVE_OPTION) {
@@ -1734,14 +1732,8 @@ public class NewAddmision extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-
-        JFileChooser fc = new JFileChooser();
-        fc.setDialogTitle("Select Image");
-        fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        fc.setCurrentDirectory(new File("."));
-        fc.setFileFilter(fJavaFilter);
+        JFileChooser fc = openFileChooser();
         int result = fc.showOpenDialog(this);
-
         if (result == JFileChooser.CANCEL_OPTION) {
             return;
         } else if (result == JFileChooser.APPROVE_OPTION) {
@@ -1761,11 +1753,6 @@ public class NewAddmision extends javax.swing.JFrame {
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
 
     private void regd_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_regd_idKeyReleased
         if (!regd_id.getText().equals("")) {
@@ -1914,54 +1901,52 @@ public class NewAddmision extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton47ActionPerformed
 
     private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
-        
-           int stuid = Integer.parseInt(regd_id.getText());
-            String address = paddress.getText();
-            String state = pstate.getText();
-            String city = pcity.getText();
-            String area = parea.getText();
-            int pincode = Integer.parseInt(ppincode.getText());
-         
-            String address2 = caddress.getText();
-            String state2 = cstate.getText();
-            String city2 = ccity.getText();
-            String area2 = carea.getText();
-            int pincode2 = Integer.parseInt(cpincode.getText());
-          
-            String query = "insert into address_information values('" + stuid + "','" + address + "','" + state + "',"
-                + "'" + city + "','" + area + "','" + pincode + "','" + address2 + "','" + state2 + "',"
-               +"'" + city2 + "','" + area2 + "','" + pincode2 + "')";
-            
-            
-         
-            String c1 = course1.getText();
-            String ps1 = school1.getText();
-            int yr1 = Integer.parseInt(year1.getText());
-            int pt1 = Integer.parseInt(percentage1.getText());
-            String bod1 = uni1.getText();
-            
-            String c2 = course2.getText();
-            String ps2 = school2.getText();
-            int yr2 = Integer.parseInt(year2.getText());
-            int pt2 = Integer.parseInt(percentage2.getText());
-            String bod2 = uni2.getText();
 
-            String c3 = course3.getText();
-            String ps3 = school3.getText();
-            int yr3 = Integer.parseInt(year3.getText());
-            int pt3 = Integer.parseInt(percentage3.getText());
-            String bod3 = uni3.getText();
+        int stuid = Integer.parseInt(regd_id.getText());
+        String address = paddress.getText();
+        String state = pstate.getText();
+        String city = pcity.getText();
+        String area = parea.getText();
+        int pincode = Integer.parseInt(ppincode.getText());
 
-            String c4 = course4.getText();
-            String ps4 = school4.getText();
-            int yr4 = Integer.parseInt(year4.getText());
-            int pt4 = Integer.parseInt(percentage4.getText());
-            String bod4 = uni4.getText();
+        String address2 = caddress.getText();
+        String state2 = cstate.getText();
+        String city2 = ccity.getText();
+        String area2 = carea.getText();
+        int pincode2 = Integer.parseInt(cpincode.getText());
 
-            String achiv = achievment.getText();
-            String doc = document.getText();
-            
-            String query2 = "insert into academic_information values('" + stuid + "','" + c1 + "','" + ps1 + "',"
+        String query = "insert into address_information values('" + stuid + "','" + address + "','" + state + "',"
+                + "'" + city + "'," + area + ",'" + pincode + "','" + address2 + "','" + state2 + "',"
+                + "'" + city2 + "','" + area2 + "','" + pincode2 + "')";
+
+        String c1 = course1.getText();
+        String ps1 = school1.getText();
+        int yr1 = Integer.parseInt(year1.getText());
+        int pt1 = Integer.parseInt(percentage1.getText());
+        String bod1 = uni1.getText();
+
+        String c2 = course2.getText();
+        String ps2 = school2.getText();
+        int yr2 = Integer.parseInt(year2.getText());
+        int pt2 = Integer.parseInt(percentage2.getText());
+        String bod2 = uni2.getText();
+
+        String c3 = course3.getText();
+        String ps3 = school3.getText();
+        int yr3 = Integer.parseInt(year3.getText());
+        int pt3 = Integer.parseInt(percentage3.getText());
+        String bod3 = uni3.getText();
+
+        String c4 = course4.getText();
+        String ps4 = school4.getText();
+        int yr4 = Integer.parseInt(year4.getText());
+        int pt4 = Integer.parseInt(percentage4.getText());
+        String bod4 = uni4.getText();
+
+        String achiv = achievment.getText();
+        String doc = document.getText();
+
+        String query2 = "insert into academic_information values('" + stuid + "','" + c1 + "','" + ps1 + "',"
                 + "'" + yr1 + "'," + pt1 + ",'" + bod1 + "','" + c2 + "','" + ps2 + "',"
                 + "'" + yr2 + "','" + pt2 + "','" + bod2 + "','" + c3 + "','" + ps3 + "',"
                 + "'" + yr3 + "','" + pt3 + "','" + bod3 + "','" + c4 + "','" + ps4 + "','" + yr4 + "','" + pt4 + "',"
@@ -1976,42 +1961,35 @@ public class NewAddmision extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
-            
-            
-            
+
+
     }//GEN-LAST:event_jButton52ActionPerformed
 
     private void checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxActionPerformed
-          
-                        if(checkbox.isSelected())
-                        {
-                        caddress.setText(paddress.getText());
-                        cstate.setText(pstate.getText());
-                        ccity.setText(pcity.getText());
-                        carea.setText(parea.getText());
-                        cpincode.setText(ppincode.getText());
-                        }
-                        else
-                        {
-                        caddress.setText(" ");
-                        cstate.setText(" ");
-                        ccity.setText(" ");
-                        carea.setText(" ");
-                        cpincode.setText(" ");
-                         }
-               
+
+        if (checkbox.isSelected()) {
+            caddress.setText(paddress.getText());
+            cstate.setText(pstate.getText());
+            ccity.setText(pcity.getText());
+            carea.setText(parea.getText());
+            cpincode.setText(ppincode.getText());
+        } else {
+            caddress.setText(" ");
+            cstate.setText(" ");
+            ccity.setText(" ");
+            carea.setText(" ");
+            cpincode.setText(" ");
+        }
+
     }//GEN-LAST:event_checkboxActionPerformed
 
     private void checkboxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_checkboxStateChanged
-        
-        
-         
-        
+
+
     }//GEN-LAST:event_checkboxStateChanged
 
     private void checkboxPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_checkboxPropertyChange
-                            
-                      
+
 
     }//GEN-LAST:event_checkboxPropertyChange
 
