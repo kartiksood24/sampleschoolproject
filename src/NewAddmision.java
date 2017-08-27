@@ -1754,11 +1754,6 @@ public class NewAddmision extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void regd_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_regd_idKeyReleased
         if (!regd_id.getText().equals("")) {
             int id = Integer.parseInt(regd_id.getText());
