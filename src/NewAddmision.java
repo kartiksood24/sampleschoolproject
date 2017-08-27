@@ -1915,7 +1915,7 @@ public class NewAddmision extends javax.swing.JFrame {
 
     private void jButton52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton52ActionPerformed
         
-        int stuid = Integer.parseInt(regd_id.getText());
+           int stuid = Integer.parseInt(regd_id.getText());
             String address = paddress.getText();
             String state = pstate.getText();
             String city = pcity.getText();
