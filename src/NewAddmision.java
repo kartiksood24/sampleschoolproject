@@ -1916,7 +1916,7 @@ public class NewAddmision extends javax.swing.JFrame {
         int pincode2 = Integer.parseInt(cpincode.getText());
 
         String query = "insert into address_information values('" + stuid + "','" + address + "','" + state + "',"
-                + "'" + city + "'," + area + ",'" + pincode + "','" + address2 + "','" + state2 + "',"
+                + "'" + city + "','" + area + "','" + pincode + "','" + address2 + "','" + state2 + "',"
                 + "'" + city2 + "','" + area2 + "','" + pincode2 + "')";
 
         String c1 = course1.getText();
