@@ -1,3 +1,11 @@
+
+import Utility.Database;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -29,27 +37,28 @@ public class SearchByName extends javax.swing.JFrame {
 
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField16 = new javax.swing.JTextField();
+        studentname = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
-        jTextField18 = new javax.swing.JTextField();
+        fathername = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
+        rid = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        jTextField19 = new javax.swing.JTextField();
+        stuadhar = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
+        mname = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        jTextField21 = new javax.swing.JTextField();
+        mobno = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        jTextField22 = new javax.swing.JTextField();
+        cls = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
-        jTextField24 = new javax.swing.JTextField();
+        fno = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        jTextField23 = new javax.swing.JTextField();
+        section = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jButton33 = new javax.swing.JButton();
@@ -63,10 +72,10 @@ public class SearchByName extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(51, 51, 255), new java.awt.Color(51, 51, 255)), "Enter Student Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Times New Roman", 1, 12), new java.awt.Color(51, 51, 255))); // NOI18N
 
-        jTextField16.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+        studentname.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        studentname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
+                studentnameActionPerformed(evt);
             }
         });
 
@@ -81,15 +90,23 @@ public class SearchByName extends javax.swing.JFrame {
             }
         });
 
-        jTextField18.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField18.addActionListener(new java.awt.event.ActionListener() {
+        fathername.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        fathername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField18ActionPerformed(evt);
+                fathernameActionPerformed(evt);
             }
         });
 
         jLabel23.setFont(new java.awt.Font("Baskerville Old Face", 3, 14)); // NOI18N
         jLabel23.setText("Father Name:-");
+
+        jButton13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton13.setText("Search");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -98,26 +115,29 @@ public class SearchByName extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel21)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(studentname, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(fathername, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton12)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studentname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21)
                     .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23))
+                    .addComponent(fathername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23)
+                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -126,60 +146,66 @@ public class SearchByName extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Baskerville Old Face", 3, 14)); // NOI18N
         jLabel22.setText("Registration No. :-");
 
-        jTextField17.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField17.addActionListener(new java.awt.event.ActionListener() {
+        rid.setEditable(false);
+        rid.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        rid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField17ActionPerformed(evt);
+                ridActionPerformed(evt);
             }
         });
 
         jLabel24.setFont(new java.awt.Font("Baskerville Old Face", 3, 14)); // NOI18N
         jLabel24.setText("Adhar Card No :-");
 
-        jTextField19.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField19.addActionListener(new java.awt.event.ActionListener() {
+        stuadhar.setEditable(false);
+        stuadhar.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        stuadhar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField19ActionPerformed(evt);
+                stuadharActionPerformed(evt);
             }
         });
 
         jLabel25.setFont(new java.awt.Font("Baskerville Old Face", 3, 14)); // NOI18N
         jLabel25.setText("Mother Name:-");
 
-        jTextField20.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField20.addActionListener(new java.awt.event.ActionListener() {
+        mname.setEditable(false);
+        mname.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        mname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField20ActionPerformed(evt);
+                mnameActionPerformed(evt);
             }
         });
 
         jLabel26.setFont(new java.awt.Font("Baskerville Old Face", 3, 14)); // NOI18N
         jLabel26.setText("Mobile No. :-");
 
-        jTextField21.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField21.addActionListener(new java.awt.event.ActionListener() {
+        mobno.setEditable(false);
+        mobno.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        mobno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField21ActionPerformed(evt);
+                mobnoActionPerformed(evt);
             }
         });
 
         jLabel27.setFont(new java.awt.Font("Baskerville Old Face", 3, 14)); // NOI18N
         jLabel27.setText("Class :-");
 
-        jTextField22.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField22.addActionListener(new java.awt.event.ActionListener() {
+        cls.setEditable(false);
+        cls.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        cls.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField22ActionPerformed(evt);
+                clsActionPerformed(evt);
             }
         });
 
         jLabel29.setFont(new java.awt.Font("Baskerville Old Face", 3, 14)); // NOI18N
         jLabel29.setText("Father No :-");
 
-        jTextField24.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField24.addActionListener(new java.awt.event.ActionListener() {
+        fno.setEditable(false);
+        fno.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        fno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField24ActionPerformed(evt);
+                fnoActionPerformed(evt);
             }
         });
 
@@ -190,10 +216,11 @@ public class SearchByName extends javax.swing.JFrame {
         jLabel30.setText("Profile Photo");
         jLabel30.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255)));
 
-        jTextField23.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField23.addActionListener(new java.awt.event.ActionListener() {
+        section.setEditable(false);
+        section.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        section.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField23ActionPerformed(evt);
+                sectionActionPerformed(evt);
             }
         });
 
@@ -254,15 +281,15 @@ public class SearchByName extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel25)
                                 .addGap(26, 26, 26)
-                                .addComponent(jTextField20))
+                                .addComponent(mname))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel22)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(rid, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel24)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField19))
+                                .addComponent(stuadhar))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel26)
@@ -271,18 +298,18 @@ public class SearchByName extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                         .addGap(35, 35, 35)
-                                        .addComponent(jTextField21))
+                                        .addComponent(mobno))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField24, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(fno, javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                                .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(cls, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(section, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,29 +326,29 @@ public class SearchByName extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel22)
-                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(rid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
-                            .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(stuadhar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel25)
-                            .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(mname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel26)
-                            .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(mobno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27)
-                            .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(section, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel28))
                         .addGap(19, 19, 19)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel29)
-                            .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(fno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -366,45 +393,114 @@ public class SearchByName extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+    private void studentnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
+    }//GEN-LAST:event_studentnameActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+        
+            String name=studentname.getText();
+            String fname=fathername.getText();
+            
+                 try
+                 {
+                     if("".equals(name))
+                    {
+                     JOptionPane.showMessageDialog(this, "Enter name of student");
+                    }
+                    else
+                    {
+                     String url2 = "select * from student_personal_detail where student_First_name = \"" + name + "\" and father_first_name = \"" + fname + "\"" ;
+                     Database db;
+               
+                    db = new Database();
+                    ResultSet rs = db.Excecute(url2);
+                    
+                    if (rs.next()) {
+                    rid.setText(rs.getString(1));
+                    stuadhar.setText(rs.getString(5));
+                    mname.setText(rs.getString(10));
+                    mobno.setText(rs.getString(24));  
+                    fno.setText(rs.getString(27));
+                    }
+                                
+                    
+                    }
+                 }catch (Exception e) {
+                System.out.println(e);
+            }
+                    
+                      
+                    
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
+    private void ridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ridActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField17ActionPerformed
+    }//GEN-LAST:event_ridActionPerformed
 
-    private void jTextField18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField18ActionPerformed
+    private void fathernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fathernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField18ActionPerformed
+    }//GEN-LAST:event_fathernameActionPerformed
 
-    private void jTextField19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField19ActionPerformed
+    private void stuadharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuadharActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField19ActionPerformed
+    }//GEN-LAST:event_stuadharActionPerformed
 
-    private void jTextField20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField20ActionPerformed
+    private void mnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField20ActionPerformed
+    }//GEN-LAST:event_mnameActionPerformed
 
-    private void jTextField21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField21ActionPerformed
+    private void mobnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mobnoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField21ActionPerformed
+    }//GEN-LAST:event_mobnoActionPerformed
 
-    private void jTextField22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField22ActionPerformed
+    private void clsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField22ActionPerformed
+    }//GEN-LAST:event_clsActionPerformed
 
-    private void jTextField24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField24ActionPerformed
+    private void fnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField24ActionPerformed
+    }//GEN-LAST:event_fnoActionPerformed
 
-    private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
+    private void sectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sectionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField23ActionPerformed
+    }//GEN-LAST:event_sectionActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+       String name=studentname.getText();
+            try
+                 {
+                     if("".equals(name))
+                    {
+                     JOptionPane.showMessageDialog(this, "Enter name of student");
+                    }
+                    else
+                    {
+                     String url2 = "select * from student_personal_detail where student_First_name = \"" + name + "\" ";
+                     Database db;
+               
+                    db = new Database();
+                    ResultSet rs = db.Excecute(url2);
+                    
+                    if (rs.next()) {
+                    rid.setText(rs.getString(1));
+                    stuadhar.setText(rs.getString(5));
+                    mname.setText(rs.getString(10));
+                    mobno.setText(rs.getString(24));  
+                    fno.setText(rs.getString(27));
+                    }
+                                
+                    
+                    }
+                 }catch (Exception e) {
+                System.out.println(e);
+            }
+    }//GEN-LAST:event_jButton13ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -442,7 +538,11 @@ public class SearchByName extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cls;
+    private javax.swing.JTextField fathername;
+    private javax.swing.JTextField fno;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton37;
@@ -461,14 +561,11 @@ public class SearchByName extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
+    private javax.swing.JTextField mname;
+    private javax.swing.JTextField mobno;
+    private javax.swing.JTextField rid;
+    private javax.swing.JTextField section;
+    private javax.swing.JTextField stuadhar;
+    private javax.swing.JTextField studentname;
     // End of variables declaration//GEN-END:variables
 }

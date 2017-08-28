@@ -1819,7 +1819,7 @@ public class NewAddmision extends javax.swing.JFrame {
                 }
                 
                 String url5=  "select * from academic_information where student_id=" + id + "";
-                ResultSet rs5= db.Excecute(url4);
+                ResultSet rs5= db.Excecute(url5);
                     if(rs5.next())
                     {
                     course1.setText(rs5.getString(2));
@@ -1859,6 +1859,78 @@ public class NewAddmision extends javax.swing.JFrame {
             }
 
         }
+        else{
+                    stu_name.setText("");
+                    stufname.setText(" ");
+                    stumname.setText(" ");
+                    stulname.setText("");
+                    stuadhar.setText("");
+                    fatherfname.setText("");
+                    fathermname.setText("");
+                    fatherlname.setText("");
+                    fatheradhar.setText("");
+                    motherfname.setText("");
+                    mothermname.setText("");
+                    motherlname.setText("");
+                    motheradhar.setText("");
+                    age.setText("");
+                    birthplace.setText("");
+                    identity1.setText("");
+                    identity2.setText("");
+                    fatherinc.setText("");
+                    pnumber.setText("");
+                    alternumber.setText("");
+                    llnumber.setText("");
+                    fnumber.setText("");
+                    mnumber.setText("");
+                    mailid.setText("");
+                    altermailid.setText("");
+                    datepick.setDate(null);
+                    
+                    
+                paddress.setText("");
+                pstate.setText("");
+                pcity.setText("");
+                parea.setText("");
+                ppincode.setText("");
+                caddress.setText("");
+                cstate.setText("");
+                ccity.setText("");
+                carea.setText("");
+                cpincode.setText("");
+                
+                
+                
+                    course1.setText("");
+                    school1.setText("");
+                    year1.setText("");
+                    percentage1.setText("");
+                    uni1.setText("");
+                    
+                    course2.setText("");
+                    school2.setText("");
+                    year2.setText("");
+                    percentage2.setText("");
+                    uni2.setText("");
+                    
+                    course3.setText("");
+                    school3.setText("");
+                    year3.setText("");
+                    percentage3.setText("");
+                    uni3.setText("");
+                    
+                    course4.setText("");
+                    school4.setText("");
+                    year4.setText("");
+                    percentage4.setText("");
+                    uni4.setText("");
+                    
+                    achievment.setText("");
+                    document.setText("");
+        
+        }
+        
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_regd_idKeyReleased
 
