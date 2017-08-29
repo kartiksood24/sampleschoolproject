@@ -1,4 +1,6 @@
 
+import Utility.CommonUtility;
+import Utility.Constants;
 import Utility.Database;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -8,7 +10,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Jai shree ram
@@ -386,41 +387,37 @@ public class SearchByAdharcard extends javax.swing.JFrame {
     }//GEN-LAST:event_adharnoActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-       
-        
-         try{
-            
-                  if(adharno.getText().isEmpty())
-                    {
-                     JOptionPane.showMessageDialog(this, "Adhar Card no. Can't be empty");
-                    }
-                  else
-                         {
-                       long adh_no1 = Long.parseLong(adharno.getText());
-                                        
-                       String url2 = "select * from student_personal_detail where stu_adhaar_no = \"" + adh_no1 + "\" ";
-                       Database db;
-               
-                       db = new Database();
-                       ResultSet rs = db.Excecute(url2);
-                    
-                    if (rs.next()) {
+
+        try {
+            if (adharno.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, Constants.addharCardCantbeempty);
+            } else {
+                if (adharno.getText().length() > 12) {
+                    JOptionPane.showMessageDialog(this, Constants.addharcardnotgreater);
+                    return;
+                } else if (!CommonUtility.isNumeric(adharno.getText())) {
+                    JOptionPane.showMessageDialog(this, Constants.addharcardnotgreater);
+                    return;
+                }
+                String url2 = "select * from student_personal_detail where stu_adhaar_no = " + adharno.getText() + "";
+                Database db;
+
+                db = new Database();
+                ResultSet rs = db.Excecute(url2);
+
+                if (rs.next()) {
                     rid.setText(rs.getString(1));
                     mobno.setText(rs.getString(24));
                     mname.setText(rs.getString(10));
-                    stuname.setText(rs.getString(2));  
+                    stuname.setText(rs.getString(2));
                     fname.setText(rs.getString(6));
                     mainno.setText(rs.getString(27));
-                    
-                    }}
-                  
-                   }catch (Exception e) {
-                System.out.println(e);
+                }
             }
-        
-        
-        
-        
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void ridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ridActionPerformed

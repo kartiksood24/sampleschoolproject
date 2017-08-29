@@ -13,4 +13,13 @@ public class CommonUtility {
 
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
+
+    public static final boolean isNumeric(String value) {
+        for (char c : value.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
