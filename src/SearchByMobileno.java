@@ -1,4 +1,5 @@
 
+import Utility.Constants;
 import Utility.Database;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -8,7 +9,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Jai shree ram
@@ -395,84 +395,55 @@ public class SearchByMobileno extends javax.swing.JFrame {
     }//GEN-LAST:event_mb_noActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-       
-        try{
-            
-                  if(mb_no.getText().isEmpty())
-                    {
-                     JOptionPane.showMessageDialog(this, "Mobile no can't be Empty");
-                    }
-                  else if(select.getSelectedItem()=="Mobile No")
-                         {
-                       long mob_no1 = Long.parseLong(mb_no.getText());
-                                        
-                       String url2 = "select * from student_personal_detail where personal_number = \"" + mob_no1 + "\" ";
-                       Database db;
-               
-                       db = new Database();
-                       ResultSet rs = db.Excecute(url2);
-                    
-                    if (rs.next()) {
+
+        try {
+            Database db = new Database();
+            ResultSet rs;
+            if (mb_no.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, Constants.mobilenocantempty);
+            } else if (select.getSelectedItem() == "Mobile No") {
+                String url2 = "select * from student_personal_detail where personal_number = " + mb_no.getText() + " ";
+                rs = db.Excecute(url2);
+
+                if (rs.next()) {
                     rid.setText(rs.getString(1));
                     stuadhar.setText(rs.getString(5));
                     mname.setText(rs.getString(10));
-                    stuname.setText(rs.getString(2));  
+                    stuname.setText(rs.getString(2));
                     fname.setText(rs.getString(6));
                     mainno.setText(rs.getString(27));
-                    
-                    }}
-                  
-                  else if(select.getSelectedItem()=="Father No")
-                         {
-                       long mob_no1 = Long.parseLong(mb_no.getText());
-                                        
-                       String url2 = "select * from student_personal_detail where father_mobile_no = \"" + mob_no1 + "\" ";
-                       Database db;
-               
-                       db = new Database();
-                       ResultSet rs = db.Excecute(url2);
-                    
-                    if (rs.next()) {
+
+                }
+            } else if (select.getSelectedItem() == "Father No") {
+                String url2 = "select * from student_personal_detail where father_mobile_no = " + mb_no.getText() + "";
+                rs = db.Excecute(url2);
+
+                if (rs.next()) {
                     rid.setText(rs.getString(1));
                     stuadhar.setText(rs.getString(5));
                     mname.setText(rs.getString(10));
-                    stuname.setText(rs.getString(2));  
+                    stuname.setText(rs.getString(2));
                     fname.setText(rs.getString(6));
                     mainno.setText(rs.getString(28));
-                    }}
-                  
-                  else if(select.getSelectedItem()=="Mother No")
-                         {
-                       long mob_no1 = Long.parseLong(mb_no.getText());
-                                        
-                       String url2 = "select * from student_personal_detail where mother_mobile_no = \"" + mob_no1 + "\" ";
-                       Database db;
-               
-                       db = new Database();
-                       ResultSet rs = db.Excecute(url2);
-                    
-                    if (rs.next()) {
+                }
+            } else if (select.getSelectedItem() == "Mother No") {
+                String url2 = "select * from student_personal_detail where mother_mobile_no = " + mb_no.getText() + "";
+                rs = db.Excecute(url2);
+                if (rs.next()) {
                     rid.setText(rs.getString(1));
                     stuadhar.setText(rs.getString(5));
                     mname.setText(rs.getString(10));
-                    stuname.setText(rs.getString(2));  
+                    stuname.setText(rs.getString(2));
                     fname.setText(rs.getString(6));
                     mainno.setText(rs.getString(27));
-                    }}
-                  
-                  
-                  
-                  
-                 }catch (Exception e) {
-                System.out.println(e);
+                }
             }
-                
-       
-        
-        
-        
-        
-        
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void ridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ridActionPerformed
@@ -508,7 +479,7 @@ public class SearchByMobileno extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField23ActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
-        
+
     }//GEN-LAST:event_jButton33ActionPerformed
 
     /**
