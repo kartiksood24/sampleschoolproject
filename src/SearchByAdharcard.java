@@ -392,7 +392,7 @@ public class SearchByAdharcard extends javax.swing.JFrame {
             if (adharno.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, Constants.addharCardCantbeempty);
             } else {
-                if (adharno.getText().length() > 12) {
+                if (adharno.getText().length() > 12 && adharno.getText().length() < 12) {
                     JOptionPane.showMessageDialog(this, Constants.addharcardnotgreater);
                     return;
                 } else if (!CommonUtility.isNumeric(adharno.getText())) {
