@@ -1,3 +1,8 @@
+
+import Utility.Database;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -29,25 +34,25 @@ public class SearchByMobileno extends javax.swing.JFrame {
 
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField16 = new javax.swing.JTextField();
+        mb_no = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         jTextField22 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
+        select = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
+        rid = new javax.swing.JTextField();
+        stuname = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        ttt = new javax.swing.JTextField();
+        stuadhar = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
+        fname = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        jTextField21 = new javax.swing.JTextField();
+        mname = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
-        jTextField24 = new javax.swing.JTextField();
+        mainno = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jTextField23 = new javax.swing.JTextField();
@@ -64,10 +69,10 @@ public class SearchByMobileno extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(51, 51, 255), new java.awt.Color(51, 51, 255)), "Enter Mobile No", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Times New Roman", 1, 12), new java.awt.Color(51, 51, 255))); // NOI18N
 
-        jTextField16.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+        mb_no.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        mb_no.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
+                mb_noActionPerformed(evt);
             }
         });
 
@@ -92,8 +97,8 @@ public class SearchByMobileno extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select No.", "Mobile No", "Father No", "Mother No" }));
+        select.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        select.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select No.", "Mobile No", "Father No", "Mother No" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -101,11 +106,11 @@ public class SearchByMobileno extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(select, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mb_no, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -119,12 +124,12 @@ public class SearchByMobileno extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mb_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21)
                     .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27)
                     .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(select, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -136,58 +141,63 @@ public class SearchByMobileno extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Baskerville Old Face", 3, 14)); // NOI18N
         jLabel23.setText("Student Name:-");
 
-        jTextField17.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField17.addActionListener(new java.awt.event.ActionListener() {
+        rid.setEditable(false);
+        rid.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        rid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField17ActionPerformed(evt);
+                ridActionPerformed(evt);
             }
         });
 
-        jTextField18.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField18.addActionListener(new java.awt.event.ActionListener() {
+        stuname.setEditable(false);
+        stuname.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        stuname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField18ActionPerformed(evt);
+                stunameActionPerformed(evt);
             }
         });
 
         jLabel24.setFont(new java.awt.Font("Baskerville Old Face", 3, 14)); // NOI18N
         jLabel24.setText("Adhar Card No :-");
 
-        ttt.setEditable(false);
-        ttt.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        ttt.addActionListener(new java.awt.event.ActionListener() {
+        stuadhar.setEditable(false);
+        stuadhar.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        stuadhar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tttActionPerformed(evt);
+                stuadharActionPerformed(evt);
             }
         });
 
         jLabel25.setFont(new java.awt.Font("Baskerville Old Face", 3, 14)); // NOI18N
         jLabel25.setText("Father Name :-");
 
-        jTextField20.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField20.addActionListener(new java.awt.event.ActionListener() {
+        fname.setEditable(false);
+        fname.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField20ActionPerformed(evt);
+                fnameActionPerformed(evt);
             }
         });
 
         jLabel26.setFont(new java.awt.Font("Baskerville Old Face", 3, 14)); // NOI18N
         jLabel26.setText("Mother Name :-");
 
-        jTextField21.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField21.addActionListener(new java.awt.event.ActionListener() {
+        mname.setEditable(false);
+        mname.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        mname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField21ActionPerformed(evt);
+                mnameActionPerformed(evt);
             }
         });
 
         jLabel29.setFont(new java.awt.Font("Baskerville Old Face", 3, 14)); // NOI18N
         jLabel29.setText("Father No :-");
 
-        jTextField24.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jTextField24.addActionListener(new java.awt.event.ActionListener() {
+        mainno.setEditable(false);
+        mainno.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        mainno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField24ActionPerformed(evt);
+                mainnoActionPerformed(evt);
             }
         });
 
@@ -198,6 +208,7 @@ public class SearchByMobileno extends javax.swing.JFrame {
         jLabel30.setText("Profile Photo");
         jLabel30.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255), new java.awt.Color(204, 204, 255)));
 
+        jTextField23.setEditable(false);
         jTextField23.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jTextField23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,17 +274,17 @@ public class SearchByMobileno extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel25)
                                 .addGap(26, 26, 26)
-                                .addComponent(jTextField20))
+                                .addComponent(fname))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel22)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(rid, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(48, 48, 48)
                                 .addComponent(jLabel23))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel24)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ttt))
+                                .addComponent(stuadhar))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel26)
@@ -282,19 +293,17 @@ public class SearchByMobileno extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(mainno, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addGap(21, 21, 21)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField21)
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                                .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                            .addComponent(mname)
+                                            .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField18)
+                                    .addComponent(stuname)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -314,23 +323,23 @@ public class SearchByMobileno extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(stuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
-                            .addComponent(ttt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(stuadhar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel25)
-                            .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel26)
-                            .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(mname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,7 +347,7 @@ public class SearchByMobileno extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel29)
-                            .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(mainno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel30)
@@ -381,41 +390,118 @@ public class SearchByMobileno extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+    private void mb_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mb_noActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
+    }//GEN-LAST:event_mb_noActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+       
+        try{
+            
+                  if(mb_no.getText().isEmpty())
+                    {
+                     JOptionPane.showMessageDialog(this, "Mobile no can't be Empty");
+                    }
+                  else if(select.getSelectedItem()=="Mobile No")
+                         {
+                       long mob_no1 = Long.parseLong(mb_no.getText());
+                                        
+                       String url2 = "select * from student_personal_detail where personal_number = \"" + mob_no1 + "\" ";
+                       Database db;
+               
+                       db = new Database();
+                       ResultSet rs = db.Excecute(url2);
+                    
+                    if (rs.next()) {
+                    rid.setText(rs.getString(1));
+                    stuadhar.setText(rs.getString(5));
+                    mname.setText(rs.getString(10));
+                    stuname.setText(rs.getString(2));  
+                    fname.setText(rs.getString(6));
+                    mainno.setText(rs.getString(27));
+                    
+                    }}
+                  
+                  else if(select.getSelectedItem()=="Father No")
+                         {
+                       long mob_no1 = Long.parseLong(mb_no.getText());
+                                        
+                       String url2 = "select * from student_personal_detail where father_mobile_no = \"" + mob_no1 + "\" ";
+                       Database db;
+               
+                       db = new Database();
+                       ResultSet rs = db.Excecute(url2);
+                    
+                    if (rs.next()) {
+                    rid.setText(rs.getString(1));
+                    stuadhar.setText(rs.getString(5));
+                    mname.setText(rs.getString(10));
+                    stuname.setText(rs.getString(2));  
+                    fname.setText(rs.getString(6));
+                    mainno.setText(rs.getString(28));
+                    }}
+                  
+                  else if(select.getSelectedItem()=="Mother No")
+                         {
+                       long mob_no1 = Long.parseLong(mb_no.getText());
+                                        
+                       String url2 = "select * from student_personal_detail where mother_mobile_no = \"" + mob_no1 + "\" ";
+                       Database db;
+               
+                       db = new Database();
+                       ResultSet rs = db.Excecute(url2);
+                    
+                    if (rs.next()) {
+                    rid.setText(rs.getString(1));
+                    stuadhar.setText(rs.getString(5));
+                    mname.setText(rs.getString(10));
+                    stuname.setText(rs.getString(2));  
+                    fname.setText(rs.getString(6));
+                    mainno.setText(rs.getString(27));
+                    }}
+                  
+                  
+                  
+                  
+                 }catch (Exception e) {
+                System.out.println(e);
+            }
+                
+       
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
+    private void ridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ridActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField17ActionPerformed
+    }//GEN-LAST:event_ridActionPerformed
 
-    private void jTextField18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField18ActionPerformed
+    private void stunameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stunameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField18ActionPerformed
+    }//GEN-LAST:event_stunameActionPerformed
 
-    private void tttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tttActionPerformed
+    private void stuadharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stuadharActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tttActionPerformed
+    }//GEN-LAST:event_stuadharActionPerformed
 
-    private void jTextField20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField20ActionPerformed
+    private void fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField20ActionPerformed
+    }//GEN-LAST:event_fnameActionPerformed
 
-    private void jTextField21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField21ActionPerformed
+    private void mnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField21ActionPerformed
+    }//GEN-LAST:event_mnameActionPerformed
 
     private void jTextField22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField22ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField22ActionPerformed
 
-    private void jTextField24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField24ActionPerformed
+    private void mainnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainnoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField24ActionPerformed
+    }//GEN-LAST:event_mainnoActionPerformed
 
     private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
         // TODO add your handling code here:
@@ -461,11 +547,11 @@ public class SearchByMobileno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fname;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton37;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -481,14 +567,14 @@ public class SearchByMobileno extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField ttt;
+    private javax.swing.JTextField mainno;
+    private javax.swing.JTextField mb_no;
+    private javax.swing.JTextField mname;
+    private javax.swing.JTextField rid;
+    private javax.swing.JComboBox select;
+    private javax.swing.JTextField stuadhar;
+    private javax.swing.JTextField stuname;
     // End of variables declaration//GEN-END:variables
 }
