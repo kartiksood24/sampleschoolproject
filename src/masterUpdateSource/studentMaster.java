@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package masterUpdateSource;
 
 import Utility.Constants;
@@ -21,12 +20,15 @@ public class studentMaster extends javax.swing.JFrame {
     /**
      * Creates new form studentMaster
      */
+    Database db;
+    ResultSet rs;
+    studentMaster sm;
+
     public studentMaster() {
         initComponents();
-       this.setLocationRelativeTo(null);
-       fillcomboclass();
-      // fillcombosection();
-               
+        this.setLocationRelativeTo(null);
+        fillComboClass();
+        // fillcombosection();
     }
 
     /**
@@ -234,6 +236,11 @@ public class studentMaster extends javax.swing.JFrame {
         jLabel3.setText("Select Class :-");
 
         jButton2.setText("Update");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setForeground(new java.awt.Color(255, 3, 3));
         jLabel4.setText("* Name should be unique of every class");
@@ -981,149 +988,139 @@ public class studentMaster extends javax.swing.JFrame {
     }//GEN-LAST:event_yearActionPerformed
 
     private void getyearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getyearActionPerformed
-        
-        
-         
-    }//GEN-LAST:event_getyearActionPerformed
-                public void fillcomboclass()
-                {
-                 try{
-         Database db = new Database();
-            ResultSet rs;
-        int currentyear = Integer.parseInt((String) year.getSelectedItem());
-            String url2 ="select * from year_classes where year =  " +currentyear+"";
-                rs = db.Excecute(url2);
-                String combine=" ";
-                        while(rs.next())
-                        {
-                        String name=rs.getString("classes");
-                        select_class.addItem(name);
-                        select_class1.addItem(name);
-                        select_class2.addItem(name);
-                        select_class3.addItem(name);
-                        combine= combine + name + "\n";
-                        }
-                        showallclasses.setText(combine);
-                   }
-       catch (Exception e) {
-            System.out.println(e);}
-                }
-                
-                public void fillcombosection()
-                {
-                try{
-                        Database db = new Database();
-                         ResultSet rs;
-                         
-                        
-                         classsection.removeAllItems();
-                         int updateclass = Integer.parseInt((String) select_class2.getSelectedItem());      
-                            String url="select * from classes_section_students where classes =" +updateclass+"";
-                 
-                        rs = db.Excecute(url);
-                        while(rs.next())
-                        {
-                        String name=rs.getString("section");
-                        classsection.addItem(name);
-                        }
-                        
-        
-                   }catch (Exception e) {
-                        System.out.println(e);}
-                }
-                
-                public void fillcombosectiondatabase()
-                {
-                try{
-                        Database db = new Database();
-                         ResultSet rs;
-                         
-                        
-                        String values= "";
-                        show_section.setText(values);
-                         int updateclass = Integer.parseInt((String) select_class3.getSelectedItem());      
-                            String url="select * from classes_section_students where classes =" +updateclass+"";
-                 
-                        rs = db.Excecute(url);
-                        while(rs.next())
-                        {
-                        String name=rs.getString("section");
-                        values= values + name +"\n";
-                        }
-                        show_section.setText(values);
-                        
-        
-                   }catch (Exception e) {
-                        System.out.println(e);}
-                }
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        int currentyear = Integer.parseInt((String) year.getSelectedItem());
-        String newclass = new_class.getText();
-        
-        
-        
-         String query = "insert into year_classes values('" + currentyear + "','" + newclass + "')";
 
+
+    }//GEN-LAST:event_getyearActionPerformed
+    public void fillComboClass() {
+        try {
+            db = new Database();
+            int currentyear = Integer.parseInt((String) year.getSelectedItem());
+            String url2 = "select * from year_classes where year =  " + currentyear + "";
+            rs = db.Excecute(url2);
+            String combine = "";
+            while (rs.next()) {
+                String name = rs.getString("classes");
+                select_class.addItem(name);
+                select_class1.addItem(name);
+                select_class2.addItem(name);
+                select_class3.addItem(name);
+                combine = combine + name + "\n";
+            }
+            showallclasses.setText(combine);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void fillcombosection() {
         try {
             Database db = new Database();
+            ResultSet rs;
+
+            classsection.removeAllItems();
+            int updateclass = Integer.parseInt((String) select_class2.getSelectedItem());
+            String url = "select * from classes_section_students where classes =" + updateclass + "";
+
+            rs = db.Excecute(url);
+            while (rs.next()) {
+                String name = rs.getString("section");
+                classsection.addItem(name);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void fillcombosectiondatabase() {
+        try {
+            db = new Database();
+            String values = "";
+            show_section.setText(values);
+            int updateclass = Integer.parseInt((String) select_class3.getSelectedItem());
+            String url = "select * from classes_section_students where classes =" + updateclass + "";
+
+            rs = db.Excecute(url);
+            while (rs.next()) {
+                String name = rs.getString("section");
+                values = values + name + "\n";
+            }
+            show_section.setText(values);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        int currentyear = Integer.parseInt((String) year.getSelectedItem());
+        String newclass = new_class.getText();
+
+        String query = "insert into year_classes values('" + currentyear + "','" + newclass + "')";
+
+        if (newclass.toString().isEmpty()) {
+            JOptionPane.showMessageDialog(this, Constants.enterClassName);
+            return;
+        }
+        try {
+            db = new Database();
             db.Update(query);
             JOptionPane.showMessageDialog(this, Constants.datahasbeeninseartedsuccessfully);
-             studentMaster sm = new studentMaster();
-                sm.setVisible(true);dispose();
-         } catch (Exception e) {
+            sm = new studentMaster();
+            sm.setVisible(true);
+            dispose();
+        } catch (Exception e) {
             System.out.println(e);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
     }
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-       
-        
+
+
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-        
+
+        if (select_class.getItemCount() == 0 || select_class.getItemCount() < 0) {
+            JOptionPane.showMessageDialog(this, Constants.enterclass);
+            return;
+        }
         int selectedclass = Integer.parseInt((String) select_class.getSelectedItem());
         String section = set_section.getText();
         String totalstudent = total_student.getText();
-        
-         String query = "insert into classes_section_students values('" + selectedclass + "','" + section + "','" + totalstudent + "')";
+
+        String query = "insert into classes_section_students values('" + selectedclass + "','" + section + "','" + totalstudent + "')";
         try {
-            Database db = new Database();
+            if (section.toString().isEmpty()) {
+                JOptionPane.showMessageDialog(this, Constants.enterSecName);
+            } else if (totalstudent.toString().isEmpty()) {
+                JOptionPane.showMessageDialog(this, Constants.enterNumstudents);
+                return;
+            }
+            db = new Database();
             db.Update(query);
             JOptionPane.showMessageDialog(this, Constants.datahasbeeninseartedsuccessfully);
-             studentMaster sm = new studentMaster();
-                sm.setVisible(true);dispose();
-         } catch (Exception e) {
+            sm = new studentMaster();
+            sm.setVisible(true);
+            dispose();
+        } catch (Exception e) {
             System.out.println(e);
-    }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void select_class2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_select_class2KeyReleased
-      // fillcombosection();
-    
+        // fillcombosection();
+
     }//GEN-LAST:event_select_class2KeyReleased
 
     private void select_class2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_select_class2KeyPressed
-       
+
     }//GEN-LAST:event_select_class2KeyPressed
 
     private void select_class2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_select_class2ItemStateChanged
-        
+
     }//GEN-LAST:event_select_class2ItemStateChanged
 
     private void select_class2InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_select_class2InputMethodTextChanged
@@ -1131,13 +1128,40 @@ public class studentMaster extends javax.swing.JFrame {
     }//GEN-LAST:event_select_class2InputMethodTextChanged
 
     private void select_class2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_class2ActionPerformed
-       fillcombosection();
+        fillcombosection();
     }//GEN-LAST:event_select_class2ActionPerformed
 
     private void select_class3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_class3ActionPerformed
-       fillcombosectiondatabase();
+        fillcombosectiondatabase();
     }//GEN-LAST:event_select_class3ActionPerformed
-    
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        if (select_class1.getItemCount() == 0 || select_class1.getItemCount() < 0) {
+            JOptionPane.showMessageDialog(this, Constants.enterclass);
+            return;
+        }
+
+        if (jTextArea4.getText().toString().isEmpty()) {
+            JOptionPane.showMessageDialog(this, Constants.enterClassName);
+            return;
+        }
+
+        int currentyear = Integer.parseInt((String) select_class1.getSelectedItem());
+        String newclass = jTextArea4.getText();
+
+        String query = "update year_classes set classes='" + newclass + "' where year=" + currentyear;
+        try {
+            db = new Database();
+            db.Update(query);
+            JOptionPane.showMessageDialog(this, Constants.updateclass);
+        } catch (Exception e) {
+
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
