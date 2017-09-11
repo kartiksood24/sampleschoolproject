@@ -94,10 +94,10 @@
                       <Component id="jPanel1" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                       <Component id="jPanel18" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -869,25 +869,8 @@
                     <Component class="javax.swing.JComboBox" name="jComboBox6">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="18">
+                          <StringArray count="1">
                             <StringItem index="0" value="Select Class"/>
-                            <StringItem index="1" value="Nursery"/>
-                            <StringItem index="2" value="Pre-Nursery"/>
-                            <StringItem index="3" value="KG"/>
-                            <StringItem index="4" value="LKG"/>
-                            <StringItem index="5" value="UKG"/>
-                            <StringItem index="6" value="1st"/>
-                            <StringItem index="7" value="2nd"/>
-                            <StringItem index="8" value="3rd"/>
-                            <StringItem index="9" value="4th"/>
-                            <StringItem index="10" value="5th"/>
-                            <StringItem index="11" value="6th"/>
-                            <StringItem index="12" value="7th"/>
-                            <StringItem index="13" value="8th"/>
-                            <StringItem index="14" value="9th"/>
-                            <StringItem index="15" value="Matric"/>
-                            <StringItem index="16" value="Higher Secondry+1"/>
-                            <StringItem index="17" value="Higher Secondry+1"/>
                           </StringArray>
                         </Property>
                       </Properties>

@@ -1,4 +1,5 @@
 
+import Utility.Constants;
 import Utility.Database;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -627,7 +628,7 @@ public class NewAddmision extends javax.swing.JFrame {
 
         jLabel21.setText("Class:-");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Class", "Nursery", "Pre-Nursery", "KG", "LKG", "UKG", "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "Matric", "Higher Secondry+1", "Higher Secondry+1" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Class" }));
 
         jLabel22.setText("Section:-");
 
@@ -924,10 +925,10 @@ public class NewAddmision extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(98, 98, 98)
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2016,7 +2017,7 @@ public class NewAddmision extends javax.swing.JFrame {
         try {
             Database db = new Database();
             db.Update(query);
-            JOptionPane.showMessageDialog(this, "Data has been inserted successfully");
+            JOptionPane.showMessageDialog(this, Constants.datahasbeeninseartedsuccessfully);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -2081,7 +2082,7 @@ public class NewAddmision extends javax.swing.JFrame {
             Database db = new Database();
             db.Update(query);
             db.Update(query2);
-            JOptionPane.showMessageDialog(this, "Data has been inserted successfully");
+            JOptionPane.showMessageDialog(this, Constants.datahasbeeninseartedsuccessfully);
         } catch (Exception e) {
             System.out.println(e);
         }

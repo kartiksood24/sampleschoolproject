@@ -15,5 +15,5 @@ public class Constants {
     public static final String addharCardCantbeempty = "Adhaar Card no. Can't be empty";
     public static final String addharcardnotgreater="Please enter valid adhaar card number";
     public static final String mobilenocantempty="Mobile no can't be Empty";
-          
+    public static final String datahasbeeninseartedsuccessfully="Data has been inserted successfully";     
 }
