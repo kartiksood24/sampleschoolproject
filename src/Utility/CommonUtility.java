@@ -5,6 +5,9 @@
  */
 package Utility;
 
+import java.awt.Component;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author SOOD
@@ -21,5 +24,9 @@ public class CommonUtility {
             }
         }
         return true;
+    }
+
+    public static void showDialog(String message, Component c) {
+        JOptionPane.showMessageDialog(c, message);
     }
 }

@@ -13,7 +13,9 @@ public class NewRegistration extends javax.swing.JFrame {
      * Creates new form NewRegistration
      */
     ButtonGroup bg;
-  public NewRegistration() throws SQLException {
+    int class_reg_id[];
+
+    public NewRegistration() throws SQLException {
         initComponents();
 
         int var = 0;
@@ -21,10 +23,24 @@ public class NewRegistration extends javax.swing.JFrame {
         try {
             String qry = "select ifnull(max(reg_no),0) from register_student";
             Database db = new Database();
-            ResultSet rs=db.Excecute(qry);
+            ResultSet rs = db.Excecute(qry);
             if (rs.next()) {
                 var = rs.getInt(1);
                 regd_no.setText((++var) + "");
+            }
+
+            String query = "select * from year_classes";
+            ResultSet rs1 = db.Excecute(query);
+            int count = 0;
+            while (rs1.next()) {
+                select_class.addItem(rs.getString("classes"));
+                count++;
+            }
+            class_reg_id = new int[count];
+            ResultSet rs2 = db.Excecute(query);
+            count = 0;
+            while (rs2.next()) {
+                class_reg_id[count] = rs2.getInt("class_register_id");
             }
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -37,7 +53,6 @@ public class NewRegistration extends javax.swing.JFrame {
         bg.add(female);
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -63,7 +78,6 @@ public class NewRegistration extends javax.swing.JFrame {
         regd_fee = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        class1 = new javax.swing.JTextField();
         city = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -77,6 +91,7 @@ public class NewRegistration extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         year = new javax.swing.JComboBox();
+        select_class = new javax.swing.JComboBox();
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -175,13 +190,6 @@ public class NewRegistration extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel12.setText("Class :-");
 
-        class1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        class1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                class1ActionPerformed(evt);
-            }
-        });
-
         city.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         city.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,6 +257,12 @@ public class NewRegistration extends javax.swing.JFrame {
         year.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033" }));
 
+        select_class.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                select_classActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -300,7 +314,7 @@ public class NewRegistration extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel12)
                                         .addGap(18, 18, 18)
-                                        .addComponent(class1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(select_class, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -373,12 +387,11 @@ public class NewRegistration extends javax.swing.JFrame {
                             .addComponent(male)
                             .addComponent(female))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(phone_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(class1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phone_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(select_class, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -446,10 +459,6 @@ public class NewRegistration extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_regd_feeActionPerformed
 
-    private void class1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_class1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_class1ActionPerformed
-
     private void cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cityActionPerformed
@@ -473,7 +482,7 @@ public class NewRegistration extends javax.swing.JFrame {
         String stu_name1 = stu_name.getText();
         String father_name1 = father_name.getText();
         String mother_name1 = mother_name.getText();
-        int age1 = Integer.parseInt(age.getText());
+       
         String gender;
         if (male.isSelected()) {
             gender = "male";
@@ -487,21 +496,18 @@ public class NewRegistration extends javax.swing.JFrame {
         } else {
             ph_no = phone_no.getText();
         }
-        long mob_no1 = Long.parseLong(mobile_no.getText());
-        if (mobile_no.getText().isEmpty()) {
-            mob_no1 = 0;
-        }
-
-        int year1 = Integer.parseInt(year.getSelectedItem().toString());
+     
+       
         String address1 = address.getText();
         String state1 = state.getText();
         String city1 = city.getText();
-        String class2 = class1.getText();
+        
+        
         String regd_fee1 = regd_fee.getText();
 
-        if ((stu_name1.isEmpty() && father_name1.isEmpty() && mother_name1.isEmpty()
+        if (stu_name1.isEmpty() && father_name1.isEmpty() && mother_name1.isEmpty()
                 && gender.isEmpty() && address1.isEmpty() && state1.isEmpty() && city1.isEmpty()
-                && class2.isEmpty() && regd_fee1.isEmpty() && age.getText().isEmpty())) {
+                 && regd_fee1.isEmpty()&&((year.getSelectedItem().equals("Select")))) {
             JOptionPane.showMessageDialog(this, "Fill Form Properly");
         } else if (stu_name1.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student Name can not be empty");
@@ -517,21 +523,24 @@ public class NewRegistration extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Select State");
         } else if (city1.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Select City");
-        } else if (class2.isEmpty()) {
+        } else if (select_class.getItemCount()==0) {
             JOptionPane.showMessageDialog(this, "Select Class");
         } else if (regd_fee1.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Set Registration Fee");
         } else if (age.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Fill age");
-        } else if (mob_no1 == 0) {
+        } else if (mobile_no.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Fill Mobile No");
         } else if (phone_no.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Fill Phone No");
         } else if (year.getSelectedItem().equals("Select")) {
             JOptionPane.showMessageDialog(this, "Select Year");
         } else {
+            int class2 = class_reg_id[select_class.getSelectedIndex()];
+              long mob_no1 = Long.parseLong(mobile_no.getText());
+               int year1 = Integer.parseInt(year.getSelectedItem().toString());
             String query = "insert into register_student values(" + regd_no1 + ",'" + stu_name1 + "','"
-                    + father_name1 + "','" + mother_name1 + "'," + age1 + ",'" + gender + "','" + ph_no + "',"
+                    + father_name1 + "','" + mother_name1 + "'," + Integer.parseInt(age.getText()) + ",'" + gender + "','" + ph_no + "',"
                     + mob_no1 + ",'" + address1 + "','" + state1 + "','" + city1 + "','" + class2 + "','" + regd_fee1
                     + "','" + year1 + "','" + 20 + "')";
             try {
@@ -557,6 +566,10 @@ public class NewRegistration extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void select_classActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_classActionPerformed
+
+    }//GEN-LAST:event_select_classActionPerformed
 
     /**
      * @param args the command line arguments
@@ -601,7 +614,6 @@ public class NewRegistration extends javax.swing.JFrame {
     private javax.swing.JTextArea address;
     private javax.swing.JTextField age;
     private javax.swing.JTextField city;
-    private javax.swing.JTextField class1;
     private javax.swing.JTextField father_name;
     private javax.swing.JRadioButton female;
     private javax.swing.JButton jButton1;
@@ -631,6 +643,7 @@ public class NewRegistration extends javax.swing.JFrame {
     private javax.swing.JTextField phone_no;
     private javax.swing.JTextField regd_fee;
     private javax.swing.JTextField regd_no;
+    private javax.swing.JComboBox select_class;
     private javax.swing.JTextField state;
     private javax.swing.JTextField stu_name;
     private javax.swing.JComboBox year;

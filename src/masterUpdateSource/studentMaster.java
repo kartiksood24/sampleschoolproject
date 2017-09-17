@@ -5,6 +5,7 @@
  */
 package masterUpdateSource;
 
+import Utility.CommonUtility;
 import Utility.Constants;
 import Utility.Database;
 import java.sql.ResultSet;
@@ -29,6 +30,13 @@ public class studentMaster extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         fillComboClass();
         // fillcombosection();
+    }
+
+    public studentMaster(int index) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        fillComboClass();
+        jTabbedPane1.setSelectedIndex(index);
     }
 
     /**
@@ -58,7 +66,7 @@ public class studentMaster extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        updateclassname = new javax.swing.JTextField();
         select_class1 = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -81,7 +89,7 @@ public class studentMaster extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         classsection = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        updatestudent = new javax.swing.JTextField();
         select_class2 = new javax.swing.JComboBox();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
@@ -251,7 +259,13 @@ public class studentMaster extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel14.setText("Enter New Name :-");
 
-        jTextField4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        updateclassname.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+
+        select_class1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                select_class1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -270,7 +284,7 @@ public class studentMaster extends javax.swing.JFrame {
                                 .addComponent(jLabel3))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField4)
+                                .addComponent(updateclassname)
                                 .addComponent(select_class1, 0, 98, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -284,7 +298,7 @@ public class studentMaster extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updateclassname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
                 .addGap(24, 24, 24)
@@ -418,6 +432,11 @@ public class studentMaster extends javax.swing.JFrame {
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 255), 2, true), "Update Class", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 12), new java.awt.Color(51, 51, 255))); // NOI18N
 
         jButton4.setText("Update");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setForeground(new java.awt.Color(255, 3, 3));
         jLabel10.setText("* No Two Section Have Same Name");
@@ -428,7 +447,7 @@ public class studentMaster extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel15.setText("Enter No. of Student :-");
 
-        jTextField5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        updatestudent.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         select_class2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -488,7 +507,7 @@ public class studentMaster extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                                     .addComponent(jLabel15)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(updatestudent, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel35))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
@@ -509,7 +528,7 @@ public class studentMaster extends javax.swing.JFrame {
                     .addComponent(select_class2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updatestudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
@@ -571,6 +590,11 @@ public class studentMaster extends javax.swing.JFrame {
         jTextField6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         jButton5.setText("Create");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel16.setForeground(new java.awt.Color(255, 3, 3));
         jLabel16.setText("* No Two Catagary Will Be of Same Name");
@@ -616,6 +640,11 @@ public class studentMaster extends javax.swing.JFrame {
         jLabel17.setText("Select Catagatry :-");
 
         jButton6.setText("Update");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jLabel18.setForeground(new java.awt.Color(255, 3, 3));
         jLabel18.setText("* Name should be unique of every class");
@@ -710,6 +739,11 @@ public class studentMaster extends javax.swing.JFrame {
         jTextField8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         jButton7.setText("Create");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jLabel22.setForeground(new java.awt.Color(255, 3, 3));
         jLabel22.setText("* No Two Relegion Will Be of Same Name");
@@ -752,6 +786,11 @@ public class studentMaster extends javax.swing.JFrame {
         jLabel23.setText("Select Religion :-");
 
         jButton8.setText("Update");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jLabel24.setForeground(new java.awt.Color(255, 3, 3));
         jLabel24.setText("* Name should be unique of every class");
@@ -994,10 +1033,12 @@ public class studentMaster extends javax.swing.JFrame {
     public void fillComboClass() {
         try {
             db = new Database();
+            select_class.removeAllItems();
             int currentyear = Integer.parseInt((String) year.getSelectedItem());
-            String url2 = "select * from year_classes where year =  " + currentyear + "";
-            rs = db.Excecute(url2);
+            String url2 = "select * from year_classes where year =" + currentyear + "";
+
             String combine = "";
+            ResultSet rs = db.Excecute(url2);
             while (rs.next()) {
                 String name = rs.getString("classes");
                 select_class.addItem(name);
@@ -1014,14 +1055,12 @@ public class studentMaster extends javax.swing.JFrame {
 
     public void fillcombosection() {
         try {
-            Database db = new Database();
-            ResultSet rs;
-
+            db = new Database();
             classsection.removeAllItems();
             int updateclass = Integer.parseInt((String) select_class2.getSelectedItem());
             String url = "select * from classes_section_students where classes =" + updateclass + "";
 
-            rs = db.Excecute(url);
+            ResultSet rs = db.Excecute(url);
             while (rs.next()) {
                 String name = rs.getString("section");
                 classsection.addItem(name);
@@ -1043,7 +1082,8 @@ public class studentMaster extends javax.swing.JFrame {
             rs = db.Excecute(url);
             while (rs.next()) {
                 String name = rs.getString("section");
-                values = values + name + "\n";
+                String noOfStudents = rs.getString("total_student");
+                values = values + name + "   -->   " + noOfStudents + "\n";
             }
             show_section.setText(values);
 
@@ -1058,17 +1098,17 @@ public class studentMaster extends javax.swing.JFrame {
         int currentyear = Integer.parseInt((String) year.getSelectedItem());
         String newclass = new_class.getText();
 
-        String query = "insert into year_classes values('" + currentyear + "','" + newclass + "')";
-
         if (newclass.toString().isEmpty()) {
-            JOptionPane.showMessageDialog(this, Constants.enterClassName);
+            CommonUtility.showDialog(Constants.enterClassName, this);
             return;
         }
         try {
             db = new Database();
+            String query = "insert into year_classes(classes,year) values('" + currentyear + "','" + newclass + "')";
             db.Update(query);
-            JOptionPane.showMessageDialog(this, Constants.datahasbeeninseartedsuccessfully);
-            sm = new studentMaster();
+            CommonUtility.showDialog(Constants.datahasbeeninseartedsuccessfully, this);
+            int index = jTabbedPane1.getSelectedIndex();
+            sm = new studentMaster(index);
             sm.setVisible(true);
             dispose();
         } catch (Exception e) {
@@ -1091,18 +1131,19 @@ public class studentMaster extends javax.swing.JFrame {
         String section = set_section.getText();
         String totalstudent = total_student.getText();
 
-        String query = "insert into classes_section_students values('" + selectedclass + "','" + section + "','" + totalstudent + "')";
+        String query = "insert into classes_section_students) values('" + selectedclass + "','" + section + "','" + totalstudent + "')";
         try {
             if (section.toString().isEmpty()) {
-                JOptionPane.showMessageDialog(this, Constants.enterSecName);
+                CommonUtility.showDialog(Constants.enterSecName, this);
             } else if (totalstudent.toString().isEmpty()) {
-                JOptionPane.showMessageDialog(this, Constants.enterNumstudents);
+                CommonUtility.showDialog(Constants.enterNumstudents, this);
                 return;
             }
             db = new Database();
             db.Update(query);
-            JOptionPane.showMessageDialog(this, Constants.datahasbeeninseartedsuccessfully);
-            sm = new studentMaster();
+            CommonUtility.showDialog(Constants.datahasbeeninseartedsuccessfully, this);
+            int index = jTabbedPane1.getSelectedIndex();
+            sm = new studentMaster(index);
             sm.setVisible(true);
             dispose();
         } catch (Exception e) {
@@ -1138,29 +1179,84 @@ public class studentMaster extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         if (select_class1.getItemCount() == 0 || select_class1.getItemCount() < 0) {
-            JOptionPane.showMessageDialog(this, Constants.enterclass);
+            CommonUtility.showDialog(Constants.enterclass, this);
             return;
         }
 
-        if (jTextArea4.getText().toString().isEmpty()) {
-            JOptionPane.showMessageDialog(this, Constants.enterClassName);
+        if (updateclassname.getText().toString().isEmpty()) {
+            CommonUtility.showDialog(Constants.enterClassName, this);
             return;
         }
 
-        int currentyear = Integer.parseInt((String) select_class1.getSelectedItem());
-        String newclass = jTextArea4.getText();
-
-        String query = "update year_classes set classes='" + newclass + "' where year=" + currentyear;
+        String query = "update year_classes set classes='" + updateclassname.getText()
+                + "' where classes='" + select_class1.getSelectedItem() + "'";
         try {
             db = new Database();
             db.Update(query);
-            JOptionPane.showMessageDialog(this, Constants.updateclass);
+            CommonUtility.showDialog(Constants.updateclass, this);
         } catch (Exception e) {
 
         }
+        int index = jTabbedPane1.getSelectedIndex();
+        sm = new studentMaster(index);
+        sm.setVisible(true);
+        dispose();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        if (select_class2.getItemCount() < 0 || select_class2.getItemCount() == 0) {
+            CommonUtility.showDialog(Constants.enterclass, this);
+            return;
+        } else if (classsection.getItemCount() == 0) {
+            CommonUtility.showDialog(Constants.enterSecName, this);
+            return;
+        } else if (updatestudent.getText().toString().isEmpty()) {
+            CommonUtility.showDialog(Constants.enternumofstudents, this);
+            return;
+        }
+        String query = "update classes_section_students set total_student='" + updatestudent.getText()
+                + "' where classes='" + select_class2.getSelectedItem() + "' && section='" + classsection.getSelectedItem() + "'";
+        try {
+            db = new Database();
+            db.Update(query);
+            JOptionPane.showMessageDialog(this, Constants.updatesection);
+        } catch (Exception e) {
+
+        }
+        int index = jTabbedPane1.getSelectedIndex();
+        sm = new studentMaster(index);
+        sm.setVisible(true);
+        dispose();
+
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int index = jTabbedPane1.getSelectedIndex();
+        sm = new studentMaster(index);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        int index = jTabbedPane1.getSelectedIndex();
+        sm = new studentMaster(index);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        int index = jTabbedPane1.getSelectedIndex();
+        sm = new studentMaster(index);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        int index = jTabbedPane1.getSelectedIndex();
+        sm = new studentMaster(index);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void select_class1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_class1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_select_class1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1276,8 +1372,6 @@ public class studentMaster extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
@@ -1291,6 +1385,8 @@ public class studentMaster extends javax.swing.JFrame {
     private javax.swing.JTextArea show_section;
     private javax.swing.JTextArea showallclasses;
     private javax.swing.JTextField total_student;
+    private javax.swing.JTextField updateclassname;
+    private javax.swing.JTextField updatestudent;
     private javax.swing.JComboBox year;
     // End of variables declaration//GEN-END:variables
 }

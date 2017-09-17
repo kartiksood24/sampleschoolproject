@@ -42,15 +42,42 @@ public class NewAddmision extends javax.swing.JFrame {
 
     /**
      * Creates new form NewAddmision
-     */
+     */Database db;
     public NewAddmision() {
         initComponents();
+       
 
         this.setLocationRelativeTo(null);
         this.setVisible(false);
+        fillcomboclasses();
         // other.setVisible(false);
 
     }
+    
+    
+    public void fillcombosection() {
+        try {
+            db = new Database();
+            select_section.removeAllItems();
+            int updateclass = Integer.parseInt((String) select_class.getSelectedItem());
+            String url = "select * from classes_section_students where classes =" + updateclass + "";
+
+            ResultSet rs = db.Excecute(url);
+            while (rs.next()) {
+                String name = rs.getString("section");
+                select_section.addItem(name);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    
+    
+    
+    
+     
     ImageFilter1 fJavaFilter = new ImageFilter1();
     static File fFile;
     static BufferedImage icon;
@@ -128,11 +155,9 @@ public class NewAddmision extends javax.swing.JFrame {
         regd_id = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox();
+        current_year = new javax.swing.JComboBox();
         jLabel21 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox();
         jLabel22 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox();
         jLabel23 = new javax.swing.JLabel();
         stu_name = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
@@ -141,6 +166,8 @@ public class NewAddmision extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
         jTextField17 = new javax.swing.JTextField();
         jXDatePicker2 = new org.jdesktop.swingx.JXDatePicker();
+        select_class = new javax.swing.JComboBox();
+        select_section = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         pnumber = new javax.swing.JTextField();
@@ -619,20 +646,16 @@ public class NewAddmision extends javax.swing.JFrame {
 
         jLabel18.setText("Current Year:-");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033" }));
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+        current_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018" }));
+        current_year.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
+                current_yearActionPerformed(evt);
             }
         });
 
         jLabel21.setText("Class:-");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Class" }));
-
         jLabel22.setText("Section:-");
-
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Section", "A", "B", "C", "D", "E", "F" }));
 
         jLabel23.setText("Enter Student Name:-");
 
@@ -667,6 +690,12 @@ public class NewAddmision extends javax.swing.JFrame {
             }
         });
 
+        select_class.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                select_classActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -693,17 +722,17 @@ public class NewAddmision extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(current_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel24)
                                 .addGap(18, 18, 18)
                                 .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(select_class, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(select_section, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(163, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jButton12)
@@ -722,7 +751,7 @@ public class NewAddmision extends javax.swing.JFrame {
                     .addComponent(jLabel17)
                     .addComponent(jButton10)
                     .addComponent(jLabel18)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(current_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(regd_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24)
                     .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -730,10 +759,10 @@ public class NewAddmision extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
                     .addComponent(jLabel21)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(stu_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(stu_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(select_class, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(select_section, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1584,13 +1613,39 @@ public class NewAddmision extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void fillcomboclasses() {
+        try {
+        
+            db = new Database();
+            select_class.removeAllItems();
+            int currentyear = Integer.parseInt((String) current_year.getSelectedItem());
+            String url2 = "select * from year_classes where year =" + currentyear + "";
+
+            String combine = "";
+            ResultSet rs = db.Excecute(url2);
+            while (rs.next()) {
+                String name = rs.getString("classes");
+                select_class.addItem(name);
+                
+            }
+          //  showallclasses.setText(combine);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    
+    
+    
+    
     private void regd_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regd_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_regd_idActionPerformed
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+    private void current_yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_current_yearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox4ActionPerformed
+    }//GEN-LAST:event_current_yearActionPerformed
 
     private void stu_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stu_nameActionPerformed
         // TODO add your handling code here:
@@ -2118,6 +2173,10 @@ public class NewAddmision extends javax.swing.JFrame {
 
     }//GEN-LAST:event_checkboxPropertyChange
 
+    private void select_classActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_select_classActionPerformed
+      fillcombosection();
+    }//GEN-LAST:event_select_classActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2173,6 +2232,7 @@ public class NewAddmision extends javax.swing.JFrame {
     private javax.swing.JTextField course4;
     private javax.swing.JTextField cpincode;
     private javax.swing.JTextField cstate;
+    private javax.swing.JComboBox current_year;
     private org.jdesktop.swingx.JXDatePicker datepick;
     private javax.swing.JTextArea document;
     private javax.swing.JTextField fatheradhar;
@@ -2209,9 +2269,6 @@ public class NewAddmision extends javax.swing.JFrame {
     private javax.swing.JButton jButton54;
     private javax.swing.JButton jButton55;
     private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox4;
-    private javax.swing.JComboBox jComboBox6;
-    private javax.swing.JComboBox jComboBox7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -2314,6 +2371,8 @@ public class NewAddmision extends javax.swing.JFrame {
     private javax.swing.JTextField school2;
     private javax.swing.JTextField school3;
     private javax.swing.JTextField school4;
+    private javax.swing.JComboBox select_class;
+    private javax.swing.JComboBox select_section;
     private javax.swing.JTextField stu_name;
     private javax.swing.JTextField stuadhar;
     private javax.swing.JTextField stufname;
