@@ -5,10 +5,12 @@
  */
 package masterUpdateSource;
 
+import Models.ClassData;
 import Utility.CommonUtility;
 import Utility.Constants;
 import Utility.Database;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -24,12 +26,15 @@ public class studentMaster extends javax.swing.JFrame {
     Database db;
     ResultSet rs;
     studentMaster sm;
+    ArrayList<ClassData> getClasses = new ArrayList();
+    String classesarray[];
 
     public studentMaster() {
         initComponents();
         this.setLocationRelativeTo(null);
         fillComboClass();
         // fillcombosection();
+        commonGetData();
     }
 
     public studentMaster(int index) {
@@ -37,6 +42,26 @@ public class studentMaster extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         fillComboClass();
         jTabbedPane1.setSelectedIndex(index);
+        commonGetData();
+    }
+
+    private void commonGetData() {
+        try {
+            db = new Database();
+            String url = "select * from year_classes";
+            String classes = "";
+            rs = db.Excecute(url);
+            while (rs.next()) {
+                ClassData classData = new ClassData();
+                classData.setClassId(Integer.parseInt(rs.getString("class_id")));
+                classData.setClassYear(Integer.parseInt(rs.getString("year")));
+                classData.setClasses(rs.getString("classes"));
+                getClasses.add(classData);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -182,7 +207,7 @@ public class studentMaster extends javax.swing.JFrame {
 
         jLabel33.setText("Current Year:-");
 
-        year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018" }));
+        year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018", "2019", "2020" }));
         year.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yearActionPerformed(evt);
@@ -1023,29 +1048,35 @@ public class studentMaster extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearActionPerformed
+        fillComboClass();
         // TODO add your handling code here:
     }//GEN-LAST:event_yearActionPerformed
 
     private void getyearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getyearActionPerformed
-
 
     }//GEN-LAST:event_getyearActionPerformed
     public void fillComboClass() {
         try {
             db = new Database();
             select_class.removeAllItems();
-            int currentyear = Integer.parseInt((String) year.getSelectedItem());
+            select_class1.removeAllItems();
+            select_class2.removeAllItems();
+            select_class3.removeAllItems();
+            int currentyear = Integer.parseInt(year.getSelectedItem().toString());
             String url2 = "select * from year_classes where year =" + currentyear + "";
 
             String combine = "";
             ResultSet rs = db.Excecute(url2);
             while (rs.next()) {
                 String name = rs.getString("classes");
-                select_class.addItem(name);
-                select_class1.addItem(name);
-                select_class2.addItem(name);
-                select_class3.addItem(name);
-                combine = combine + name + "\n";
+                classesarray = name.split(",");
+                for (int i = 0; i < classesarray.length; i++) {
+                    select_class.addItem(classesarray[i]);
+                    select_class1.addItem(classesarray[i]);
+                    select_class2.addItem(classesarray[i]);
+                    select_class3.addItem(classesarray[i]);
+                    combine = combine + classesarray[i] + "\n";
+                }
             }
             showallclasses.setText(combine);
         } catch (Exception e) {
@@ -1096,24 +1127,44 @@ public class studentMaster extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         int currentyear = Integer.parseInt((String) year.getSelectedItem());
+        int value = -1;
         String newclass = new_class.getText();
-
         if (newclass.toString().isEmpty()) {
             CommonUtility.showDialog(Constants.enterClassName, this);
             return;
         }
         try {
             db = new Database();
-            String query = "insert into year_classes(classes,year) values('" + currentyear + "','" + newclass + "')";
-            db.Update(query);
-            CommonUtility.showDialog(Constants.datahasbeeninseartedsuccessfully, this);
+            if (getClasses.size() > 0) {
+                for (int i = 0; i < getClasses.size(); i++) {
+                    if (currentyear == getClasses.get(i).getClassYear()) {
+                        value = i;
+                        break;
+                    } else {
+                        value = -1;
+                    }
+                }
+                if (value != -1) {
+                    newclass = getClasses.get(value).getClasses() + "," + newclass;
+                }
+            }
+
+            if (value == -1) {
+                String query = "insert into year_classes(year,classes) values('" + currentyear + "','" + newclass + "')";
+                db.Update(query);
+                CommonUtility.showDialog(Constants.datahasbeeninseartedsuccessfully, this);
+            } else {
+                String query = "update year_classes set classes='" + newclass + "',year=" + currentyear
+                        + " where class_id=" + getClasses.get(value).getClassId();
+                db.Update(query);
+                CommonUtility.showDialog(Constants.datahasbeeninseartedsuccessfully, this);
+            }
             int index = jTabbedPane1.getSelectedIndex();
             sm = new studentMaster(index);
             sm.setVisible(true);
             dispose();
         } catch (Exception e) {
             System.out.println(e);
-
     }//GEN-LAST:event_jButton1ActionPerformed
     }
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
@@ -1126,12 +1177,18 @@ public class studentMaster extends javax.swing.JFrame {
         if (select_class.getItemCount() == 0 || select_class.getItemCount() < 0) {
             JOptionPane.showMessageDialog(this, Constants.enterclass);
             return;
+        } else if (set_section.getText().toString().isEmpty()) {
+            CommonUtility.showDialog(Constants.entersection, this);
+            return;
+        } else if (total_student.getText().toString().isEmpty()) {
+            CommonUtility.showDialog(Constants.enternumofstudents,this);
+            return;
         }
         int selectedclass = Integer.parseInt((String) select_class.getSelectedItem());
         String section = set_section.getText();
         String totalstudent = total_student.getText();
 
-        String query = "insert into classes_section_students) values('" + selectedclass + "','" + section + "','" + totalstudent + "')";
+        String query = "insert into classes_section_students values('" + selectedclass + "','" + section + "','" + totalstudent + "')";
         try {
             if (section.toString().isEmpty()) {
                 CommonUtility.showDialog(Constants.enterSecName, this);
@@ -1177,7 +1234,7 @@ public class studentMaster extends javax.swing.JFrame {
     }//GEN-LAST:event_select_class3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        String getclasses = "";
         if (select_class1.getItemCount() == 0 || select_class1.getItemCount() < 0) {
             CommonUtility.showDialog(Constants.enterclass, this);
             return;
@@ -1188,8 +1245,16 @@ public class studentMaster extends javax.swing.JFrame {
             return;
         }
 
-        String query = "update year_classes set classes='" + updateclassname.getText()
-                + "' where classes='" + select_class1.getSelectedItem() + "'";
+        for (int i = 0; i < classesarray.length; i++) {
+            if (select_class1.getSelectedItem().equals(classesarray[i])) {
+                classesarray[i] = updateclassname.getText().toString();
+                break;
+            }
+        }
+
+        getclasses = String.join(",", classesarray);
+        String query = "update year_classes set classes='" + getclasses
+                + "' where year=" + year.getSelectedItem().toString() + "";
         try {
             db = new Database();
             db.Update(query);
@@ -1222,7 +1287,7 @@ public class studentMaster extends javax.swing.JFrame {
         try {
             db = new Database();
             db.Update(query);
-            JOptionPane.showMessageDialog(this, Constants.updatesection);
+            CommonUtility.showDialog(Constants.updatesection, this);
         } catch (Exception e) {
 
         }

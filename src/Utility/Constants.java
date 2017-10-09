@@ -21,7 +21,8 @@ public class Constants {
     public static final String enterNumstudents = "please enter number of students";
     public static final String enterclass = "please enter your class";
     public static final String updateclass = "class has been updated successfully";
-     public static final String updatesection = "section has been updated successfully";
+    public static final String updatesection = "section has been updated successfully";
     public static final String entersection = "please enter your section";
     public static final String enternumofstudents = "please enter number of students";
+    public static final String entercorrectyear = "please enter correct year";
 }
