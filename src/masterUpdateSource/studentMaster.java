@@ -35,6 +35,7 @@ public class studentMaster extends javax.swing.JFrame {
         fillComboClass();
         // fillcombosection();
         commonGetData();
+        fillSectionData();
     }
 
     public studentMaster(int index) {
@@ -43,6 +44,7 @@ public class studentMaster extends javax.swing.JFrame {
         fillComboClass();
         jTabbedPane1.setSelectedIndex(index);
         commonGetData();
+        fillSectionData();
     }
 
     private void commonGetData() {
@@ -389,7 +391,7 @@ public class studentMaster extends javax.swing.JFrame {
 
         jLabel34.setText("Current Year:-");
 
-        getyear.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018" }));
+        getyear.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018", "2019", "2020" }));
         getyear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 getyearActionPerformed(evt);
@@ -479,16 +481,16 @@ public class studentMaster extends javax.swing.JFrame {
                 select_class2ItemStateChanged(evt);
             }
         });
-        select_class2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                select_class2ActionPerformed(evt);
-            }
-        });
         select_class2.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 select_class2InputMethodTextChanged(evt);
+            }
+        });
+        select_class2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                select_class2ActionPerformed(evt);
             }
         });
         select_class2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1053,15 +1055,12 @@ public class studentMaster extends javax.swing.JFrame {
     }//GEN-LAST:event_yearActionPerformed
 
     private void getyearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getyearActionPerformed
-
+        fillSectionData();
     }//GEN-LAST:event_getyearActionPerformed
     public void fillComboClass() {
         try {
             db = new Database();
-            select_class.removeAllItems();
             select_class1.removeAllItems();
-            select_class2.removeAllItems();
-            select_class3.removeAllItems();
             int currentyear = Integer.parseInt(year.getSelectedItem().toString());
             String url2 = "select * from year_classes where year =" + currentyear + "";
 
@@ -1071,14 +1070,38 @@ public class studentMaster extends javax.swing.JFrame {
                 String name = rs.getString("classes");
                 classesarray = name.split(",");
                 for (int i = 0; i < classesarray.length; i++) {
-                    select_class.addItem(classesarray[i]);
                     select_class1.addItem(classesarray[i]);
-                    select_class2.addItem(classesarray[i]);
-                    select_class3.addItem(classesarray[i]);
                     combine = combine + classesarray[i] + "\n";
                 }
             }
             showallclasses.setText(combine);
+            rs.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void fillSectionData() {
+        try {
+            db = new Database();
+            select_class.removeAllItems();
+            select_class2.removeAllItems();
+            select_class3.removeAllItems();
+            int currentyear = Integer.parseInt(getyear.getSelectedItem().toString());
+            String url2 = "select * from year_classes where year =" + currentyear + "";
+
+            String combine = "";
+            ResultSet rs = db.Excecute(url2);
+            while (rs.next()) {
+                String name = rs.getString("classes");
+                classesarray = name.split(",");
+                for (int i = 0; i < classesarray.length; i++) {
+                    select_class.addItem(classesarray[i]);
+                    select_class2.addItem(classesarray[i]);
+                    select_class3.addItem(classesarray[i]);
+                }
+            }
+            rs.close();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -1173,7 +1196,9 @@ public class studentMaster extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        String getSections = "";
+        String getClassesComboBox = "";
+        int class_id = 0;
         if (select_class.getItemCount() == 0 || select_class.getItemCount() < 0) {
             JOptionPane.showMessageDialog(this, Constants.enterclass);
             return;
@@ -1181,24 +1206,62 @@ public class studentMaster extends javax.swing.JFrame {
             CommonUtility.showDialog(Constants.entersection, this);
             return;
         } else if (total_student.getText().toString().isEmpty()) {
-            CommonUtility.showDialog(Constants.enternumofstudents,this);
+            CommonUtility.showDialog(Constants.enternumofstudents, this);
             return;
         }
         int selectedclass = Integer.parseInt((String) select_class.getSelectedItem());
         String section = set_section.getText();
         String totalstudent = total_student.getText();
-
-        String query = "insert into classes_section_students values('" + selectedclass + "','" + section + "','" + totalstudent + "')";
         try {
-            if (section.toString().isEmpty()) {
-                CommonUtility.showDialog(Constants.enterSecName, this);
-            } else if (totalstudent.toString().isEmpty()) {
-                CommonUtility.showDialog(Constants.enterNumstudents, this);
-                return;
-            }
+            String qry = "select * from year_classes where year=" + getyear.getSelectedItem();
             db = new Database();
-            db.Update(query);
-            CommonUtility.showDialog(Constants.datahasbeeninseartedsuccessfully, this);
+            ResultSet rs = db.Excecute(qry);
+            if (rs.next()) {
+                class_id = rs.getInt("class_id");
+            }
+            int value = -1;
+            String qry1 = "select * from classes_section_students where class_id=" + class_id;
+            ResultSet rs1 = db.Excecute(qry1);
+            int sec_id;
+            if (rs1.next()) {
+                getSections = rs1.getString("section");
+                sec_id = rs1.getInt("sec_id");
+                String divideSections[] = getSections.split(",");
+                ArrayList getAllSections =new ArrayList();
+                for (int i = 0; i < divideSections.length; i++) {
+                    getAllSections.add(divideSections[i]);
+                }
+                for (int i = 0; i < getAllSections.size(); i++) {
+                    if (((String)getAllSections.get(i)).contains("" + selectedclass)) {
+                        value = i;
+                        break;
+                    }
+                }
+                if (value == -1) {  //means that class not making any section
+                    section = selectedclass + "_" + section;
+                    section = String.join(",", getAllSections) + "," + section;
+                    String query = "update classes_section_students set class_id=" + class_id + ",section='" + section + "' where sec_id=" + sec_id;
+                    db.Update(query);
+                    CommonUtility.showDialog(Constants.datahasbeeninseartedsuccessfully, this);
+                } else { //means this class make any section already
+                    section = getAllSections.get(value) + "_" + section;
+                    getAllSections.set(value, section);
+                    section = String.join(",", getAllSections);
+                    String query = "update classes_section_students set class_id=" + class_id + ",section='" + section + "' where sec_id=" + sec_id;
+                    db.Update(query);
+                    CommonUtility.showDialog(Constants.datahasbeeninseartedsuccessfully, this);
+                }
+            } else {
+                section = selectedclass + "_" + section;
+                String query = "insert into classes_section_students(class_id,section) values(" + class_id + ",'" + section + "')";
+                db.Update(query);
+                CommonUtility.showDialog(Constants.datahasbeeninseartedsuccessfully, this);
+            }
+//        getClasses = String.join(",", classesarray);
+//        for (int i = 0; i < select_class.getItemCount(); i++) {
+//              getClassesComboBox=getClassesComboBox+select_class.getItemAt(i);
+//        }
+
             int index = jTabbedPane1.getSelectedIndex();
             sm = new studentMaster(index);
             sm.setVisible(true);
