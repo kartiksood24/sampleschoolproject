@@ -32,14 +32,6 @@ public class NewRegistration extends javax.swing.JFrame {
 
             rs.close();
             getClassesData(db);
-//            class_reg_id = new int[count];
-//            ResultSet rs2 = db.Excecute(query);
-//            
-//            count = 0;
-//            while (rs2.next()) {
-//                class_reg_id[count] = rs2.getInt("class_register_id");
-//            }
-
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
         }
@@ -556,7 +548,7 @@ public class NewRegistration extends javax.swing.JFrame {
         } else if (yearselect.getSelectedItem().equals("Select")) {
             JOptionPane.showMessageDialog(this, "Select Year");
         } else {
-            int class2 = class_reg_id[select_class.getSelectedIndex()];
+            int class2 = select_class.getSelectedIndex();
             long mob_no1 = Long.parseLong(mobile_no.getText());
             int year1 = Integer.parseInt(yearselect.getSelectedItem().toString());
             String query = "insert into register_student values(" + regd_no1 + ",'" + stu_name1 + "','"
