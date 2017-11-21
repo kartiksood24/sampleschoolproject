@@ -28,6 +28,8 @@ public class studentMaster extends javax.swing.JFrame {
     studentMaster sm;
     ArrayList<ClassData> getClasses = new ArrayList();
     String classesarray[];
+    CommonUtility cu;
+    ArrayList getAllSections =new ArrayList();
 
     public studentMaster() {
         initComponents();
@@ -1227,7 +1229,7 @@ public class studentMaster extends javax.swing.JFrame {
                 getSections = rs1.getString("section");
                 sec_id = rs1.getInt("sec_id");
                 String divideSections[] = getSections.split(",");
-                ArrayList getAllSections =new ArrayList();
+                
                 for (int i = 0; i < divideSections.length; i++) {
                     getAllSections.add(divideSections[i]);
                 }
@@ -1239,14 +1241,14 @@ public class studentMaster extends javax.swing.JFrame {
                 }
                 if (value == -1) {  //means that class not making any section
                     section = selectedclass + "_" + section;
-                    section = String.join(",", getAllSections) + "," + section;
+                    section = cu.join(getAllSections,",") + "," + section;
                     String query = "update classes_section_students set class_id=" + class_id + ",section='" + section + "' where sec_id=" + sec_id;
                     db.Update(query);
                     CommonUtility.showDialog(Constants.datahasbeeninseartedsuccessfully, this);
                 } else { //means this class make any section already
                     section = getAllSections.get(value) + "_" + section;
                     getAllSections.set(value, section);
-                    section = String.join(",", getAllSections);
+                    section = cu.join(getAllSections,",");
                     String query = "update classes_section_students set class_id=" + class_id + ",section='" + section + "' where sec_id=" + sec_id;
                     db.Update(query);
                     CommonUtility.showDialog(Constants.datahasbeeninseartedsuccessfully, this);
@@ -1314,8 +1316,10 @@ public class studentMaster extends javax.swing.JFrame {
                 break;
             }
         }
-
-        getclasses = String.join(",", classesarray);
+        for (int i = 0; i < classesarray.length; i++) {
+                    getAllSections.add(classesarray[i]);
+                }
+        getclasses = cu.join(getAllSections,",");
         String query = "update year_classes set classes='" + getclasses
                 + "' where year=" + year.getSelectedItem().toString() + "";
         try {
