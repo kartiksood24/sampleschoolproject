@@ -1,11 +1,22 @@
 
 import Utility.Database;
+import com.mysql.jdbc.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class NewRegistration extends javax.swing.JFrame {
 
@@ -15,10 +26,23 @@ public class NewRegistration extends javax.swing.JFrame {
     ButtonGroup bg;
     int class_reg_id[];
     Database db;
+    Connection dd;
+    
+            String url;
 
-    public NewRegistration() throws SQLException {
+    public NewRegistration()  {
         initComponents();
-
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        url="jdbc:mysql://localhost:3306/school";
+        try { 
+            dd=(Connection) DriverManager.getConnection(url,"root","root");
+        } catch (SQLException ex) {
+            Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
+        }
         int var = 0;
         this.setLocationRelativeTo(null);
         try {
@@ -111,6 +135,7 @@ public class NewRegistration extends javax.swing.JFrame {
         jButton2.setText("New Regd. No");
 
         stu_name.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        stu_name.setScrollOffset(1);
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel1.setText("Student Name :-");
@@ -123,6 +148,7 @@ public class NewRegistration extends javax.swing.JFrame {
         });
 
         father_name.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        father_name.setScrollOffset(2);
         father_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 father_nameActionPerformed(evt);
@@ -136,6 +162,7 @@ public class NewRegistration extends javax.swing.JFrame {
         jLabel4.setText("Mother Name :-");
 
         mother_name.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        mother_name.setScrollOffset(3);
         mother_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mother_nameActionPerformed(evt);
@@ -146,6 +173,7 @@ public class NewRegistration extends javax.swing.JFrame {
         jLabel6.setText("Age  :-");
 
         age.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        age.setScrollOffset(4);
         age.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ageActionPerformed(evt);
@@ -263,7 +291,7 @@ public class NewRegistration extends javax.swing.JFrame {
         jLabel14.setText("Select Year :-");
 
         yearselect.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        yearselect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033" }));
+        yearselect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018", "2019" }));
         yearselect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yearselectActionPerformed(evt);
@@ -289,13 +317,14 @@ public class NewRegistration extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(14, 14, 14)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(phone_no, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mobile_no, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(male)
-                                .addGap(18, 18, 18)
-                                .addComponent(female))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(male)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(female)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -376,7 +405,7 @@ public class NewRegistration extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -418,7 +447,7 @@ public class NewRegistration extends javax.swing.JFrame {
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jLabel13.setFont(new java.awt.Font("Viner Hand ITC", 3, 48)); // NOI18N
@@ -563,7 +592,8 @@ public class NewRegistration extends javax.swing.JFrame {
                 System.out.println(e);
             }
         }
-// TODO add your handling code here:
+// TODO add your handling code here
+       
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
@@ -571,8 +601,20 @@ public class NewRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox4ActionPerformed
     @SuppressWarnings("null")
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-
+            try{
+               // String src="C://Users//AMD//Documents//NetBeansProjects//sampleschoolproject//src//AllPrintingData//newReport.jrxml";
+                JasperDesign jd= JRXmlLoader.load("C://Users//AMD//Documents//NetBeansProjects//sampleschoolproject//src//AllPrintingData//printreport.jrxml");
+                // String query= "select * from register_student";          
+                // JRDesignQuery qq=new JRDesignQuery();
+                // qq.setText(query);
+              //   jd.setQuery(qq);
+                 JasperReport jr=JasperCompileManager.compileReport(jd);
+                 JasperPrint jp;
+                jp = JasperFillManager.fillReport(jr, null,dd);
+                JasperViewer.viewReport(jp);
+            
+            
+            }catch(JRException X){System.out.println(X);}
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -617,11 +659,7 @@ public class NewRegistration extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new NewRegistration().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new NewRegistration().setVisible(true);
             }
         });
     }

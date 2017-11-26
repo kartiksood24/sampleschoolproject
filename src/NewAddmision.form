@@ -355,10 +355,7 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="mothermname" min="-2" pref="108" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="motherlname" min="-2" pref="108" max="-2" attributes="0"/>
-                                                  <Component id="datepick" min="-2" pref="102" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="motherlname" min="-2" pref="108" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
@@ -436,7 +433,6 @@
                                       <Component id="age" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="birthplace" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="datepick" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -458,7 +454,7 @@
                                   <Component id="jLabel48" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="fatherinc" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="23" max="32767" attributes="0"/>
+                              <EmptySpace pref="24" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -689,8 +685,6 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fatherincActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="org.jdesktop.swingx.JXDatePicker" name="datepick">
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel49">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Adhar Card No."/>
@@ -748,7 +742,7 @@
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jXDatePicker2" min="-2" pref="102" max="-2" attributes="0"/>
+                                              <Component id="datepick" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Component id="select_class" min="-2" pref="82" max="-2" attributes="0"/>
@@ -758,7 +752,7 @@
                                               <Component id="select_section" min="-2" pref="72" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="163" max="32767" attributes="0"/>
+                                      <EmptySpace pref="179" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jButton12" min="-2" max="-2" attributes="0"/>
@@ -777,14 +771,16 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="current_year" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="regd_id" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jXDatePicker2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButton10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="current_year" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="regd_id" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="datepick" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -897,8 +893,6 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField17ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="org.jdesktop.swingx.JXDatePicker" name="jXDatePicker2">
-                    </Component>
                     <Component class="javax.swing.JComboBox" name="select_class">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -915,6 +909,8 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                    </Component>
+                    <Component class="com.toedter.calendar.JDateChooser" name="datepick">
                     </Component>
                   </SubComponents>
                 </Container>
