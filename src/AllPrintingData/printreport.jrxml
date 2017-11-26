@@ -221,7 +221,7 @@
 				<text><![CDATA[Regd Fee:________________]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="38" y="32" width="67" height="17" uuid="c4def9e3-8738-4606-8890-1e362e446aa5"/>
+				<reportElement x="38" y="32" width="60" height="17" uuid="c4def9e3-8738-4606-8890-1e362e446aa5"/>
 				<textElement verticalAlignment="Bottom">
 					<font size="12"/>
 				</textElement>

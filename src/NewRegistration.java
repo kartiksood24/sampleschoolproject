@@ -604,10 +604,14 @@ public class NewRegistration extends javax.swing.JFrame {
             try{
                // String src="C://Users//AMD//Documents//NetBeansProjects//sampleschoolproject//src//AllPrintingData//newReport.jrxml";
                 JasperDesign jd= JRXmlLoader.load("C://Users//AMD//Documents//NetBeansProjects//sampleschoolproject//src//AllPrintingData//printreport.jrxml");
-                 JasperReport jr=JasperCompileManager.compileReport(jd);
-           //      JasperQuery query="select * from register_student where reg_no= "+ regd_no.getText();
+          //     int qur= regd_no.getText();
+           //   JRDesignQuery query="select * from register_student where reg_no=";
+          //       jd.setQuery(query);
+                  JasperReport jr=JasperCompileManager.compileReport(jd);
+                
                  JasperPrint jp;
-                jp = JasperFillManager.fillReport(jr, null,dd);
+                
+                 jp = JasperFillManager.fillReport(jr, null,dd);
                 JasperViewer.viewReport(jp);
             
             
