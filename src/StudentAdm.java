@@ -645,11 +645,7 @@ public class StudentAdm extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
                 NewRegistration rr = null;
-        try {
-            rr = new NewRegistration();
-        } catch (SQLException ex) {
-            Logger.getLogger(StudentAdm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                rr = new NewRegistration();
                     rr.setVisible(true);
                     new StudentAdm().setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
