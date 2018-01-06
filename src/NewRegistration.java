@@ -1,22 +1,12 @@
-
+import Utility.CommonUtility;
 import Utility.Database;
-import com.mysql.jdbc.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JRDesignQuery;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;
+
 
 public class NewRegistration extends javax.swing.JFrame {
 
@@ -26,24 +16,21 @@ public class NewRegistration extends javax.swing.JFrame {
     ButtonGroup bg;
     int class_reg_id[];
     Database db;
-    Connection dd;
+    
     
             String url;
 
     public NewRegistration()  {
         initComponents();
+        address.setTabSize(0);
+       
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
         }
         url="jdbc:mysql://localhost:3306/school";
-        try { 
-            dd=(Connection) DriverManager.getConnection(url,"root","root");
-        } catch (SQLException ex) {
-            Logger.getLogger(NewRegistration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int var = 0;
+                int var = 0;
         this.setLocationRelativeTo(null);
         try {
             String qry = "select ifnull(max(reg_no),0) from register_student";
@@ -70,7 +57,7 @@ public class NewRegistration extends javax.swing.JFrame {
         try {
             select_class.removeAllItems();
             if (db != null) {
-                String query = "select * from year_classes where year=" + Integer.parseInt(yearselect.getSelectedItem().toString());
+                String query = "select * from year_classes where year=" + yearselect.getYear();
                 ResultSet rs1 = db.Excecute(query);
 
                 if (rs1.next()) {
@@ -122,8 +109,8 @@ public class NewRegistration extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        yearselect = new javax.swing.JComboBox();
         select_class = new javax.swing.JComboBox();
+        yearselect = new com.toedter.calendar.JYearChooser();
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -135,7 +122,7 @@ public class NewRegistration extends javax.swing.JFrame {
         jButton2.setText("New Regd. No");
 
         stu_name.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        stu_name.setScrollOffset(1);
+        stu_name.setScrollOffset(6);
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel1.setText("Student Name :-");
@@ -250,6 +237,8 @@ public class NewRegistration extends javax.swing.JFrame {
         address.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         address.setLineWrap(true);
         address.setRows(5);
+        address.setWrapStyleWord(true);
+        address.setInheritsPopupMenu(true);
         jScrollPane1.setViewportView(address);
 
         jLabel8.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -290,17 +279,35 @@ public class NewRegistration extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel14.setText("Select Year :-");
 
-        yearselect.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        yearselect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018", "2019" }));
-        yearselect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yearselectActionPerformed(evt);
-            }
-        });
-
         select_class.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 select_classActionPerformed(evt);
+            }
+        });
+
+        yearselect.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                yearselectMouseClicked(evt);
+            }
+        });
+        yearselect.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                yearselectInputMethodTextChanged(evt);
+            }
+        });
+        yearselect.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                yearselectPropertyChange(evt);
+            }
+        });
+        yearselect.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                yearselectKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                yearselectKeyTyped(evt);
             }
         });
 
@@ -319,12 +326,11 @@ public class NewRegistration extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(phone_no, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(mobile_no, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(male)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(female)))))
+                            .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(male)
+                                .addGap(18, 18, 18)
+                                .addComponent(female))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -387,12 +393,13 @@ public class NewRegistration extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(regd_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yearselect, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(yearselect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(regd_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -447,7 +454,7 @@ public class NewRegistration extends javax.swing.JFrame {
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel13.setFont(new java.awt.Font("Viner Hand ITC", 3, 48)); // NOI18N
@@ -528,9 +535,9 @@ public class NewRegistration extends javax.swing.JFrame {
 
         String gender;
         if (male.isSelected()) {
-            gender = "male";
+            gender = "M";
         } else {
-            gender = "female";
+            gender = "F";
         }
 
         String ph_no;
@@ -548,7 +555,7 @@ public class NewRegistration extends javax.swing.JFrame {
 
         if (stu_name1.isEmpty() && father_name1.isEmpty() && mother_name1.isEmpty()
                 && gender.isEmpty() && address1.isEmpty() && state1.isEmpty() && city1.isEmpty()
-                && regd_fee1.isEmpty() && ((yearselect.getSelectedItem().equals("Select")))) {
+                && regd_fee1.isEmpty() ) {
             JOptionPane.showMessageDialog(this, "Fill Form Properly");
         } else if (stu_name1.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student Name can not be empty");
@@ -574,12 +581,11 @@ public class NewRegistration extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Fill Mobile No");
         } else if (phone_no.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Fill Phone No");
-        } else if (yearselect.getSelectedItem().equals("Select")) {
-            JOptionPane.showMessageDialog(this, "Select Year");
-        } else {
+        }  else {
             int class2 = select_class.getSelectedIndex();
             long mob_no1 = Long.parseLong(mobile_no.getText());
-            int year1 = Integer.parseInt(yearselect.getSelectedItem().toString());
+            int year1;
+            year1 = yearselect.getYear();
             String query = "insert into register_student values(" + regd_no1 + ",'" + stu_name1 + "','"
                     + father_name1 + "','" + mother_name1 + "'," + Integer.parseInt(age.getText()) + ",'" + gender + "','" + ph_no + "',"
                     + mob_no1 + ",'" + address1 + "','" + state1 + "','" + city1 + "','" + class2 + "','" + regd_fee1
@@ -601,21 +607,9 @@ public class NewRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox4ActionPerformed
     @SuppressWarnings("null")
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-            try{
-               // String src="C://Users//AMD//Documents//NetBeansProjects//sampleschoolproject//src//AllPrintingData//newReport.jrxml";
-                JasperDesign jd= JRXmlLoader.load("C://Users//AMD//Documents//NetBeansProjects//sampleschoolproject//src//AllPrintingData//printreport.jrxml");
-          //     int qur= regd_no.getText();
-           //   JRDesignQuery query="select * from register_student where reg_no=";
-          //       jd.setQuery(query);
-                  JasperReport jr=JasperCompileManager.compileReport(jd);
-                
-                 JasperPrint jp;
-                
-                 jp = JasperFillManager.fillReport(jr, null,dd);
-                JasperViewer.viewReport(jp);
-            
-            
-            }catch(JRException X){System.out.println(X);}
+        String file="C://Users//AMD//Documents//NetBeansProjects//sampleschoolproject//src//AllPrintingData//printreport.jrxml";
+        String sqlQuery="Select * from register_student where reg_no="+regd_no.getText();
+        new CommonUtility().printRegistration(file,sqlQuery);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -626,9 +620,40 @@ public class NewRegistration extends javax.swing.JFrame {
 
     }//GEN-LAST:event_select_classActionPerformed
 
-    private void yearselectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearselectActionPerformed
-        getClassesData(db);
-    }//GEN-LAST:event_yearselectActionPerformed
+    private void yearselectKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_yearselectKeyPressed
+        
+    }//GEN-LAST:event_yearselectKeyPressed
+
+    private void yearselectInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_yearselectInputMethodTextChanged
+      
+    }//GEN-LAST:event_yearselectInputMethodTextChanged
+
+    private void yearselectKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_yearselectKeyTyped
+      
+    }//GEN-LAST:event_yearselectKeyTyped
+
+    private void yearselectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yearselectMouseClicked
+       
+    }//GEN-LAST:event_yearselectMouseClicked
+
+    private void yearselectPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_yearselectPropertyChange
+       try {
+            select_class.removeAllItems();
+            if (db != null) {
+                String query = "select * from year_classes where year=" + yearselect.getYear();
+                ResultSet rs1 = db.Excecute(query);
+
+                if (rs1.next()) {
+                    String[] getClasses = rs1.getString("classes").split(",");
+                    for (int i = 0; i < getClasses.length; i++) {
+                        select_class.addItem(getClasses[i]);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_yearselectPropertyChange
 
     /**
      * @param args the command line arguments
@@ -701,6 +726,6 @@ public class NewRegistration extends javax.swing.JFrame {
     private javax.swing.JComboBox select_class;
     private javax.swing.JTextField state;
     private javax.swing.JTextField stu_name;
-    private javax.swing.JComboBox yearselect;
+    private com.toedter.calendar.JYearChooser yearselect;
     // End of variables declaration//GEN-END:variables
 }

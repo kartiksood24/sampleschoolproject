@@ -1,4 +1,3 @@
-
 import Utility.Constants;
 import Utility.Database;
 import java.awt.image.BufferedImage;
@@ -11,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.TimeZone;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -43,37 +43,103 @@ public class NewAddmision extends javax.swing.JFrame {
     /**
      * Creates new form NewAddmision
      */Database db;
+    
     public NewAddmision() {
         initComponents();
        
 
         this.setLocationRelativeTo(null);
         this.setVisible(false);
+        
         fillcomboclasses();
-        // other.setVisible(false);
+       
+        
 
     }
     
     
     public void fillcombosection() {
         try {
+             select_section.removeAllItems();
+              ArrayList getAllSections =new ArrayList();
+            String section;
+            int value = 0;
+            String divideSections[] = null;
+            String getSections="";
+            int class_id = 0;
+            int yearselect=current_year.getValue();
             db = new Database();
-            select_section.removeAllItems();
+           
             int updateclass = Integer.parseInt((String) select_class.getSelectedItem());
-            String url = "select * from classes_section_students where classes =" + updateclass + "";
-
+            String url = "select * from year_classes where year=" + yearselect + "";
+            db = new Database();
             ResultSet rs = db.Excecute(url);
-            while (rs.next()) {
-                String name = rs.getString("section");
-                select_section.addItem(name);
+            if (rs.next()) {
+                class_id = rs.getInt("class_id");
             }
+            
+            String qry1 = "select * from classes_section_students where class_id=" + class_id;
+            ResultSet rs1 = db.Excecute(qry1);
+            String secid = null;
+            if(rs1.next())
+            {secid=rs1.getString("sec_id");
+            }
+            String qry2 = "select * from classes_section_students where sec_id=" + secid;
+            ResultSet rs2 = db.Excecute(qry2);
+             if (rs2.next()) {
+                getSections = rs2.getString("section");
+                divideSections = getSections.split(",");
+            }
+            for (int i = 0; i < divideSections.length; i++) {
+                    getAllSections.add(divideSections[i]);
+                }
+            for (int i = 0; i < getAllSections.size(); i++) {
+                    if (((String)getAllSections.get(i)).contains(""+select_class.getSelectedItem())) {
+                        value = i;
+                        break;
+                    }
+                    else
+                    {
+                    value=-1;
+                    }
+                }
+            section = getAllSections.get(value)+"";
+            String[] getclass=section.split("_");
+            if(value!=-1)
+            for (int i = 0+1; i < getclass.length; i++) {
+                        select_section.addItem(getclass[i]);}
+            
+            
 
         } catch (Exception e) {
             System.out.println(e);
         }
     }
     
-    
+     public void fillcomboclasses() {
+        try {
+        
+            db = new Database();
+            select_class.removeAllItems();
+            int currentyear=current_year.getValue();
+            roll_no.setText(currentyear+"");
+            if (db != null) {
+            String url2 = "select * from year_classes where year =" + currentyear + "";
+
+          //  String combine = "";
+            ResultSet rs = db.Excecute(url2);
+            if (rs.next()) {
+               String[] getClasses = rs.getString("classes").split(",");
+                for (int i = 0; i < getClasses.length; i++) {
+                        select_class.addItem(getClasses[i]);
+                    }
+                
+            }
+          //  showallclasses.setText(combine);
+        } }catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     
     
     
@@ -154,19 +220,19 @@ public class NewAddmision extends javax.swing.JFrame {
         regd_id = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
-        current_year = new javax.swing.JComboBox();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         stu_name = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
-        jTextField16 = new javax.swing.JTextField();
+        roll_no = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
         jTextField17 = new javax.swing.JTextField();
         select_class = new javax.swing.JComboBox();
         select_section = new javax.swing.JComboBox();
         datepick = new com.toedter.calendar.JDateChooser();
+        current_year = new com.toedter.calendar.JYearChooser();
         jPanel5 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         pnumber = new javax.swing.JTextField();
@@ -642,13 +708,6 @@ public class NewAddmision extends javax.swing.JFrame {
 
         jLabel18.setText("Current Year:-");
 
-        current_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018" }));
-        current_year.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                current_yearActionPerformed(evt);
-            }
-        });
-
         jLabel21.setText("Class:-");
 
         jLabel22.setText("Section:-");
@@ -670,9 +729,9 @@ public class NewAddmision extends javax.swing.JFrame {
             }
         });
 
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
+        roll_no.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
+                roll_noActionPerformed(evt);
             }
         });
 
@@ -691,6 +750,28 @@ public class NewAddmision extends javax.swing.JFrame {
                 select_classActionPerformed(evt);
             }
         });
+        select_class.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                select_classPropertyChange(evt);
+            }
+        });
+
+        current_year.setYear(2018);
+        current_year.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                current_yearMouseClicked(evt);
+            }
+        });
+        current_year.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                current_yearPropertyChange(evt);
+            }
+        });
+        current_year.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                current_yearKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -699,6 +780,12 @@ public class NewAddmision extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(roll_no, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -718,6 +805,7 @@ public class NewAddmision extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
                                 .addComponent(current_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel24)
@@ -729,16 +817,10 @@ public class NewAddmision extends javax.swing.JFrame {
                                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(select_section, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(179, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton11)
-                        .addGap(35, 35, 35))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton11)
+                .addGap(35, 35, 35))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -748,10 +830,10 @@ public class NewAddmision extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addComponent(jButton10)
                         .addComponent(jLabel18)
-                        .addComponent(current_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(regd_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel24))
-                    .addComponent(datepick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(datepick, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(current_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
@@ -764,7 +846,7 @@ public class NewAddmision extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(roll_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton11))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1611,26 +1693,7 @@ public class NewAddmision extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    public void fillcomboclasses() {
-        try {
-        
-            db = new Database();
-            select_class.removeAllItems();
-            int currentyear = Integer.parseInt((String) current_year.getSelectedItem());
-            String url2 = "select * from year_classes where year =" + currentyear + "";
-
-            String combine = "";
-            ResultSet rs = db.Excecute(url2);
-            while (rs.next()) {
-                String name = rs.getString("classes");
-                select_class.addItem(name);
-                
-            }
-          //  showallclasses.setText(combine);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
+   
     
     
     
@@ -1640,10 +1703,6 @@ public class NewAddmision extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_regd_idActionPerformed
 
-    private void current_yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_current_yearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_current_yearActionPerformed
-
     private void stu_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stu_nameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_stu_nameActionPerformed
@@ -1652,9 +1711,9 @@ public class NewAddmision extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
+    private void roll_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roll_noActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
+    }//GEN-LAST:event_roll_noActionPerformed
 
     private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
         // TODO add your handling code here:
@@ -2174,6 +2233,22 @@ public class NewAddmision extends javax.swing.JFrame {
       fillcombosection();
     }//GEN-LAST:event_select_classActionPerformed
 
+    private void current_yearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_current_yearMouseClicked
+        
+    }//GEN-LAST:event_current_yearMouseClicked
+
+    private void current_yearKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_current_yearKeyPressed
+     
+    }//GEN-LAST:event_current_yearKeyPressed
+
+    private void current_yearPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_current_yearPropertyChange
+        fillcomboclasses(); fillcombosection();       // TODO add your handling code here:
+    }//GEN-LAST:event_current_yearPropertyChange
+
+    private void select_classPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_select_classPropertyChange
+    
+    }//GEN-LAST:event_select_classPropertyChange
+
     /**
      * @param args the command line arguments
      */
@@ -2229,7 +2304,7 @@ public class NewAddmision extends javax.swing.JFrame {
     private javax.swing.JTextField course4;
     private javax.swing.JTextField cpincode;
     private javax.swing.JTextField cstate;
-    private javax.swing.JComboBox current_year;
+    private com.toedter.calendar.JYearChooser current_year;
     private com.toedter.calendar.JDateChooser datepick;
     private javax.swing.JTextArea document;
     private javax.swing.JTextField fatheradhar;
@@ -2337,7 +2412,6 @@ public class NewAddmision extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField62;
     private javax.swing.JTextField llnumber;
@@ -2363,6 +2437,7 @@ public class NewAddmision extends javax.swing.JFrame {
     private javax.swing.JTextField pstate;
     private javax.swing.JTextField regd_id;
     private javax.swing.JComboBox religion;
+    private javax.swing.JTextField roll_no;
     private javax.swing.JTextField school1;
     private javax.swing.JTextField school2;
     private javax.swing.JTextField school3;

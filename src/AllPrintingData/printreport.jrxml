@@ -51,9 +51,6 @@
 	<field name="status" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
 	<title>
 		<band height="70" splitType="Stretch">
 			<staticText>
@@ -80,7 +77,7 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="82" splitType="Stretch">
+		<band height="64" splitType="Stretch">
 			<staticText>
 				<reportElement x="195" y="0" width="159" height="28" uuid="b6e43954-796e-41e6-a152-0b986a7179c1"/>
 				<textElement>
@@ -89,28 +86,28 @@
 				<text><![CDATA[Registration Slip]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="18" y="59" width="32" height="18" uuid="d523eaec-a4a4-47c7-873e-9a32031afa51"/>
+				<reportElement x="18" y="41" width="32" height="18" uuid="d523eaec-a4a4-47c7-873e-9a32031afa51"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[id no:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="50" y="59" width="74" height="18" uuid="0e8ac5ec-82ec-4550-ac73-e017699a7485"/>
+				<reportElement x="51" y="41" width="74" height="18" uuid="0e8ac5ec-82ec-4550-ac73-e017699a7485"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{reg_no}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="364" y="59" width="32" height="18" uuid="0ab16e00-efde-41b4-9e78-efb3f668d68f"/>
+				<reportElement x="360" y="41" width="32" height="18" uuid="0ab16e00-efde-41b4-9e78-efb3f668d68f"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Date:]]></text>
 			</staticText>
 			<textField pattern="EEE, d MMM yyyy HH:mm:ss Z">
-				<reportElement x="396" y="59" width="155" height="18" uuid="7ffe4149-b02d-4c36-a88a-d98983743f9c"/>
+				<reportElement x="392" y="41" width="155" height="18" uuid="7ffe4149-b02d-4c36-a88a-d98983743f9c"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -119,120 +116,141 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="8" splitType="Stretch"/>
+		<band height="2" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="90" splitType="Stretch">
-			<staticText>
-				<reportElement x="18" y="47" width="391" height="15" uuid="e0d2bef8-d44c-4759-a6b6-6aa6a90cd2f7"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[s/d/w of __________________________________________________________]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="51" y="16" width="472" height="19" uuid="eb2ddc94-7cce-46fb-ac55-9dd3640d634c"/>
-				<textElement verticalAlignment="Bottom"/>
-				<text><![CDATA[The Registration of Student_______________________________________________________]]></text>
-			</staticText>
+		<band height="74" splitType="Stretch">
 			<textField>
-				<reportElement x="85" y="47" width="311" height="13" uuid="8867f0da-8585-4852-b6bf-6783d93b4fcb"/>
+				<reportElement x="81" y="34" width="311" height="13" uuid="8867f0da-8585-4852-b6bf-6783d93b4fcb"/>
 				<textElement verticalAlignment="Top">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{father_name}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="409" y="47" width="19" height="18" uuid="1da8628c-14a9-4b3e-a55a-de28af8675ac"/>
-				<textElement verticalAlignment="Middle">
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[Age:]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="438" y="50" width="22" height="15" uuid="71e04bb4-7bd6-4c95-9a91-9a7aa09624d4"/>
+				<reportElement x="192" y="8" width="312" height="14" uuid="431c7e7e-7da3-421c-8460-9130f97bccfa"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{age}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{stu_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="460" y="50" width="5" height="15" uuid="8597d9f1-fd40-4483-994b-6472251b1f22"/>
-				<textElement>
-					<font isBold="true"/>
+				<reportElement x="14" y="34" width="391" height="15" uuid="e0d2bef8-d44c-4759-a6b6-6aa6a90cd2f7"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[s/d/w of __________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="52" width="106" height="18" uuid="f7e1fe75-9532-4ee6-a403-e41a0093d1c5"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[/]]></text>
+				<text><![CDATA[uder class ____  .]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="465" y="50" width="16" height="15" uuid="eb0fdff9-e3dc-4544-8226-c2ec1c95fc55"/>
+				<reportElement x="461" y="37" width="16" height="15" uuid="eb0fdff9-e3dc-4544-8226-c2ec1c95fc55"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="491" y="50" width="44" height="15" uuid="dbd95a19-4ebc-4481-8494-cee98c2bb261"/>
+				<reportElement x="47" y="3" width="500" height="19" uuid="eb2ddc94-7cce-46fb-ac55-9dd3640d634c"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[The Registration of Student____________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="487" y="37" width="44" height="15" uuid="dbd95a19-4ebc-4481-8494-cee98c2bb261"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[is done.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="18" y="65" width="391" height="18" uuid="f7e1fe75-9532-4ee6-a403-e41a0093d1c5"/>
-				<textElement verticalAlignment="Bottom">
-					<font size="10"/>
-				</textElement>
-				<text><![CDATA[Please save this slip for further references.]]></text>
+				<text><![CDATA[is   done]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="196" y="21" width="312" height="14" uuid="431c7e7e-7da3-421c-8460-9130f97bccfa"/>
+				<reportElement x="68" y="56" width="57" height="14" uuid="cab414be-b807-4e51-90d4-5b37c37b8bf7"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{class}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="405" y="34" width="19" height="18" uuid="1da8628c-14a9-4b3e-a55a-de28af8675ac"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Age:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="456" y="37" width="5" height="15" uuid="8597d9f1-fd40-4483-994b-6472251b1f22"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{stu_name}]]></textFieldExpression>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="434" y="37" width="22" height="15" uuid="71e04bb4-7bd6-4c95-9a91-9a7aa09624d4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{age}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="4" splitType="Stretch"/>
+		<band height="1" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="2" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="57" splitType="Stretch">
+		<band height="127" splitType="Stretch">
 			<staticText>
-				<reportElement x="249" y="32" width="40" height="18" uuid="89d53c8f-0a78-4423-b43b-47a53c0158d0"/>
-				<textElement verticalAlignment="Bottom">
+				<reportElement x="249" y="49" width="40" height="18" uuid="89d53c8f-0a78-4423-b43b-47a53c0158d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Stamp]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="477" y="31" width="74" height="18" uuid="066ef8e8-6187-4df8-bf16-22571c60a1c4"/>
+				<reportElement x="473" y="47" width="74" height="18" uuid="066ef8e8-6187-4df8-bf16-22571c60a1c4"/>
 				<textElement verticalAlignment="Bottom">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{regd_fee}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="407" y="32" width="150" height="18" uuid="90a5c563-c091-4b33-ab36-e6799f8f3660"/>
+				<reportElement x="401" y="48" width="150" height="18" uuid="90a5c563-c091-4b33-ab36-e6799f8f3660"/>
 				<textElement verticalAlignment="Bottom">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[Regd Fee:________________]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="38" y="32" width="60" height="17" uuid="c4def9e3-8738-4606-8890-1e362e446aa5"/>
+				<reportElement x="14" y="49" width="60" height="17" uuid="c4def9e3-8738-4606-8890-1e362e446aa5"/>
 				<textElement verticalAlignment="Bottom">
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Signature]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="460" y="33" width="17" height="17" uuid="51371961-180f-4b06-823d-ffcbb637499a"/>
+				<reportElement x="456" y="48" width="17" height="17" uuid="51371961-180f-4b06-823d-ffcbb637499a"/>
 				<textElement verticalAlignment="Bottom">
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Rs.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="94" width="235" height="16" uuid="c8a0392a-571a-4d0d-92bc-cce6d8c4bd3c"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[*please save this slip for further references ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="110" width="231" height="17" uuid="beab0af7-cc67-4189-844f-9bc2cdddbf1d"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[*registration fee will not be refundable]]></text>
 			</staticText>
 		</band>
 	</summary>
